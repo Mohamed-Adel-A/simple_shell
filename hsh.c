@@ -13,7 +13,7 @@ int check_exit(const char *s)
 	exit(0);
 }
 
-int tokenizing(const chr *line, char **tokens)
+char **tokenizing(const chr *line)
 {
 	char token;
 	char *delima = " \n";
@@ -21,31 +21,30 @@ int tokenizing(const chr *line, char **tokens)
 	int tokens_count = 0, i = 0;
 
 	if(line == NULL)
-		return (-1);
+		return (NULL);
 
-	token_line = strtok(line, delima);
-
-	while (token_line)
+	token = strtok(line, delima);
+	while (token != NULL)
 	{
 		token_line = strtok(NULL, delima);
 		tokens_count++;
 	}
 
-	tokens_local = malloc(tokens_count * sizeof(char *));
+	tokens = malloc(tokens_count * sizeof(char *));
 	if (tokens == NULL)
-		return (-1);
+		return (NULL);
 
 	token = strtok(line, delima);
 	tokens_count = 0;
 	while (token != NULL)
 	{
-		tokens_local[token_count] = token;
+		tokens[token_count] = token;
 		token = strtok(NULL, delima);
 		token_count++;
 	}
-	tokens_local[token_count] = token;
+	tokens[token_count] = token;
 
-	return (token_count);	
+	return (tokens);
 }
 
 int main(void)
