@@ -8,7 +8,7 @@ int main(void)
 
 	token = strtok(line, delima);
 	printf("%s, %p\n", line, line);
-	printf("%s, %p\n", token, token[5]);
+	printf("%s, %p\n", token[5], token);
 	
 	return (1);	
 }
