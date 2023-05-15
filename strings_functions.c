@@ -36,8 +36,35 @@ char *_strcpy(char *dest, const char *src)
 
 	for (i = 0 ; src[i] != '\0' ; i++)
 	{
-		dest[i] = s[i];
+		dest[i] = src[i];
 	}
 	dest[i] = '\0';
 	return (dest);
+}
+
+
+
+/**
+ * _strdup - duplicate strings
+ * @src: source string
+ *
+ * Return: douplicated string
+ */
+char *_strcpy(const char *src)
+{
+	int i, str_len;
+	char *duplicated_string;
+
+	if (src == NULL)
+		return (NULL);
+
+	str_len = _strlen(src);
+
+	duplicated_string = malloc((str_len + 1) * sizeof(char));
+	if (duplicated_string == NULL)
+		return (NULL);
+
+	_strcpy(duplicated_string, src);
+
+	return (duplicated_string);
 }
