@@ -7,6 +7,7 @@ int main(void)
 	char **tokens = NULL;
 	int exe_st;
 	size_t line_len = 0;
+	ssize_t getline_ret;
 	pid_t cpid;
 	/**char *cmd[] = {"/bin/ls", "-l", NULL};*/
 
@@ -18,7 +19,9 @@ int main(void)
 		
 		_puts(">>> ");
 		
-	_getline(&line, &line_len, stdin);
+	getline_ret = _getline(&line, &line_len, stdin);
+		if (getline_ret == -1)
+			exit(0);
 	tokens = tokenizing(line);
 	
 	cpid = fork();
