@@ -38,7 +38,7 @@ char **tokenizing(char *line)
 		tokens_count++;		
 	}
 
-	
+	printf("tokens_count : %i", tokens_count);
 	tokens = malloc(tokens_count * sizeof(char *));
 	if (tokens == NULL)
 		return (NULL);
