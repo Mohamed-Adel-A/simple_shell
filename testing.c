@@ -9,7 +9,7 @@ int main(void)
 	int i = 0, ex_st;
 	size_t line_len = 0;
 	pid_t cpid;
-	char *cmd[] = {"/bin/ls", "-l", NULL};
+	/**char *cmd[] = {"/bin/ls", "-l", NULL};*/
 	
 	_getline(&new_line, &line_len, stdin);
 	
@@ -27,8 +27,8 @@ int main(void)
 	cpid = fork();
 	if (cpid == 0)
 	{
-		printf("%s\n", cmd[0]);
-		ex_st = execve(cmd[0], cmd, NULL);
+		printf("%s\n", tokens[0]);
+		ex_st = execve(tokens[0], tokens, NULL);
 		if (ex_st == -1)
 			printf("Ereer\n");
 	}
