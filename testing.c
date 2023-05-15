@@ -9,5 +9,6 @@ int main(void)
 	printf("%s len: %i, %p\n", line, _strlen(line), line);
 	printf("%s len: %i, %p\n", new_line, _strlen(new_line), new_line);
 	
+	free(new_line);	
 	return (1);	
 }
