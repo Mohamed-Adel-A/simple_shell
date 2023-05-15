@@ -15,7 +15,7 @@ int check_exit(const char *s)
 
 char **tokenizing(const chr *line)
 {
-	char token;
+	char *token;
 	char *delima = " \n";
 	char **tokens;
 	int tokens_count = 0, i = 0;
@@ -38,11 +38,11 @@ char **tokenizing(const chr *line)
 	tokens_count = 0;
 	while (token != NULL)
 	{
-		tokens[token_count] = token;
+		tokens[tokens_count] = token;
 		token = strtok(NULL, delima);
 		token_count++;
 	}
-	tokens[token_count] = token;
+	tokens[tokens_count] = token;
 
 	return (tokens);
 }
