@@ -31,7 +31,7 @@ char **tokenizing(char *line)
 	printf("%s\n", line);
 	while (token != NULL)
 	{
-		printf("%i : %s\n", tokens_count, token);
+		printf("%i : %s (%i)\n", tokens_count, token, line - token);
 		token = strtok(NULL, delim);
 		tokens_count++;		
 	}
@@ -46,7 +46,7 @@ char **tokenizing(char *line)
 	while (token)
 	{
 		tokens[tokens_count] = token;
-		printf("%i : %s\n", tokens_count, tokens[tokens_count]);
+		printf("%i : %s (%i)\n", tokens_count, tokens[tokens_count], line_c - token);
 		token = strtok(NULL, delim);
 		tokens_count++;
 	}
