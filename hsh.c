@@ -34,7 +34,7 @@ char **tokenizing(char *line)
 	if (tokens == NULL)
 		return (NULL);
 
-	token = strtok(line, delima);
+	token = strtok(line, delim);
 	tokens_count = 0;
 	while (token != NULL)
 	{
