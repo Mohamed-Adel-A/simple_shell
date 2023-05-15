@@ -15,7 +15,7 @@ int check_exit(const char *s)
 
 char **tokenizing(char *line)
 {
-	char *token, *line_c;
+	char *token, *line_cpy;
 	char *delim = " \n";
 	char **tokens;
 	int tokens_count = 0, i = 0;
@@ -26,7 +26,7 @@ char **tokenizing(char *line)
 
 	printf("strat\n");
 	printf("%s\n", line);
-	line_c = strdup(line);
+	line_cpy = strdup(line);
 	/*strcpy(line_c, line);*/
 	token = strtok(line, delim);
 	printf("%s\n", line);
@@ -42,18 +42,19 @@ char **tokenizing(char *line)
 	tokens = malloc(tokens_count * sizeof(char *));
 	if (tokens == NULL)
 		return (NULL);
-	printf("%s\n", line_c);
-	token = strtok(line_c, delim);
+	printf("%s\n", line_cpy);
+	token = strtok(line_cpy, delim);
 	tokens_count = 0;
 	while (token)
 	{
-		token_idx = (token - line_c);
+		token_idx = (token - line_cpy);
 		tokens[tokens_count] = line + token_idx;
 		printf("%i : %s (%li)\n", tokens_count, tokens[tokens_count], line_c - token);
 		token = strtok(NULL, delim);
 		tokens_count++;
 	}
-	tokens[tokens_count] = token;
+	tokens[tokens_count] = NULL;
+	free(line_cpy)
 
 	return (tokens);
 }
