@@ -4,9 +4,13 @@
 int main(void)
 {
   char line[] = "This is a test line\n";
-  char *new_line = _strdup(line);
+  char *new_line = NULL;
 	char **tokens = NULL;
 	int i = 0;
+	size_t line_len = 0;
+	
+	_getline(&new_line, &line_len, stdin);
+	
 	
 	tokens = tokenizing(line);
 
