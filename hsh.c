@@ -1,4 +1,4 @@
-#include "main.h"
+#include "shell.h"
 
 int check_exit(const char *s)
 {
