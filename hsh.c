@@ -25,7 +25,7 @@ char **tokenizing(char *line)
 
 	printf("strat\n");
 	printf("%s\n", line);
-	line_c = strcpy(line_c, line);
+	strcpy(line_c, line);
 	token = strtok(line, delim);
 	printf("%s\n", line);
 	while (token != NULL)
