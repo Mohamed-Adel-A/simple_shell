@@ -34,10 +34,9 @@ int main(void)
 	cpid = fork();
 	if (cpid == 0)
 	{
-		printf("%s\n", tokens[0]);
 		ex_st = execve(tokens[0], tokens, NULL);
 		if (ex_st == -1)
-			printf("Ereer\n");
+			printf("Error\n");
 	}
 	else
 	{
