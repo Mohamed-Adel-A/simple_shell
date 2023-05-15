@@ -73,7 +73,7 @@ int main(void)
 	tokens = tokenizing(line);
 
 	check_exit(line);
-	printf("    %s", tokens[0]);
+	printf("    %s", tokens[1]);
 	free(line);
 	}
 	return (0);
