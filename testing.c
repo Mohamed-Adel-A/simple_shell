@@ -3,48 +3,39 @@
 
 int main(void)
 {
-  char line[] = "This is a test line\n";
-  char *new_line = NULL;
+  char *line = NULL;
 	char **tokens = NULL;
-	int i = 0, ex_st;
+	int exe_st;
 	size_t line_len = 0;
 	pid_t cpid;
 	/**char *cmd[] = {"/bin/ls", "-l", NULL};*/
-	
-	_puts(">>> ");
-	
-	_getline(&new_line, &line_len, stdin);
-	
-	
-	tokens = tokenizing(new_line);
 
-	/*
-	for (i = 0 ; tokens[i] != NULL ; i++)
+	while (1)
 	{
-		printf("%s\n len: %i, %p\n", tokens[i], _strlen(tokens[i]), tokens[i]);
-	}
-	*/
-
-
-	/*
-	printf("%s len: %i, %p\n", line, _strlen(line), line);
-	printf("%s len: %i, %p\n", new_line, _strlen(new_line), new_line);
-	*/
+		line = NULL;
+		tokens = NULL;
+		line_len = 0;
+		
+		_puts(">>> ");
+		
+	_getline(&line, &line_len, stdin);
+	tokens = tokenizing(line);
 	
 	cpid = fork();
 	if (cpid == 0)
 	{
-		ex_st = execve(tokens[0], tokens, NULL);
-		if (ex_st == -1)
+		exe_st = execve(tokens[0], tokens, NULL);
+		if (exe_st == -1)
 			printf("Error\n");
 	}
 	else
 	{
 		wait(NULL);
-		printf("Done\n");
+		printf("Done %i\n", exe_st);
 	}
 	
 	free(tokens);
-	free(new_line);	
+	free(line);	
+	}
 	return (1);	
 }
