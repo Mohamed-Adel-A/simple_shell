@@ -13,20 +13,20 @@ int check_exit(const char *s)
 	exit(0);
 }
 
-char **tokenizing(const chr *line)
+char **tokenizing(char *line)
 {
 	char *token;
-	char *delima = " \n";
+	char *delim = " \n";
 	char **tokens;
 	int tokens_count = 0, i = 0;
 
 	if(line == NULL)
 		return (NULL);
 
-	token = strtok(line, delima);
+	token = strtok(line, delim);
 	while (token != NULL)
 	{
-		token_line = strtok(NULL, delima);
+		token = strtok(NULL, delim);
 		tokens_count++;
 	}
 
@@ -39,8 +39,8 @@ char **tokenizing(const chr *line)
 	while (token != NULL)
 	{
 		tokens[tokens_count] = token;
-		token = strtok(NULL, delima);
-		token_count++;
+		token = strtok(NULL, delim);
+		tokens_count++;
 	}
 	tokens[tokens_count] = token;
 
@@ -70,7 +70,7 @@ int main(void)
 	}
 	/* printf("%lu\n", line_size);*/
 	
-	tokens = tokenizing(line, tokens);
+	tokens = tokenizing(line);
 
 	check_exit(line);
 	printf("    %s", tokens[0]);
