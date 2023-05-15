@@ -85,7 +85,7 @@ int main(void)
 	printf("%lu\n", line_size);
 
 	/*check_exit(line);*/
-	printf("    %s", tokens[1]);
+	printf("    %s", line);
 	free(line);
 	}
 	return (0);
