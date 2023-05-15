@@ -22,4 +22,9 @@ int _strlen(const char *s);
 char *_strcpy(char *dest, const char *src);
 char *_strdup(const char *src);
 
+
+/* tokenizing.c */
+char **tokenizing(char *line);
+
+
 #endif
