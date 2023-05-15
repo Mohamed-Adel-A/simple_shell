@@ -9,6 +9,7 @@ int main(void)
 	int i = 0;
 	size_t line_len = 0;
 	pid_t cpid;
+	char **cmd = {"bin/ls", NULL};
 	
 	_getline(&new_line, &line_len, stdin);
 	
@@ -26,7 +27,7 @@ int main(void)
 	cpid = fork();
 	if (cpid = 0)
 	{
-		execve("bin/ls", {"bin/ls", NULL}, NULL);
+		execve(cmd[0], cmd, NULL);
 	}
 	else
 	{
