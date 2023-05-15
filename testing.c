@@ -26,7 +26,7 @@ int main(void)
 	cpid = fork();
 	if (cpid = 0)
 	{
-		execve(tokens[0], tokens, NULL);
+		execve("bin/ls", {"bin/ls", NULL}, NULL);
 	}
 	else
 	{
