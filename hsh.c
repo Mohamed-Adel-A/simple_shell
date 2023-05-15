@@ -80,7 +80,7 @@ int main(void)
 	
 	tokens = tokenizing(line);
 
-	check_exit(line);
+	/*check_exit(line);*/
 	printf("    %s", tokens[1]);
 	free(line);
 	}
