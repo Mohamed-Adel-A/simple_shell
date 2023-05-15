@@ -16,4 +16,10 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
 int _putchar(char c);
 int _puts(const char *s);
 
+
+/* strings_functions.c */
+int _strlen(const char *s);
+char *_strcpy(char *dest, const char *src);
+char *_strdup(const char *src);
+
 #endif
