@@ -31,6 +31,7 @@ char **tokenizing(char *line)
 	{
 		token = strtok(NULL, delim);
 		tokens_count++;
+		printf("%i : %s", tokens_count, token);
 	}
 
 	
