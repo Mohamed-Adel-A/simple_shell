@@ -49,7 +49,7 @@ char **tokenizing(char *line)
 	{
 		token_idx = (token - line_cpy);
 		tokens[tokens_count] = line + token_idx;
-		printf("%i : %s (%li)\n", tokens_count, tokens[tokens_count], line_c - token);
+		printf("%i : %s (%li)\n", tokens_count, tokens[tokens_count], line_cpy - token);
 		token = strtok(NULL, delim);
 		tokens_count++;
 	}
