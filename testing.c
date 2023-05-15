@@ -12,7 +12,7 @@ int main(void)
 
 	for (i = 0 ; tokens != NULL ; i++)
 	{
-		printf("%s len: %i, %p\n", tokens[i], _strlen(tokens[i]), tokens[i]);
+		printf("%s\n len: %i, %p\n", tokens[i], _strlen(tokens[i]), tokens[i]);
 	}
 
 	printf("%s len: %i, %p\n", line, _strlen(line), line);
