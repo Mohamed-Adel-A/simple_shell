@@ -16,13 +16,18 @@ int main(void)
 	
 	tokens = tokenizing(new_line);
 
+	/*
 	for (i = 0 ; tokens[i] != NULL ; i++)
 	{
 		printf("%s\n len: %i, %p\n", tokens[i], _strlen(tokens[i]), tokens[i]);
 	}
+	*/
 
+
+	/*
 	printf("%s len: %i, %p\n", line, _strlen(line), line);
 	printf("%s len: %i, %p\n", new_line, _strlen(new_line), new_line);
+	*/
 	
 	cpid = fork();
 	if (cpid == 0)
