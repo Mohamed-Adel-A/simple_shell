@@ -47,7 +47,7 @@ char **tokenizing(char *line)
 	tokens_count = 0;
 	while (token)
 	{
-		tokens[tokens_count] = token;
+		tokens[tokens_count] = line + token_idx;
 		printf("%i : %s (%li)\n", tokens_count, tokens[tokens_count], line_c - token);
 		token = strtok(NULL, delim);
 		tokens_count++;
