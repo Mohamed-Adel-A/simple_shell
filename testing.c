@@ -8,6 +8,7 @@ int main(void)
 	char **tokens = NULL;
 	int i = 0;
 	size_t line_len = 0;
+	pid_t cpid;
 	
 	_getline(&new_line, &line_len, stdin);
 	
@@ -21,6 +22,17 @@ int main(void)
 
 	printf("%s len: %i, %p\n", line, _strlen(line), line);
 	printf("%s len: %i, %p\n", new_line, _strlen(new_line), new_line);
+	
+	cpid = fork();
+	if (cpid = 0)
+	{
+		execve(tokens[0], tokens, NULL);
+	}
+	else
+	{
+		wait(NULL);
+		printf("error");
+	}
 	
 	free(tokens);
 	free(new_line);	
