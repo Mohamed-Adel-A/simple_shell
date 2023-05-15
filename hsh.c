@@ -28,6 +28,7 @@ int main(void)
 	{
 	_puts("($) ");
 	line = NULL;
+	tokens = NULL;
 	line_size = 0;
 	/*printf("\n %i : %i\n", stdin->_fileno, (int) STDIN_FILENO);*/
 	getline_r = _getline(&line, &line_size, stdin);
