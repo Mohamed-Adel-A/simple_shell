@@ -6,7 +6,7 @@ int main(void)
   char line[] = "This is a test line\n";
   char *new_line = NULL;
 	char **tokens = NULL;
-	int i = 0;
+	int i = 0, ex_st;
 	size_t line_len = 0;
 	pid_t cpid;
 	char *cmd[] = {"bin/ls", "-l", NULL};
@@ -27,7 +27,9 @@ int main(void)
 	cpid = fork();
 	if (cpid == 0)
 	{
-		execve(cmd[0], cmd, NULL);
+		ex_st = execve(cmd[0], cmd, NULL);
+		if (ex_st == -1)
+			printf("Ereer\n");
 	}
 	else
 	{
