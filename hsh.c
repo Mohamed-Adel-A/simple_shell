@@ -16,7 +16,7 @@ int check_exit(const char *s)
 char **tokenizing(char *line)
 {
 	char *token, *line_c;
-	char *delim = " \n";
+	char *delim = " ";
 	char **tokens;
 	int tokens_count = 0, i = 0;
 
@@ -38,7 +38,7 @@ char **tokenizing(char *line)
 	tokens = malloc(tokens_count * sizeof(char *));
 	if (tokens == NULL)
 		return (NULL);
-
+	printf("%s\n", line_c);
 	token = strtok(line_c, delim);
 	tokens_count = 0;
 	while (token != NULL)
