@@ -54,7 +54,7 @@ char **tokenizing(char *line)
 		tokens_count++;
 	}
 	tokens[tokens_count] = NULL;
-	free(line_cpy)
+	free(line_cpy);
 
 	return (tokens);
 }
