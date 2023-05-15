@@ -43,6 +43,7 @@ int main(void)
 	/*check_exit(line);*/
 	printf("    %s", line);
 	free(line);
+	free(tokens);
 	}
 	return (0);
 }
