@@ -10,7 +10,7 @@ int main(void)
 	
 	tokens = tokenizing(line);
 
-	for (i = 0 ; tokens != NULL ; i++)
+	for (i = 0 ; tokens[i] != NULL ; i++)
 	{
 		printf("%s\n len: %i, %p\n", tokens[i], _strlen(tokens[i]), tokens[i]);
 	}
