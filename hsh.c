@@ -16,7 +16,7 @@ int check_exit(const char *s)
 char **tokenizing(char *line)
 {
 	char *token, *line_c;
-	char *delim = " ";
+	char *delim = " \n";
 	char **tokens;
 	int tokens_count = 0, i = 0;
 
