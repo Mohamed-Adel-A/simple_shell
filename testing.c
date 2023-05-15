@@ -9,7 +9,7 @@ int main(void)
 	int i = 0;
 	size_t line_len = 0;
 	pid_t cpid;
-	char *cmd[] = {"bin/ls", NULL};
+	char *cmd[] = {"bin/ls", "-l", NULL};
 	
 	_getline(&new_line, &line_len, stdin);
 	
@@ -25,14 +25,14 @@ int main(void)
 	printf("%s len: %i, %p\n", new_line, _strlen(new_line), new_line);
 	
 	cpid = fork();
-	if (cpid = 0)
+	if (cpid == 0)
 	{
 		execve(cmd[0], cmd, NULL);
 	}
 	else
 	{
 		wait(NULL);
-		printf("error");
+		printf("Done\n");
 	}
 	
 	free(tokens);
