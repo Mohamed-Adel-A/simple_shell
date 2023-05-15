@@ -11,8 +11,6 @@ int main(void)
 	pid_t cpid;
 	/**char *cmd[] = {"/bin/ls", "-l", NULL};*/
 
-	while (1)
-	{
 		line = NULL;
 		tokens = NULL;
 		line_len = 0;
@@ -39,6 +37,6 @@ int main(void)
 	
 	free(tokens);
 	free(line);	
-	}
+
 	return (1);	
 }
