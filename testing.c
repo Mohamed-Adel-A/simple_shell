@@ -26,7 +26,7 @@ int main(void)
 			exit(EXIT_SUCCESS);
 		}
 	tokens = tokenizing(line);
-	
+	/*
 	cpid = fork();
 	if (cpid == 0)
 	{
@@ -39,6 +39,7 @@ int main(void)
 		wait(NULL);
 		printf("Done %i\n", exe_st);
 	}
+	*/
 	
 	free(tokens);
 	free(line);	
