@@ -26,20 +26,20 @@ int main(void)
 			exit(EXIT_SUCCESS);
 		}
 	tokens = tokenizing(line);
-	/*
+	
 	cpid = fork();
 	if (cpid == 0)
 	{
 		exe_st = execve(tokens[0], tokens, NULL);
 		if (exe_st == -1)
-			printf("Error\n");
+			printf("Error: No such file or directory\n");
 	}
 	else
 	{
 		wait(NULL);
 		printf("Done %i\n", exe_st);
 	}
-	*/
+	
 	
 	free(tokens);
 	free(line);	
