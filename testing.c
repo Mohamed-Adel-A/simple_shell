@@ -27,6 +27,7 @@ int main(void)
 	cpid = fork();
 	if (cpid == 0)
 	{
+		printf("%s\n", cmd[0]);
 		ex_st = execve(cmd[0], cmd, NULL);
 		if (ex_st == -1)
 			printf("Ereer\n");
