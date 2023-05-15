@@ -11,6 +11,8 @@ int main(void)
 	pid_t cpid;
 	/**char *cmd[] = {"/bin/ls", "-l", NULL};*/
 	
+	_puts(">>> ");
+	
 	_getline(&new_line, &line_len, stdin);
 	
 	
