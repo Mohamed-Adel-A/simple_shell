@@ -4,11 +4,10 @@
 int main(void)
 {
   char line[] = "This is a test line\n";
-  char *token = NULL, *delima = " \n";
+  char *new_line = _strdup(line);
 
-	token = strtok(line, delima);
 	printf("%s, %p\n", line, line);
-	printf("%c, %p\n", token[19], token);
+	printf("%s, %p\n", new_line, new_line);
 	
 	return (1);	
 }
