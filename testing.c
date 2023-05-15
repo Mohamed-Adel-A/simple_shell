@@ -23,7 +23,7 @@ int main(void)
 		if (getline_ret == -1)
 		{
 			free(line);
-			exit(0);
+			exit(EXIT_SUCCESS);
 		}
 	tokens = tokenizing(line);
 	
