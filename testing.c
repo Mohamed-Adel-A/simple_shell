@@ -29,7 +29,7 @@ int main(void)
 	cpid = fork();
 	if (cpid == 0)
 	{
-		print ("exexuting... (cpid =%i)\n", cpid);
+		printf("exexuting... (cpid =%i)\n", cpid);
 		exe_st = execve(tokens[0], tokens, NULL);
 		if (exe_st == -1)
 			printf("Error: No such file or directory\n");
