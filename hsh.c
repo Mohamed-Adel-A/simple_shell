@@ -17,7 +17,7 @@ char **tokenizing(const chr *line)
 {
 	char token;
 	char *delima = " \n";
-	char **tokens_local;
+	char **tokens;
 	int tokens_count = 0, i = 0;
 
 	if(line == NULL)
@@ -70,10 +70,10 @@ int main(void)
 	}
 	/* printf("%lu\n", line_size);*/
 	
-	n_tokens = tokenizing(line, tokens);
+	tokens = tokenizing(line, tokens);
 
 	check_exit(line);
-	printf("    %s", line);
+	printf("    %s", tokens[0]);
 	free(line);
 	}
 	return (0);
