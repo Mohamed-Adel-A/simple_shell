@@ -12,7 +12,7 @@ int main(void)
 	_getline(&new_line, &line_len, stdin);
 	
 	
-	tokens = tokenizing(line);
+	tokens = tokenizing(new_line);
 
 	for (i = 0 ; tokens[i] != NULL ; i++)
 	{
