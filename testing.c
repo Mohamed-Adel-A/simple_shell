@@ -21,7 +21,10 @@ int main(void)
 		
 	getline_ret = _getline(&line, &line_len, stdin);
 		if (getline_ret == -1)
+		{
+			free(line);
 			exit(0);
+		}
 	tokens = tokenizing(line);
 	
 	cpid = fork();
