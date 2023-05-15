@@ -68,7 +68,7 @@ int main(void)
 	{
 		exit(EXIT_SUCCESS);
 	}
-	/* printf("%lu\n", line_size);*/
+	printf("%lu\n", line_size);
 	
 	tokens = tokenizing(line);
 
