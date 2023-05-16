@@ -1,5 +1,26 @@
 #include "shell.h"
 
+/**
+ * propmt - print shell prompt
+ *
+ * Return: void
+ */
+void prompt(void)
+{
+	char *prompt = "($) ";
+	ssize_t write_c;
+
+	if (isatty(STDIN_FILENO))
+	{
+		write_c = _puts(prompt);
+
+		if (write_c == -1)
+			exit(0);
+	}
+}
+
+
+
 int main(void)
 {
   char *line = NULL;
@@ -16,33 +37,35 @@ int main(void)
 		tokens = NULL;
 		line_len = 0;
 		
-		_puts("($) ");
+		prompt();
 		
-	getline_ret = _getline(&line, &line_len, stdin);
+		getline_ret = _getline(&line, &line_len, stdin);
 		if (getline_ret == -1)
 		{
 			free(line);
 			exit(EXIT_SUCCESS);
 		}
-	tokens = tokenizing(line);
+		tokens = tokenizing(line);
 	
-	cpid = fork();
-	if (cpid == 0)
-	{
-		/* printf("exexuting... (cpid =%i)\n", cpid); */
-		exe_st = execve(tokens[0], tokens, NULL);
-		if (exe_st == -1)
-			printf("Error: No such file or directory\n");
+		cpid = fork();
+		if (cpid == 0)
+		{
+			/* printf("exexuting... (cpid =%i)\n", cpid); */
+			exe_st = execve(tokens[0], tokens, NULL);
+			if (exe_st == -1)
+				printf("Error: No such file or directory\n");
+		}
+		else
+		{
+			wait(&wstatus);
+			/*printf("Done %i(cpid =%i)\n", exe_st, cpid);*/
+		}
+
+
+		free(tokens);
+		free(line);
+		if (!isatty(STDIN_FILENO))
+			break;
 	}
-	else
-	{
-		wait(&wstatus);
-		/*printf("Done %i(cpid =%i)\n", exe_st, cpid);*/
-	}
-	
-	
-	free(tokens);
-	free(line);	
-	}
-	return (1);	
+	return (0);	
 }
