@@ -16,7 +16,7 @@ int main(void)
 		tokens = NULL;
 		line_len = 0;
 		
-		_puts(">>> ");
+		_puts("($) ");
 		
 	getline_ret = _getline(&line, &line_len, stdin);
 		if (getline_ret == -1)
