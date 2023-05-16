@@ -4,7 +4,7 @@ int main(void)
 {
   char *line = NULL;
 	char **tokens = NULL;
-	int exe_st;
+	int exe_st, wstatus;
 	size_t line_len = 0;
 	ssize_t getline_ret;
 	pid_t cpid;
@@ -29,15 +29,15 @@ int main(void)
 	cpid = fork();
 	if (cpid == 0)
 	{
-		printf("exexuting... (cpid =%i)\n", cpid);
+		/* printf("exexuting... (cpid =%i)\n", cpid); */
 		exe_st = execve(tokens[0], tokens, NULL);
 		if (exe_st == -1)
 			printf("Error: No such file or directory\n");
 	}
 	else
 	{
-		wait(NULL);
-		printf("Done %i(cpid =%i)\n", exe_st, cpid);
+		wait(&wstatus);
+		/*printf("Done %i(cpid =%i)\n", exe_st, cpid);*
 	}
 	
 	
