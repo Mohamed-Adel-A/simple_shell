@@ -50,7 +50,7 @@ int main(void)
 		cpid = fork();
 		if (cpid == 0)
 		{
-			/* printf("exexuting... (cpid =%i)\n", cpid); */
+			printf("exexuting... (cpid =%i)\n", cpid);
 			exe_st = execve(tokens[0], tokens, NULL);
 			if (exe_st == -1)
 				printf("Error: No such file or directory\n");
@@ -58,7 +58,7 @@ int main(void)
 		else
 		{
 			wait(&wstatus);
-			/*printf("Done %i(cpid =%i)\n", exe_st, cpid);*/
+			printf("Done %i : %i (cpid =%i)\n", exe_st, wstatus, cpid);
 		}
 
 
