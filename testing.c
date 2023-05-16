@@ -37,7 +37,7 @@ int main(void)
 	else
 	{
 		wait(&wstatus);
-		/*printf("Done %i(cpid =%i)\n", exe_st, cpid);*
+		/*printf("Done %i(cpid =%i)\n", exe_st, cpid);*/
 	}
 	
 	
