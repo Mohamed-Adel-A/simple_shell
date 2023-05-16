@@ -55,6 +55,7 @@ int main(void)
 			if (exe_st == -1)
 			{
 				printf("Error: No such file or directory\n");
+				exit(0);
 			}
 		}
 		else
