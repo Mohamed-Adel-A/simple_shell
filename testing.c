@@ -54,7 +54,7 @@ int main(void)
 			exe_st = execve(tokens[0], tokens, NULL);
 			if (exe_st == -1)
 			{
-				perror("Error: No such file or directory\n");
+				perror("Error: No  directory\n");
 				exit(0);
 			}
 		}
