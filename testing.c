@@ -61,7 +61,7 @@ int main(void)
 		else
 		{
 			wait(&wstatus);
-			printf("Done %i : %i (cpid =%i)\n", exe_st, wstatus, cpid);
+			/*printf("Done %i : %i (cpid =%i)\n", exe_st, wstatus, cpid);*/
 		}
 
 
