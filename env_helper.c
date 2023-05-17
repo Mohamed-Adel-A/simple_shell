@@ -10,7 +10,7 @@ char *_getenv(const char *variable_name)
 	int i = 0;
 	int var_len;
 
-	if (name == NULL)
+	if (variable_name == NULL)
 		return (NULL);
 
 	var_len = _strlen(variable_name);
