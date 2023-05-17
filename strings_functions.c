@@ -54,7 +54,7 @@ char *_strcpy(char *dest, const char *src)
  */
 char *_strdup(const char *src)
 {
-	int i, str_len;
+	int str_len;
 	char *duplicated_string;
 
 	if (src == NULL)
