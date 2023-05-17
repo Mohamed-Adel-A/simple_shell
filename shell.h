@@ -8,6 +8,9 @@
 #include <sys/wait.h>
 #include <string.h>
 
+
+extern char **environ;
+
 /* _getline.c file */
 int _getchar(FILE *stream);
 ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
