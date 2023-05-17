@@ -30,7 +30,7 @@ int main(void)
 	ssize_t getline_ret;
 	pid_t cpid;
 	/**char *cmd[] = {"/bin/ls", "-l", NULL};*/
-
+	printf("Path =%s\n", _getenv("PATH"));
 	while (1)
 	{
 		line = NULL;
