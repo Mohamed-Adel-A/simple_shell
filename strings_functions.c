@@ -70,3 +70,34 @@ char *_strdup(const char *src)
 
 	return (duplicated_string);
 }
+
+
+
+/**
+ * _strncmp - cmpare the first n char of two strings
+ * @s1: the first string
+ * @s2: the second string
+ * @n: the number of char to be compared
+ *
+ * Return: 0 if s1 == s2, otherwise (s1 - s2)
+ */
+int _strncmp(char *s1, char *s2, size_t n)
+{
+	size_t i = 0;
+	if (s1 == NULL && s2 == NULL)
+		return (0);
+
+	for (i = 0 ; i < n ; i++)
+	{
+		if ((s1[i] == s2[i]) && ((i == n - 1) || (s1[i] == '\0')))
+		{
+			return (0);
+		}
+		else if (s1[i] != s2[i])
+		{
+			retrun (s1[i] - s2[i]);
+		}
+	}
+
+	return (0);
+}
