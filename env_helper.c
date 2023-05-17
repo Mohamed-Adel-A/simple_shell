@@ -27,3 +27,29 @@ char *_getenv(char *variable_name)
 
 	return (NULL);
 }
+
+/**
+ * _setenv - adds variable to the environment
+ * @name: variable name
+ * @value: variable value
+ * @overwrite: if nonzero -> overwrite the value
+ *	       if zeor -> then don't change value
+ *
+ * Return: 0 on success, or -1 on error
+ */
+int _setenv(const char *name, const char *value, int overwrite)
+{
+	int name_len, value_len;
+	char *new_variable = NULL;
+
+	if (overwrite == 0 and _getenv(name) != NULL)
+		return (0);
+
+	new_variable = malloc((name_len + value_len + 2) * sizeof(char));
+	if (new_variable == NULL)
+		return (-1);
+
+	memcpy()
+		
+	
+}
