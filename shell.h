@@ -26,5 +26,8 @@ char *_strdup(const char *src);
 /* tokenizing.c */
 char **tokenizing(char *line);
 
+/* env_helper.c */
+char *_getenv(const char *variable_name);
+
 
 #endif
