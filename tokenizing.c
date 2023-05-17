@@ -11,7 +11,7 @@ char **tokenizing(char *line)
 	char *token, *line_cpy;
 	char *delim = " \n";
 	char **tokens;
-	int tokens_count = 0, i = 0;
+	int tokens_count = 0;
 	long int token_idx;
 
 	if(line == NULL)
