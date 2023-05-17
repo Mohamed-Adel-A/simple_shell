@@ -5,7 +5,7 @@
  * @name: name of enviroment variable to be checked
  *
  */
-char *_getenv(const char *variable_name)
+char *_getenv(char *variable_name)
 {
 	int i = 0;
 	int var_len;
