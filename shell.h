@@ -28,7 +28,7 @@ int _strncmp(char *s1, char *s2, size_t n);
 char **tokenizing(char *line);
 
 /* env_helper.c */
-char *_getenv(const char *variable_name);
+char *_getenv(char *variable_name);
 
 
 #endif
