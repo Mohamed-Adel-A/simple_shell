@@ -34,7 +34,7 @@ int _getc(FILE *stream)
 ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 {
 	char c;
-	int i = 0;
+	size_t i = 0;
 	char *lline, *new_line;
 
 	lline = *lineptr;
