@@ -31,6 +31,8 @@ int main(void)
 	pid_t cpid;
 	/**char *cmd[] = {"/bin/ls", "-l", NULL};*/
 	printf("Path =%s\n", _getenv("PATH"));
+	_setenv("new", "new value", 0);
+	printf("Path =%s\n", _getenv("new"));
 	while (1)
 	{
 		line = NULL;
