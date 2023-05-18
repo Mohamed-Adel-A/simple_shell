@@ -28,7 +28,7 @@ int _strncmp(const char *s1, const char *s2, size_t n);
 
 
 /* mem_helper.c */
-void *_memcpy(void *dest, void *src, size_t n);
+void *_memcpy(void *dest, const void *src, size_t n);
 void *_realloc(void *ptr, size_t size);
 
 /* tokenizing.c */
