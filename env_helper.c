@@ -47,6 +47,9 @@ int _setenv(const char *name, const char *value, int overwrite)
 	if (overwrite == 0 && _getenv(name) != NULL)
 		return (0);
 
+	name_len = _strlen(name);
+	value_len = _strlen(value);
+
 	new_variable = malloc((name_len + value_len + 2) * sizeof(char));
 	if (new_variable == NULL)
 		return (-1);
