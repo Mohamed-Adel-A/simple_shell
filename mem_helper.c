@@ -8,7 +8,7 @@
  *
  * Return: pointer to destination
  */
-void *_memcpy(void *dest, void *src, size_t n)
+void *_memcpy(void *dest, const void *src, size_t n)
 {
 	char *d = dest, *s = src;
 	size_t i = 0;
