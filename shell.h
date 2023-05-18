@@ -36,6 +36,7 @@ char **tokenizing(char *line);
 
 /* env_helper.c */
 char *_getenv(char *variable_name);
+int _setenv(const char *name, const char *value, int overwrite);
 
 
 #endif
