@@ -10,7 +10,8 @@
  */
 void *_memcpy(void *dest, const void *src, size_t n)
 {
-	char *d = dest, *s = src;
+	char *d = dest;
+	const char *s = src;
 	size_t i = 0;
 
 	if (src == NULL || n == 0)
