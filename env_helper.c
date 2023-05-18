@@ -18,7 +18,7 @@ char *_getenv(char *variable_name)
 	while (environ[i] != NULL)
 	{
 		if ((_strncmp(variable_name, environ[i], var_len) == 0) &&
-		     (environ[i][var_len] == '=') )
+		     (environ[i][var_len] == '='))
 		{
 			return (environ[i] + var_len + 1);
 		}
@@ -27,6 +27,32 @@ char *_getenv(char *variable_name)
 
 	return (NULL);
 }
+
+/**
+ * _memcpy - copy n bytes of memory from src to dest
+ * @dest: pointer to destination
+ * @src: pointer to source
+ * @n: number of bytes to be copied
+ *
+ * Return: pointer to destination
+ */
+void *_memcpy(void *dest, void *src, size_t n)
+{
+	char *d = dest, *s = src;
+	size_t i = 0;
+
+	if (src == NULL || n == 0)
+		return (dest);
+
+	if (dest == NULL)
+		return (NULL);
+
+	for (i = 0 ; i < n ; i++)
+		d[i] = s[i];
+
+	return dest;
+}
+
 
 /**
  * _setenv - adds variable to the environment
@@ -39,8 +65,8 @@ char *_getenv(char *variable_name)
  */
 int _setenv(const char *name, const char *value, int overwrite)
 {
-	int name_len, value_len;
-	char *new_variable = NULL;
+	int name_len, value_len, i = 0;
+	char *new_variable = NULL, *equal_sign = "=";
 
 	if (overwrite == 0 and _getenv(name) != NULL)
 		return (0);
@@ -49,7 +75,21 @@ int _setenv(const char *name, const char *value, int overwrite)
 	if (new_variable == NULL)
 		return (-1);
 
-	memcpy()
-		
-	
+	_memcpy(new_variable, name, name_len);
+	_memcpy((new_variable + name_len), equal_sign, 1);
+	_memcpy((new_variable + name_len + 1), value, value_len);
+	new_variable[name_len + value_len + 1] = '\0';
+
+	while (environ[i] != NULL)
+	{
+		if ((_strncmp(name, environ[i], name_len) == 0) &&
+		     (environ[i][var_len] == '='))
+		{
+			free(environ[i]);
+			environ[i] = new_variable;
+			return (0);
+		}
+		i++;
+	}
+	return (0);
 }
