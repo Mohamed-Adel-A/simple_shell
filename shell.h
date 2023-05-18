@@ -24,7 +24,7 @@ int _puts(const char *s);
 int _strlen(const char *s);
 char *_strcpy(char *dest, const char *src);
 char *_strdup(const char *src);
-int _strncmp(char *s1, char *s2, size_t n);
+int _strncmp(const char *s1, const char *s2, size_t n);
 
 
 /* mem_helper.c */
@@ -35,7 +35,7 @@ void *_realloc(void *ptr, size_t size);
 char **tokenizing(char *line);
 
 /* env_helper.c */
-char *_getenv(char *variable_name);
+char *_getenv(const char *variable_name);
 int _setenv(const char *name, const char *value, int overwrite);
 
 
