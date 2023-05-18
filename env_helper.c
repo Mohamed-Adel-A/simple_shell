@@ -68,7 +68,7 @@ int _setenv(const char *name, const char *value, int overwrite)
 		i++;
 	}
 
-	new_env = (char *) _realloc(environ, ((i + 2) * sizeof(char *)));
+	new_env = (char **) _realloc(environ, ((i + 2) * sizeof(char *)));
 	if (new_env == NULL)
 		return (-1);
 
