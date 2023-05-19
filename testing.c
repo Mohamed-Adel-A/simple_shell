@@ -58,6 +58,11 @@ int main(void)
 			free(line);
 			exit(EXIT_SUCCESS);
 		}
+		else if (getline_ret == 0)
+		{
+			free(line);
+			continue;
+		}
 		tokens = tokenizing(line);
 	
 		if (program_search(tokens[0]))
