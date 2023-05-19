@@ -30,8 +30,6 @@ int main(void)
 	ssize_t getline_ret;
 	pid_t cpid;
 
-	int programsearch;
-
 	/**char *cmd[] = {"/bin/ls", "-l", NULL};*/
 	
 	/*printf("Path =%s\n", _getenv("PATH"));
