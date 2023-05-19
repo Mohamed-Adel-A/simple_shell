@@ -73,28 +73,29 @@ int main(int argc , char **argv)
 	
 		if (program_search(tokens[0]))
 		{
-		cpid = fork();
-		if (cpid == 0)
-		{
-			/*printf("exexuting... (cpid =%i)\n", cpid);*/
-			exe_st = execve(tokens[0], tokens, NULL);
-			if (exe_st == -1)
+			printf("start\n");
+			cpid = fork();
+			if (cpid == 0)
 			{
-				printf("exec:");
-				errno = ENOENT;
-				perror(argv[0]);
-				exit(0);
+				/*printf("exexuting... (cpid =%i)\n", cpid);*/
+				exe_st = execve(tokens[0], tokens, NULL);
+				if (exe_st == -1)
+				{
+					printf("exec: \n");
+					errno = ENOENT;
+					perror(argv[0]);
+					exit(0);
+				}
+			}
+			else
+			{
+				wait(&wstatus);
+				/*printf("Done %i : %i (cpid =%i)\n", exe_st, wstatus, cpid);*/
 			}
 		}
 		else
 		{
-			wait(&wstatus);
-			/*printf("Done %i : %i (cpid =%i)\n", exe_st, wstatus, cpid);*/
-		}
-		}
-		else
-		{
-			printf("else: ");
+			printf("else: \n");
 			errno = ENOENT;
 			perror(argv[0]);
 		}
