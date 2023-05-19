@@ -58,7 +58,7 @@ int main(void)
 			free(line);
 			exit(EXIT_SUCCESS);
 		}
-		else if (getline_ret == 0)
+		else if (line[0] == '\n')
 		{
 			free(line);
 			continue;
