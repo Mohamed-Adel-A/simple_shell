@@ -87,7 +87,8 @@ int main(void)
 			exe_st = execve(tokens[0], tokens, NULL);
 			if (exe_st == -1)
 			{
-				perror("Executing Error");
+				errno = ENOENT;
+				perror(tokens[0]);
 				exit(0);
 			}
 		}
@@ -100,7 +101,7 @@ int main(void)
 		else
 		{
 			errno = ENOENT;
-			perror("NO Such file\n");
+			perror(tokens[0]);
 		}
 
 		free(tokens);
