@@ -71,12 +71,15 @@ int _setenv(const char *name, const char *value, int overwrite)
 		i++;
 	}
 
-	new_env = (char **) _realloc(environ, ((i + 2) * sizeof(char *)));
+	/*new_env = (char **) _realloc(environ, ((i + 2) * sizeof(char *)));*/
+	new_env = malloc((i + 2) * sizeof(char *));
 	if (new_env == NULL)
 		return (-1);
 
+	_memcpy(new_environ, environ, (i * sizeof(char *)));
 	new_env[i] = new_variable;
 	new_env[i + 1] = NULL;
+	environ = new_env;
 
 	return (0);
 }
