@@ -49,14 +49,6 @@ int main(void)
 	_setenv("new", "new value", 0);
 	printf("Path =%s\n", _getenv("new"));*/
 	
-	if(program_search("./hsh"))
-	{
-		printf("found\n");
-	}
-	else
-	{
-		printf("notfound");
-	}
 	while (1)
 	{
 		line = NULL;
@@ -87,6 +79,7 @@ int main(void)
 			exe_st = execve(tokens[0], tokens, NULL);
 			if (exe_st == -1)
 			{
+				printf("exec:");
 				errno = ENOENT;
 				perror(tokens[0]);
 				exit(0);
@@ -100,6 +93,7 @@ int main(void)
 		}
 		else
 		{
+			printf("else: ");
 			errno = ENOENT;
 			perror(tokens[0]);
 		}
