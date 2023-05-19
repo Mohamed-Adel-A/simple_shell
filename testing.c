@@ -24,8 +24,8 @@ void prompt(void)
  */
  int check_empty_line(const char *line)
  {
-	 int i = 0, not_empty = 0;
-	 whilt (line[i] != '\0')
+	 int i = 0;
+	 while (line[i] != '\0')
 	 {
 		 if (line[i] != ' ' && line[i] != '\t' && line[i] != '\n')
 			 return (0);
