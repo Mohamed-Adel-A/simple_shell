@@ -34,7 +34,7 @@ void prompt(void)
 	 return (1);
  }
 
-int main(void)
+int main(int argc ; char **argv)
 {
   char *line = NULL;
 	char **tokens = NULL;
@@ -43,6 +43,7 @@ int main(void)
 	ssize_t getline_ret;
 	pid_t cpid;
 
+	(void)argc;
 	/**char *cmd[] = {"/bin/ls", "-l", NULL};*/
 	
 	/*printf("Path =%s\n", _getenv("PATH"));
@@ -81,7 +82,7 @@ int main(void)
 			{
 				printf("exec:");
 				errno = ENOENT;
-				perror(tokens[0]);
+				perror(argv[0]);
 				exit(0);
 			}
 		}
@@ -95,7 +96,7 @@ int main(void)
 		{
 			printf("else: ");
 			errno = ENOENT;
-			perror(tokens[0]);
+			perror(argv[0]);
 		}
 
 		free(tokens);
