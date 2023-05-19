@@ -39,4 +39,9 @@ char *_getenv(const char *variable_name);
 int _setenv(const char *name, const char *value, int overwrite);
 
 
+/*searchdir.c */
+int str_start_with(const char *str, const char *start_str);
+int extract_path(const char *str, char *path, char *file_name);
+int program_search(const char *fullpath);
+
 #endif
