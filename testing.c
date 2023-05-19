@@ -81,8 +81,6 @@ int main(int argc , char **argv)
 				exe_st = execve(tokens[0], tokens, NULL);
 				if (exe_st == -1)
 				{
-					printf("exec: \n");
-					errno = ENOENT;
 					perror(argv[0]);
 					exit(0);
 				}
@@ -95,7 +93,7 @@ int main(int argc , char **argv)
 		}
 		else
 		{
-			printf("else: \n");
+			/*printf("else: \n");*/
 			errno = ENOENT;
 			perror(argv[0]);
 		}
