@@ -52,7 +52,7 @@ int extract_path(const char *fullpath, char *path, char *file_name)
 
 	_memcpy(path, fullpath, slash_pos + 1);
 	path[slash_pos + 1]= '\0';
-	if (str[slash_pos + 1] != '\0')
+	if (fullpath[slash_pos + 1] != '\0')
 	{
 		_strcpy(file_name, (fullpath + slash_pos + 1));
 	}
