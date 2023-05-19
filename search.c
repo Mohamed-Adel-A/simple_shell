@@ -25,23 +25,23 @@ int str_start_with(const char *str, const char *start_str)
  * extract_path - extract path and filename from full path
  * @fullpath: full path containg path and filename
  * @path: extracted path
- * @filename: extracted filename
+ * @file_name: extracted filename
  *
  * Return: 1 if fined path and filename, 0 otherwise
  */
-int extract_path(const char *str, char *path, char *file_name)
+int extract_path(const char *fullpath, char *path, char *file_name)
 {
 	int slash_pos = -1, i = 0;
 
-	if (!(str_start_with(str, "./")) && !(str_start_with(str, "/")))
+	if (!(str_start_with(fullpath, "./")) && !(str_start_with(fullpath, "/")))
 	{
 		path[i] = '\0';
 		return (0);
 	}
 
-	for (i = 0 ; str[i] != '\0' ; i++)
+	for (i = 0 ; fullpath[i] != '\0' ; i++)
 	{
-		if (str[i] == '/')
+		if (fullpath[i] == '/')
 			slash_pos = i;
 	}
 	if (slash_pos == -1)
@@ -50,11 +50,11 @@ int extract_path(const char *str, char *path, char *file_name)
 		return (0);
 	}
 
-	_memcpy(path, str, slash_pos + 1);
+	_memcpy(path, fullpath, slash_pos + 1);
 	path[slash_pos + 1]= '\0';
 	if (str[slash_pos + 1] != '\0')
 	{
-		_strcpy(file_name, (str + slash_pos + 1));
+		_strcpy(file_name, (fullpath + slash_pos + 1));
 	}
 	else
 	{
