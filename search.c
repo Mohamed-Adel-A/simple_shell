@@ -21,9 +21,34 @@ int str_start_with(const char *str, const char *start_str)
 	return (1);
 }
 
+char * extract_path(const char *str)
+{
+	int slash_pos = -1, i = 0;
+
+	if (!(str_start_with(str, "./")) || !(str_start_with(str, "/")))
+	{
+		return (NULL);
+	}
+
+	for (i = 0 ; str[i] != '\0' ; i++)
+	{
+		if (str[i] = '/')
+			slash_pos = i;
+	}
+	if (slash_pos == -1)
+		return (NULL)
+	_str
+	
+}
+
 
 
 int program_search(const char *prog)
 {
-	
+	int start;
+
+	if (str_start_with(prog, "./"))
+	{
+		
+	}
 }
