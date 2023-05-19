@@ -19,7 +19,20 @@ void prompt(void)
 	}
 }
 
-
+/**
+ * 
+ */
+ int check_empty_line(const char *line)
+ {
+	 int i = 0, not_empty = 0;
+	 whilt (line[i] != '\0')
+	 {
+		 if (line[i] != ' ' && line[i] != '\t' && line[i] != '\n')
+			 return (0);
+		 i++;
+	 }
+	 return (1)
+ }
 
 int main(void)
 {
@@ -58,7 +71,7 @@ int main(void)
 			free(line);
 			exit(EXIT_SUCCESS);
 		}
-		else if (line[0] == '\n')
+		else if (check_empty_line(line))
 		{
 			free(line);
 			continue;
