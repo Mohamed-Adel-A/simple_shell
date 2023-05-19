@@ -42,7 +42,7 @@ int _setenv(const char *name, const char *value, int overwrite)
 {
 	int name_len, value_len, i = 0;
 	char *new_variable = NULL, *equal_sign = "=";
-	char **new_env;
+	char **new_environ;
 
 	if (overwrite == 0 && _getenv(name) != NULL)
 		return (0);
@@ -72,14 +72,14 @@ int _setenv(const char *name, const char *value, int overwrite)
 	}
 
 	/*new_env = (char **) _realloc(environ, ((i + 2) * sizeof(char *)));*/
-	new_env = malloc((i + 2) * sizeof(char *));
-	if (new_env == NULL)
+	new_environ = malloc((i + 2) * sizeof(char *));
+	if (new_environ == NULL)
 		return (-1);
 
 	_memcpy(new_environ, environ, (i * sizeof(char *)));
-	new_env[i] = new_variable;
-	new_env[i + 1] = NULL;
-	environ = new_env;
+	new_environ[i] = new_variable;
+	new_environ[i + 1] = NULL;
+	environ = new_environ;
 
 	return (0);
 }
