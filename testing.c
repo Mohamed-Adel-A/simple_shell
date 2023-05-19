@@ -99,7 +99,7 @@ int main(void)
 		}
 		else
 		{
-			errono = ENOENT;
+			errno = ENOENT;
 			perror("NO Such file\n");
 		}
 
