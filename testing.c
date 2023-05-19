@@ -60,6 +60,8 @@ int main(void)
 		}
 		tokens = tokenizing(line);
 	
+		if (program_search(tokens[0]))
+		{
 		cpid = fork();
 		if (cpid == 0)
 		{
@@ -76,7 +78,11 @@ int main(void)
 			wait(&wstatus);
 			/*printf("Done %i : %i (cpid =%i)\n", exe_st, wstatus, cpid);*/
 		}
-
+		}
+		else
+		{
+			perror("NO Such file\n");
+		}
 
 		free(tokens);
 		free(line);
