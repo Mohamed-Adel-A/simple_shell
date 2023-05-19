@@ -34,7 +34,8 @@ int extract_path(const char *fullpath, char *path, char *file_name)
 {
 	int slash_pos = -1, i = 0;
 
-	if (!(str_start_with(fullpath, "./")) && !(str_start_with(fullpath, "/")))
+	if (!(str_start_with(fullpath, "./")) && !(str_start_with(fullpath, "/")) &&
+	    !(str_start_with(fullpath, "../")) )
 	{
 		path[i] = '\0';
 		return (0);
@@ -80,7 +81,8 @@ int program_search(const char *fullpath)
 	DIR *opened_dir;
 	struct dirent *dir_entry;
 
-	if (!str_start_with(fullpath, "./") && !str_start_with(fullpath, "/"))
+	if (!str_start_with(fullpath, "./") && !str_start_with(fullpath, "/") &&
+	    !str_start_with(fullpath, "../"))
 	{
 		return (0);
 	}
