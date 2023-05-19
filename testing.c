@@ -34,7 +34,7 @@ void prompt(void)
 	 return (1);
  }
 
-int main(int argc ; char **argv)
+int main(int argc , char **argv)
 {
   char *line = NULL;
 	char **tokens = NULL;
