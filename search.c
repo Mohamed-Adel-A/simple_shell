@@ -10,6 +10,7 @@
 int str_start_with(const char *str, const char *start_str)
 {
 	int i = 0;
+
 	if (str == NULL || start_str == NULL)
 		return (0);
 	for (i = 0; start_str[i] != '\0' ; i++)
@@ -46,12 +47,12 @@ int extract_path(const char *fullpath, char *path, char *file_name)
 	}
 	if (slash_pos == -1)
 	{
-		path[0]='\0';
+		path[0] = '\0';
 		return (0);
 	}
 
 	_memcpy(path, fullpath, slash_pos + 1);
-	path[slash_pos + 1]= '\0';
+	path[slash_pos + 1] = '\0';
 	if (fullpath[slash_pos + 1] != '\0')
 	{
 		_strcpy(file_name, (fullpath + slash_pos + 1));
@@ -95,7 +96,7 @@ int program_search(const char *fullpath)
 	while ((dir_entry = readdir(opened_dir)) != NULL)
 	{
 		if (dir_entry->d_type == DT_REG &&
-		    _strncmp(file_name,dir_entry->d_name, (_strlen(file_name) + 1)) == 0)
+		    _strncmp(file_name, dir_entry->d_name, (_strlen(file_name) + 1)) == 0)
 		{
 			closedir(opened_dir);
 			return (1);
