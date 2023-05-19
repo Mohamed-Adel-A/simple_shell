@@ -74,7 +74,7 @@ int extract_path(const char *str, char *path, char *file_name)
  */
 int program_search(const char *fullpath)
 {
-	int start, ret_extract;
+	int ret_extract;
 	char path[1024], file_name[265];
 	DIR *opened_dir;
 	struct dirent *dir_entry;
@@ -84,7 +84,7 @@ int program_search(const char *fullpath)
 		return (0);
 	}
 
-	ret_extract = extract_path(fullpath, path, name);
+	ret_extract = extract_path(fullpath, path, file_name);
 	if (ret_extract == 0)
 		return (0);
 
