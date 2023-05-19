@@ -47,11 +47,18 @@ int extract_path(const char *str, char *path, char *file_name)
 }
 
 
-
+/**
+ * program_search - check if the program exist
+ * @fullpath: full path to the program
+ *
+ * Return: 1 if progtam exitst, 0 otherwise
+ */
 int program_search(const char *fullpath)
 {
 	int start, ret_extract;
 	char path[1024], file_name[265];
+	DIR *opened_dir;
+	struct dirent *dir_entry;
 
 	if (!str_start_with(fullpath, "./") && !str_start_with(fullpath, "/"))
 	{
@@ -62,7 +69,20 @@ int program_search(const char *fullpath)
 	if (ret_extract == 0)
 		return (0);
 
-	
-	
-	
+	opened_dir = opendir(path);
+	if (opened_dir == NULL)
+		return (0);
+
+	while ((dir_entry = readdir(opened_dir)) != NULL)
+	{
+		if (dir_entry->d_type == DT_REG &&
+		    _strncmp(file_name,dir_entry->d_name, (_strlen(file_name) + 1)) == 0)
+		{
+			closedir(opened_dir);
+			return (1);
+		}
+	}
+
+	closedir(opened_dir);
+	return (0);
 }
