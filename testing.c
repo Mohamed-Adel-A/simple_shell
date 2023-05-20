@@ -62,11 +62,13 @@ int main(int argc , char **argv)
 		if (getline_ret == -1)
 		{
 			free(line);
+			free_env();
 			exit(EXIT_SUCCESS);
 		}
 		else if (check_empty_line(line))
 		{
 			free(line);
+			free_env();
 			continue;
 		}
 		tokens = tokenizing(line);
@@ -100,6 +102,7 @@ int main(int argc , char **argv)
 
 		free(tokens);
 		free(line);
+		free_env();
 		if (!isatty(STDIN_FILENO))
 			break;
 	}
