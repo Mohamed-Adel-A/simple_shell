@@ -59,7 +59,7 @@ void free_env(void)
 	{
 		free(environ[i]);
 	}
-	free(environ);		
+	free(environ);
 }
 
 /**
@@ -67,7 +67,7 @@ void free_env(void)
  *
  * Return: void
  */
-void print_env()
+void print_env(void)
 {
 	int i;
 
@@ -122,14 +122,11 @@ char *_getenv(const char *variable_name)
  */
 int _setenv(const char *name, const char *value, int overwrite)
 {
-	int name_len, value_len, i = 0;
+	int name_len = _strlen(name), value_len = _strlen(value), i = 0;
 	char *new_variable, *equal_sign = "=";
 	char **new_environ;
 
-	name_len = _strlen(name);
-	value_len = _strlen(value);
-	if (name == NULL || value == NULL || name_len == 0 ||
-	    _strchar(name, '=') != -1)
+	if (name == NULL || value == NULL || name_len == 0 || _strchar(name, '=') != -1)
 	{
 		errno = EINVAL;
 		return (-1);
