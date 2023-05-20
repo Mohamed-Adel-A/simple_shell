@@ -171,11 +171,13 @@ int _unsetenv(const char *name)
 	int i = 0, j = 0, var_pos = -1, name_len;
 	char **new_environ;
 	
-	
-	if (name == NULL)
-		return (0);
-
 	name_len = _strlen(name);
+	if (name == NULL || name_len == 0)
+	{
+		errno = EINVAL;
+		return (-1);
+	}
+
 	for (i = 0 ; environ[i] != NULL ; i++)
 	{
 		if ((_strncmp(name, environ[i], name_len) == 0) &&
