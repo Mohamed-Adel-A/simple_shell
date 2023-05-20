@@ -36,7 +36,7 @@ void prompt(void)
 
 int main(int argc , char **argv)
 {
-  char *line = NULL;
+	char *line = NULL;
 	char **tokens = NULL;
 	int exe_st, wstatus;
 	size_t line_len = 0;
@@ -49,7 +49,7 @@ int main(int argc , char **argv)
 	/*printf("Path =%s\n", _getenv("PATH"));
 	_setenv("new", "new value", 0);
 	printf("Path =%s\n", _getenv("new"));*/
-	
+	environ = create_env()
 	while (1)
 	{
 		line = NULL;
