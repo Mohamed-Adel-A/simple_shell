@@ -11,7 +11,7 @@ char **create_env()
 	int i = 0;
 	char **new_environ = NULL;
 
-	hile (environ[i] != NULL)
+	while (environ[i] != NULL)
 	{
 		i++;
 	}
