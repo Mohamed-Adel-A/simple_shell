@@ -44,7 +44,7 @@ void *_realloc(void *ptr, size_t size)
 		new_ptr = malloc(size);
 		return (new_ptr);
 	}
-	else if (ptr == 0)
+	else if (size == 0)
 	{
 		free(ptr);
 		return (NULL);
