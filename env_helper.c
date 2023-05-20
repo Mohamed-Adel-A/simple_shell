@@ -172,7 +172,7 @@ int _unsetenv(const char *name)
 	char **new_environ;
 	
 	name_len = _strlen(name);
-	if (name == NULL || name_len == 0)
+	if (name == NULL || name_len == 0 || _strchar(name, '=') != NULL)
 	{
 		errno = EINVAL;
 		return (-1);
