@@ -114,7 +114,7 @@ char *_getenv(const char *variable_name)
 int _setenv(const char *name, const char *value, int overwrite)
 {
 	int name_len, value_len, i = 0;
-	char *new_variable = NULL, *equal_sign = "=";
+	char *new_variable, *equal_sign = "=";
 	char **new_environ;
 
 	if (overwrite == 0 && _getenv(name) != NULL)
@@ -153,6 +153,59 @@ int _setenv(const char *name, const char *value, int overwrite)
 	new_environ[i] = new_variable;
 	new_environ[i + 1] = NULL;
 
+	free(environ);
+	environ = new_environ;
+
+	return (0);
+}
+
+
+/**
+ * _unsetenv - remove variable from the environment
+ * @name: variable name
+ *
+ * Return: 0 on success, or -1 on error
+ */
+int _unsetenv(const char *name)
+{
+	int i = 0, j = 0, var_pos = -1;
+	char **new_environ;
+	
+	
+	if (name == NULL)
+		return (0);
+
+	name_len = _strlen(name);
+	for (i = 0 ; environ[i] != NULL ; i++)
+	{
+		if ((_strncmp(name, environ[i], name_len) == 0) &&
+		     (environ[i][name_len] == '='))
+		{
+			var_pos = i;
+		}
+	}
+
+	if(var_pos == -1)
+	{
+		return (-1);
+	}
+
+	new_environ = malloc((i) * sizeof(char *));
+	if (new_environ == NULL)
+		return (-1);
+
+	for (i = 0 ; environ[i] != NULL ; i++)
+	{
+		if (i == var_pos)
+		{
+			free(environ[i]);
+			continue;
+		}
+		new_environ[j] = environ[i];
+		j++;
+	}
+
+	new_environ[j] = NULL;
 	free(environ);
 	environ = new_environ;
 
