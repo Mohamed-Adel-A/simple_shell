@@ -9,7 +9,7 @@ char **create_env()
 {
 	int i = 0;
 	char **new_environ = NULL;
-	char *env_var;
+	/*char *env_var;*/
 
 	while (environ[i] != NULL)
 	{
@@ -24,7 +24,7 @@ char **create_env()
 	while(environ[i] != NULL)
 	{
 		printf("%s\n",environ[i]);
-		env_var = malloc(sizeof(char) * (_strlen(environ[i] + 1)));
+		new_environ[i] = malloc(sizeof(char) * (_strlen(environ[i] + 1)));
 		if (env_var == NULL)
 		{
 			i--;
@@ -32,8 +32,8 @@ char **create_env()
 				free(new_environ[i]);
 			return (NULL);
 		}
-		_strcpy(env_var, environ[i]);
-		new_environ[i] = env_var;
+		_strcpy(new_environ[i], environ[i]);
+		/*new_environ[i] = env_var;*/
 		i++;
 		printf("%s\n",new_environ[i]);
 	}
