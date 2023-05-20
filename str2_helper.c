@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * strchar - find first occurrence of a character in string
+ * _strchar - find first occurrence of a character in string
  * @str: the string to be searched
  * @c: the character we want to find
  *
