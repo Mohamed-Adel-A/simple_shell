@@ -34,7 +34,7 @@ char **create_env()
 			return (NULL);
 		}
 		printf("mid\n");
-		_strcpy(new_environ[i], environ[i]);
+		strcpy(new_environ[i], environ[i]);
 		/*new_environ[i] = env_var;*/
 		i++;
 		printf("%s\n",new_environ[i]);
