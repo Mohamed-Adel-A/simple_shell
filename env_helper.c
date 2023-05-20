@@ -84,8 +84,9 @@ void print_env(void)
 
 /**
  * _getenv - get the value of env valiable
- * @name: name of enviroment variable to be checked
+ * @variable_name: name of enviroment variable to be checked
  *
+ * Return: poiter to the variable
  */
 char *_getenv(const char *variable_name)
 {
@@ -136,17 +137,12 @@ int _setenv(const char *name, const char *value, int overwrite)
 	if (overwrite == 0 && _getenv(name) != NULL)
 		return (0);
 
-	new_variable = malloc((name_len + value_len + 2) * sizeof(char));
+	new_variable = concat_name_value(name, value, name_len, value_len);
 	if (new_variable == NULL)
 	{
 		errno = ENOMEM;
 		return (-1);
 	}
-
-	_memcpy(new_variable, name, name_len);
-	_memcpy((new_variable + name_len), equal_sign, 1);
-	_memcpy((new_variable + name_len + 1), value, value_len);
-	new_variable[name_len + value_len + 1] = '\0';
 
 	for (i = 0 ; environ[i] != NULL ; i++)
 	{
@@ -172,6 +168,33 @@ int _setenv(const char *name, const char *value, int overwrite)
 	return (0);
 }
 
+/**
+ * concat_name_value - create name=value string
+ * @name: varible name
+ * @value: value
+ * @name_len: name size
+ * @name_len: value size
+ *
+ * Return: string to the "name=value" new string 
+ */
+char *concat_name_value(const char *name, const char *value,
+		       int name_len, int value_len)
+{
+	char *new_variable;
+
+	new_variable = malloc((name_len + value_len + 2) * sizeof(char));
+	if (new_variable == NULL)
+	{
+		return (NULL);
+	}
+
+	_memcpy(new_variable, name, name_len);
+	_memcpy((new_variable + name_len), equal_sign, 1);
+	_memcpy((new_variable + name_len + 1), value, value_len);
+	new_variable[name_len + value_len + 1] = '\0';
+
+	return (new_variable);
+}
 
 /**
  * _unsetenv - remove variable from the environment
