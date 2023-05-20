@@ -9,19 +9,18 @@
  */
 char *_strchar(const char *str, char c)
 {
-	int i;
 
 	if (str == NULL)
 		return (NULL);
 
-	for (i = 0 ; str[i] != '\0' ; i++)
+	for (; *str != '\0' ; str++)
 	{
-		if (str[i] == c)
-			return (str + i);
+		if (*str == c)
+			return (str);
 	}
 
-	if (str[i] == c)
-		return (str + i);
+	if (*str == c)
+		return (str);
 
 	return (NULL);
 }
