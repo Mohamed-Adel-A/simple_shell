@@ -58,6 +58,21 @@ void free_env()
 	free(environ);		
 }
 
+
+void print_env()
+{
+	int i;
+
+	if (environ == NULL)
+		return;
+
+	for (i = 0 ; environ[i] != NULL ; i++)
+	{
+		printf("%s", environ[i]);
+	}
+}
+
+
 /**
  * _getenv - get the value of env valiable
  * @name: name of enviroment variable to be checked
