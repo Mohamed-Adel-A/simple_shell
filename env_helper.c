@@ -49,7 +49,7 @@ void free_env()
 	int i;
 
 	if (environ == NULL)
-		return (0);
+		return;
 
 	for (i = 0 ; environ[i] != NULL ; i++)
 	{
