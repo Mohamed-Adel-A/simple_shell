@@ -152,6 +152,8 @@ int _setenv(const char *name, const char *value, int overwrite)
 	_memcpy(new_environ, environ, (i * sizeof(char *)));
 	new_environ[i] = new_variable;
 	new_environ[i + 1] = NULL;
+
+	free(environ);
 	environ = new_environ;
 
 	return (0);
