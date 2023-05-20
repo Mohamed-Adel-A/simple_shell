@@ -117,7 +117,7 @@ char *_getenv(const char *variable_name)
  * @name_len: name size
  * @name_len: value size
  *
- * Return: string to the "name=value" new string 
+ * Return: string to the "name=value" new string
  */
 char *concat_name_value(const char *name, const char *value,
 		       int name_len, int value_len)
@@ -160,7 +160,6 @@ int _setenv(const char *name, const char *value, int overwrite)
 		errno = EINVAL;
 		return (-1);
 	}
-
 	if (overwrite == 0 && _getenv(name) != NULL)
 		return (0);
 
@@ -170,7 +169,6 @@ int _setenv(const char *name, const char *value, int overwrite)
 		errno = ENOMEM;
 		return (-1);
 	}
-
 	for (i = 0 ; environ[i] != NULL ; i++)
 	{
 		if ((_strncmp(name, environ[i], name_len) == 0) &&
@@ -188,7 +186,6 @@ int _setenv(const char *name, const char *value, int overwrite)
 		errno = ENOMEM;
 		return (-1);
 	}
-
 	new_environ[i] = new_variable;
 	new_environ[i + 1] = NULL;
 	environ = new_environ;
