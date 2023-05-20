@@ -119,8 +119,8 @@ int _setenv(const char *name, const char *value, int overwrite)
 	
 	name_len = _strlen(name);
 	value_len = _strlen(value);
-	if (name == NULL || value == NULL ||
-	    _strchar(name, '=') != NULL || name_len == 0)
+	if (name == NULL || value == NULL || name_len == 0 ||
+	    _strchar(name, '=') != -1)
 	{
 		errno = EINVAL;
 		return (-1);
@@ -184,7 +184,7 @@ int _unsetenv(const char *name)
 	char **new_environ;
 	
 	name_len = _strlen(name);
-	if (name == NULL || name_len == 0 || _strchar(name, '=') != NULL)
+	if (name == NULL || name_len == 0 || _strchar(name, '=') != -1)
 	{
 		errno = EINVAL;
 		return (-1);
