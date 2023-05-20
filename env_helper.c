@@ -161,8 +161,7 @@ int _setenv(const char *name, const char *value, int overwrite)
  */
 int _unsetenv(const char *name)
 {
-	int i = 0, j = 0, var_pos = -1, name_len;
-	char **new_environ;
+	int i = 0, var_pos = -1, name_len;
 
 	name_len = _strlen(name);
 	if (name == NULL || name_len == 0 || _strchar(name, '=') != -1)
@@ -184,7 +183,7 @@ int _unsetenv(const char *name)
 
 	if (var_pos == -1)
 	{
-		return (-1);
+		return (0);
 	}
 
 	for (; environ[i] != NULL ; i++)
