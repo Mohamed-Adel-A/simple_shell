@@ -25,9 +25,9 @@ char **create_env()
 	{
 		printf("%s\n",environ[i]);
 		env_var = malloc(sizeof(char) * (_strlen(environ[i] + 1)));
-		i--;
 		if (env_var == NULL)
 		{
+			i--;
 			for (; i >= 0 ; i--)
 				free(new_environ[i]);
 			return (NULL);
