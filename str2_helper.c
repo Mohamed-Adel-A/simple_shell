@@ -7,9 +7,10 @@
  *
  * Return: pointer to the character, NULL if not found
  */
-char *_strchar(char *str, char c)
+char *_strchar(const char *str, char c)
 {
 	int i;
+	const char *s = str;
 
 	if (str == NULL)
 		return (NULL);
@@ -17,11 +18,11 @@ char *_strchar(char *str, char c)
 	for (i = 0 ; str[i] != '\0' ; i++)
 	{
 		if (str[i] == c)
-			return (str + i);
+			return (s + i);
 	}
 
 	if (str[i] == c)
-		return (str + i);
+		return (s + i);
 
 	return (NULL);
 }
