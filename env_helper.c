@@ -1,5 +1,12 @@
 #include "shell.h"
 
+char **create_env();
+void free_env(void);
+char *concat_name_value(const char *name, const char *value,
+		       int name_len, int value_len);
+int _setenv(const char *name, const char *value, int overwrite);
+int _unsetenv(const char *name);
+
 /**
  * create_env - copy enviroment variable to new env variable
  *
@@ -169,29 +176,20 @@ int _unsetenv(const char *name)
 		if ((_strncmp(name, environ[i], name_len) == 0) &&
 		     (environ[i][name_len] == '='))
 		{
+			free(environ[i]);
 			var_pos = i;
+			break;
 		}
 	}
 	if (var_pos == -1)
 	{
 		return (-1);
 	}
-
-	new_environ = malloc((i) * sizeof(char *));
-	if (new_environ == NULL)
-		return (-1);
-	for (i = 0 ; environ[i] != NULL ; i++)
+	
+	for (; environ[i] != NULL ; i++)
 	{
-		if (i == var_pos)
-		{
-			free(environ[i]);
-			continue;
-		}
-		new_environ[j] = environ[i];
-		j++;
+		environ[i] = environ[i + 1];
 	}
-	new_environ[j] = NULL;
-	free(environ);
-	environ = new_environ;
+
 	return (0);
 }
