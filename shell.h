@@ -30,7 +30,7 @@ int _strncmp(const char *s1, const char *s2, size_t n);
 char *_strcat(char *dest, const char *src);
 
 /* str2_helper */
-char *_strchar(const char *str, char c);
+char *_strchar(char *str, char c);
 
 
 /* mem_helper.c */
