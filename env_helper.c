@@ -84,7 +84,7 @@ char *_getenv(const char *variable_name)
 	int var_len;
 
 	if (variable_name == NULL)
-		return (-1);
+		return (NULL);
 
 	var_len = _strlen(variable_name);
 	while (environ[i] != NULL)
