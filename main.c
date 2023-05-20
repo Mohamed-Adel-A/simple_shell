@@ -50,7 +50,7 @@ int main(int argc , char **argv)
 	_setenv("new var", "new value", 1);
 	printf("Path =%s\n", _getenv("new var"));
 	print_env();
-	_unsetenv("new_var");
+	_unsetenv("new var");
 	print_env();
 	
 	while (1)
