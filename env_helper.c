@@ -21,7 +21,7 @@ char **create_env()
 		return (NULL);
 
 	i = 0;
-	while(environ[i] != NULL)
+	while (environ[i] != NULL)
 	{
 		env_var = malloc(sizeof(char) * (_strlen(environ[i]) + 1));
 		if (env_var == NULL)
@@ -43,8 +43,12 @@ char **create_env()
 	return (environ);
 }
 
-
-void free_env()
+/**
+ * free_env - free enviroment varible environ
+ *
+ * Return: void
+ */
+void free_env(void)
 {
 	int i;
 
@@ -58,7 +62,11 @@ void free_env()
 	free(environ);		
 }
 
-
+/**
+ * print_env - print all enviroment variables
+ *
+ * Return: void
+ */
 void print_env()
 {
 	int i;
@@ -68,7 +76,8 @@ void print_env()
 
 	for (i = 0 ; environ[i] != NULL ; i++)
 	{
-		printf("%s\n", environ[i]);
+		_puts(environ[i]);
+		_puts("\n");
 	}
 }
 
@@ -116,7 +125,7 @@ int _setenv(const char *name, const char *value, int overwrite)
 	int name_len, value_len, i = 0;
 	char *new_variable, *equal_sign = "=";
 	char **new_environ;
-	
+
 	name_len = _strlen(name);
 	value_len = _strlen(value);
 	if (name == NULL || value == NULL || name_len == 0 ||
