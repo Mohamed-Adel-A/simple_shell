@@ -20,7 +20,7 @@ char **create_env()
 		return (NULL);
 
 	_memcpy(new_environ, environ, (i * sizeof(char *)));
-	free(environ);
+	/*free(environ);*/
 	environ = new_environ;
 	return (environ);
 }
