@@ -29,7 +29,7 @@ char **create_env()
 			i--;
 			for (; i >= 0 ; i--)
 				free(new_environ[i]);
-			free(new_env);
+			free(new_environ);
 			return (NULL);
 		}
 		strcpy(env_var, environ[i]);
