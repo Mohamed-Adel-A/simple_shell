@@ -10,7 +10,6 @@
 int _strchar(const char *str, char c)
 {
 	int i;
-	const char *s = str;
 
 	if (str == NULL)
 		return (-1);
