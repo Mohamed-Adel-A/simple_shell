@@ -102,3 +102,30 @@ int _strncmp(const char *s1, const char *s2, size_t n)
 
 	return (0);
 }
+
+
+/**
+ * _strcat - append src string to dest string
+ * @dest: destination string
+ * @src: source string
+ *
+ * Return: pointer to dest string
+ */
+char _strcat(char *dest, const char *src)
+{
+	int i, dest_len;
+
+	if (scr == NULL)
+		return (dest);
+	if (dest == NULL)
+		return (NULL);
+
+	dest_len = _strlen(dest);
+	for (i = 0 ; src[i] != '\0' ; i++)
+	{
+		dest[i + dest_len] = src[i];
+	}
+	dest[i + dest_len] = '\0';
+
+	return (dest);
+}
