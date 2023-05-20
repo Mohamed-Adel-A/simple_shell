@@ -49,7 +49,6 @@ int main(int argc , char **argv)
 	printf("Path =%s\n", _getenv("PATH"));
 	_setenv("PATH", "new value", 1);
 	printf("Path =%s\n", _getenv("PATH"));
-	print_env();
 	
 	while (1)
 	{
