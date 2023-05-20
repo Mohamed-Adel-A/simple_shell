@@ -50,7 +50,7 @@ int main(int argc , char **argv)
 	_setenv("new var", "new value", 1);
 	printf("Path =%s\n", _getenv("new var"));
 	print_env();
-	_unsetenv("new var");
+	_unsetenv("LS_COLORS");
 	print_env();
 	
 	while (1)
