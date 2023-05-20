@@ -20,6 +20,7 @@ char **create_env()
 	if (new_environ == NULL)
 		return (NULL);
 
+	i = 0;
 	while(environ[i] != NULL)
 	{
 		env_var = malloc(sizeof(char) * (_strlen(environ[i] + 1)));
