@@ -45,11 +45,11 @@ int main(int argc , char **argv)
 
 	(void)argc;
 	/**char *cmd[] = {"/bin/ls", "-l", NULL};*/
-	
-	/*printf("Path =%s\n", _getenv("PATH"));
-	_setenv("new", "new value", 0);
+	environ = create_env();
+	printf("Path =%s\n", _getenv("PATH"));
+	/*_setenv("new", "new value", 0);
 	printf("Path =%s\n", _getenv("new"));*/
-	environ = create_env()
+	
 	while (1)
 	{
 		line = NULL;
