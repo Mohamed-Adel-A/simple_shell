@@ -16,6 +16,7 @@ char **create_env()
 		i++;
 	}
 
+	printf("size = %i\n",i);
 	new_environ = malloc((i + 1) * sizeof(char *));
 	if (new_environ == NULL)
 		return (NULL);
