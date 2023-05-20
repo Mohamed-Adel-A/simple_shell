@@ -23,6 +23,7 @@ char **create_env()
 	i = 0;
 	while(environ[i] != NULL)
 	{
+		printf("%s\n",environ[i]);
 		env_var = malloc(sizeof(char) * (_strlen(environ[i] + 1)));
 		i--;
 		if (env_var == NULL)
@@ -34,6 +35,7 @@ char **create_env()
 		_strcpy(env_var, environ[i]);
 		new_environ[i] = env_var;
 		i++;
+		printf("%s\n",new_environ[i]);
 	}
 	new_environ[i] = NULL;
 
