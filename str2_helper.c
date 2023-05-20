@@ -5,24 +5,24 @@
  * @str: the string to be searched
  * @c: the character we want to find
  *
- * Return: pointer to the character, NULL if not found
+ * Return: index of the character, -1 if not found
  */
-char *_strchar(const char *str, char c)
+int _strchar(const char *str, char c)
 {
 	int i;
 	const char *s = str;
 
 	if (str == NULL)
-		return (NULL);
+		return (-1);
 
 	for (i = 0 ; str[i] != '\0' ; i++)
 	{
 		if (str[i] == c)
-			return (s + i);
+			return (i);
 	}
 
 	if (str[i] == c)
-		return (s + i);
+		return (i);
 
-	return (NULL);
+	return (-1);
 }
