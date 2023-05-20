@@ -17,11 +17,11 @@ char *_strchar(const char *str, char c)
 	for (i = 0 ; str[i] != '\0' ; i++)
 	{
 		if (str[i] == c)
-			return (&str[i]);
+			return (str + i);
 	}
 
 	if (str[i] == c)
-		return (&str[i]);
+		return (str + i);
 
 	return (NULL);
 }
