@@ -116,16 +116,25 @@ int _setenv(const char *name, const char *value, int overwrite)
 	int name_len, value_len, i = 0;
 	char *new_variable, *equal_sign = "=";
 	char **new_environ;
+	
+	name_len = _strlen(name);
+	value_len = _strlen(value);
+	if (name == NULL || value == NULL ||
+	    _strchar(name, '=') != NULL || name_len == 0)
+	{
+		errno = EINVAL;
+		return (-1);
+	}
 
 	if (overwrite == 0 && _getenv(name) != NULL)
 		return (0);
 
-	name_len = _strlen(name);
-	value_len = _strlen(value);
-
 	new_variable = malloc((name_len + value_len + 2) * sizeof(char));
 	if (new_variable == NULL)
+	{
+		errno = ENOMEM;
 		return (-1);
+	}
 
 	_memcpy(new_variable, name, name_len);
 	_memcpy((new_variable + name_len), equal_sign, 1);
@@ -147,7 +156,10 @@ int _setenv(const char *name, const char *value, int overwrite)
 	/*new_env = (char **) _realloc(environ, ((i + 2) * sizeof(char *)));*/
 	new_environ = malloc((i + 2) * sizeof(char *));
 	if (new_environ == NULL)
+	{
+		errno = ENOMEM;
 		return (-1);
+	}
 
 	_memcpy(new_environ, environ, (i * sizeof(char *)));
 	new_environ[i] = new_variable;
