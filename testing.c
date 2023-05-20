@@ -69,7 +69,6 @@ int main(int argc , char **argv)
 		else if (check_empty_line(line))
 		{
 			free(line);
-			free_env();
 			continue;
 		}
 		tokens = tokenizing(line);
