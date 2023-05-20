@@ -29,6 +29,7 @@ char **create_env()
 			i--;
 			for (; i >= 0 ; i--)
 				free(new_environ[i]);
+			free(new_env);
 			return (NULL);
 		}
 		strcpy(env_var, environ[i]);
@@ -42,6 +43,20 @@ char **create_env()
 	return (environ);
 }
 
+
+void free_env()
+{
+	int i;
+
+	if (environ == NULL)
+		return (0);
+
+	for (i = 0 ; envoiron[i] != NULL ; i++)
+	{
+		free(environ[i]);
+	}
+	free(environ);		
+}
 
 /**
  * _getenv - get the value of env valiable
