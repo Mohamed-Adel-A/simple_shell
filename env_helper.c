@@ -51,7 +51,7 @@ void free_env()
 	if (environ == NULL)
 		return (0);
 
-	for (i = 0 ; envoiron[i] != NULL ; i++)
+	for (i = 0 ; environ[i] != NULL ; i++)
 	{
 		free(environ[i]);
 	}
