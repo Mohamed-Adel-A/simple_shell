@@ -28,6 +28,9 @@ char *_strcpy(char *dest, const char *src);
 char *_strdup(const char *src);
 int _strncmp(const char *s1, const char *s2, size_t n);
 
+/* str2_helper */
+char *_strchar(const char *str, char c);
+
 
 /* mem_helper.c */
 void *_memcpy(void *dest, const void *src, size_t n);
