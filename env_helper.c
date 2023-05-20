@@ -168,7 +168,7 @@ int _setenv(const char *name, const char *value, int overwrite)
  */
 int _unsetenv(const char *name)
 {
-	int i = 0, j = 0, var_pos = -1;
+	int i = 0, j = 0, var_pos = -1, name_len;
 	char **new_environ;
 	
 	
