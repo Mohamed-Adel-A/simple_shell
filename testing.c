@@ -47,8 +47,8 @@ int main(int argc , char **argv)
 	/**char *cmd[] = {"/bin/ls", "-l", NULL};*/
 	environ = create_env();
 	printf("Path =%s\n", _getenv("PATH"));
-	/*_setenv("new", "new value", 0);
-	printf("Path =%s\n", _getenv("new"));*/
+	_setenv("PATH", "new value", 0);
+	printf("Path =%s\n", _getenv("PATH"));
 	
 	while (1)
 	{
