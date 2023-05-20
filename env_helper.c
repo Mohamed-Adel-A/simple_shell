@@ -115,7 +115,7 @@ char *_getenv(const char *variable_name)
  * @name: varible name
  * @value: value
  * @name_len: name size
- * @name_len: value size
+ * @value_len: value size
  *
  * Return: string to the "name=value" new string
  */
@@ -203,7 +203,7 @@ int _unsetenv(const char *name)
 {
 	int i = 0, j = 0, var_pos = -1, name_len;
 	char **new_environ;
-	
+
 	name_len = _strlen(name);
 	if (name == NULL || name_len == 0 || _strchar(name, '=') != -1)
 	{
@@ -219,8 +219,7 @@ int _unsetenv(const char *name)
 			var_pos = i;
 		}
 	}
-
-	if(var_pos == -1)
+	if (var_pos == -1)
 	{
 		return (-1);
 	}
@@ -228,7 +227,6 @@ int _unsetenv(const char *name)
 	new_environ = malloc((i) * sizeof(char *));
 	if (new_environ == NULL)
 		return (-1);
-
 	for (i = 0 ; environ[i] != NULL ; i++)
 	{
 		if (i == var_pos)
@@ -239,10 +237,8 @@ int _unsetenv(const char *name)
 		new_environ[j] = environ[i];
 		j++;
 	}
-
 	new_environ[j] = NULL;
 	free(environ);
 	environ = new_environ;
-
 	return (0);
 }
