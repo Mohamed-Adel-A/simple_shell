@@ -7,7 +7,7 @@
  */
 char **create_env()
 {
-	int i = 0, j;
+	int i = 0;
 	char **new_environ = NULL;
 	char *env_var;
 
