@@ -37,6 +37,7 @@ void *_realloc(void *ptr, size_t size);
 char **tokenizing(char *line);
 
 /* env_helper.c */
+char **create_env();
 char *_getenv(const char *variable_name);
 int _setenv(const char *name, const char *value, int overwrite);
 
