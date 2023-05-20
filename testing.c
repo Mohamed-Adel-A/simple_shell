@@ -102,9 +102,11 @@ int main(int argc , char **argv)
 
 		free(tokens);
 		free(line);
-		free_env();
+		
 		if (!isatty(STDIN_FILENO))
 			break;
 	}
+
+	free_env();
 	return (0);	
 }
