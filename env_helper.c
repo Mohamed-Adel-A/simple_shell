@@ -25,7 +25,10 @@ char **create_env()
 
 	new_environ = malloc((i + 1) * sizeof(char *));
 	if (new_environ == NULL)
+	{
+		errno = ENOMEM;
 		return (NULL);
+	}
 
 	i = 0;
 	while (environ[i] != NULL)
@@ -37,6 +40,7 @@ char **create_env()
 			for (; i >= 0 ; i--)
 				free(new_environ[i]);
 			free(new_environ);
+			errno = ENOMEM;
 			return (NULL);
 		}
 		strcpy(env_var, environ[i]);
