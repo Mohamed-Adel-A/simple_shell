@@ -1,6 +1,32 @@
 #include "shell.h"
 
 /**
+ * create_env - copy enviroment variable to new env variable
+ * @
+ *
+ * Return: pointer to new env variable, or NULL other wise
+ */
+char **create_env()
+{
+	int i = 0;
+	char **new_environ = NULL;
+
+	hile (environ[i] != NULL)
+	{
+		i++;
+	}
+
+	new_environ = malloc((i + 1) * sizeof(char *));
+	if (new_environ == NULL)
+		return (NULL);
+
+	_memcpy(new_environ, environ, (i * sizeof(char *)));
+	free(environ);
+	environ = new_environ;
+}
+
+
+/**
  * _getenv - get the value of env valiable
  * @name: name of enviroment variable to be checked
  *
