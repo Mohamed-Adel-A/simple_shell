@@ -181,11 +181,12 @@ int _unsetenv(const char *name)
 			break;
 		}
 	}
+
 	if (var_pos == -1)
 	{
 		return (-1);
 	}
-	
+
 	for (; environ[i] != NULL ; i++)
 	{
 		environ[i] = environ[i + 1];
