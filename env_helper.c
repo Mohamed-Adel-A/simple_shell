@@ -8,7 +8,7 @@
 char **create_env()
 {
 	int i = 0;
-	char **new_environ = NULL;
+	char **new_environ;
 	char *env_var;
 
 	while (environ[i] != NULL)
@@ -35,7 +35,7 @@ char **create_env()
 		}
 		printf("mid\n");
 		strcpy(env_var, environ[i]);
-		/*new_environ[i] = env_var;*/
+		new_environ[i] = env_var;
 		i++;
 		printf("%s\n",env_var);
 	}
