@@ -18,7 +18,7 @@ typedef struct buitins
  *
  * Return: pointer to the function to be called of NUll if not
  */
-int check_builtin(char *cmd)
+int (*check_builtin(char *cmd))(char *)
 {
 	int i = 0, cmd_len;
 	buitin_t builtins_array[] = { {"exit", exit_builtin},
