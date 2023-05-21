@@ -1,8 +1,8 @@
 #include "shell.h"
 
-int builtin_exit(char *exit_st_str)
+int builtin_exit(char **args)
 {
-	/*char *exit_st_str;*/
+	char *exit_st_str = args[1];
 	int exit_st_int = 0;
 
 	if (exit_st_str != NULL)
