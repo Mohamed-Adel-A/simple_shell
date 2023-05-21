@@ -96,7 +96,7 @@ char *concat_name_value(const char *name, const char *value,
 	}
 
 	_memcpy(new_variable, name, name_len);
-	_memcpy((new_variable + name_len), equal_sign, 1);
+	new_variable[name_len] = '=';
 	_memcpy((new_variable + name_len + 1), value, value_len);
 	new_variable[name_len + value_len + 1] = '\0';
 
