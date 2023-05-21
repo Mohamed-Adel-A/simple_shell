@@ -8,8 +8,9 @@ char *check_paths(char *cmd)
 
 	cmd_len = _strlen(cmd);
 	all_paths = _strdup(_getenv("PATH"));
-	/*paths_array = tokenizing(all_paths, ":");
+	paths_array = tokenizing(all_paths, ":");
 
+	/*
 	for (i = 0 ; paths_array[i] != NULL ; i++)
 	{
 		path_len = _strlen(paths_array[i]);
@@ -24,13 +25,11 @@ char *check_paths(char *cmd)
 			break;
 		}
 	}
+	*/
 
 	free(all_paths);
 	free(paths_array);
-	*/
-	
-	free(all_paths);
-	
+
 	return (single_path);	
 }
 
