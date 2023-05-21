@@ -11,9 +11,9 @@ char *_getenv(const char *variable_name);
  *
  * Return: 0 if success, -1 if failed
  */
-int builtin_env(char *args)
+int builtin_env(char *arg)
 {
-	if (args[1] != NULL)
+	if (arg != NULL)
 	{
 		errno = EINVAL;
 		return (-1);
