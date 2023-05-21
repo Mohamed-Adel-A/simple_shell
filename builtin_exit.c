@@ -1,8 +1,8 @@
 #include "shell.h"
 
-int builtin_exit()
+int builtin_exit(char *exit_st_str)
 {
-	char *exit_st_str;
+	/*char *exit_st_str;*/
 	int exit_st_int;
 
 	if (_isnumber(exit_st_str))
