@@ -64,3 +64,43 @@ int _atoi(const char *str)
 	number = number * minus;
 	return (number);
 }
+
+/**
+ * _atoi - convert integer to sting
+ * @int_value: integer value to be converted
+ * @str: pointer to string that will contain the string
+ *
+ * Return: pointer to string NULL otherwise
+ */
+char *_itoa(int int_value, char *str)
+{
+	int str_idx = 0, rev_idx = 0;
+	char reversed[20];
+
+	if (str == NULL)
+		return (NULL);
+
+	if (int_value < 0)
+	{
+		str[str_idx] = '-';
+		int_value *= -1;
+		str_idx++;
+	}
+
+	while (int_value != 0)
+	{
+		reversed[rev_idx] = int_value % 10 + '0';
+		int_value = int_value / 10;
+		rev_idx++;
+	}
+
+	for (rev_idx-- ; rev_idx >= 0 ; rev_idx--)
+	{
+		str[str_idx] = reversed[rev_idx];
+		str_idx++;
+	}
+	str[str_idx] = '\0';
+
+	return (str);
+}
+
