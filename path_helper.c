@@ -17,8 +17,8 @@ char *check_paths(char *cmd)
 		_memcpy(single_path, paths_array[i], path_len);
 		single_path[path_len] = '/'; 
 		_memcpy(single_path + path_len + 1, cmd, cmd_len);
-		single_path[path_len + cmd_len] = '\0';
-		if (access(single_path, F_OK))
+		single_path[path_len + cmd_len + 1] = '\0';
+		if (access(single_path, F_OK) == 0)
 		{
 			printf("The correct path: %s\n", single_path);
 		}
