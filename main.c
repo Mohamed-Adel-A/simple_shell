@@ -54,8 +54,7 @@ int main(int argc , char **argv)
 	_unsetenv("LS_COLORS");
 	print_env();
 	
-	cmd_path = check_paths("ls");
-	free(cmd_path);
+	
 	
 	
 	while (1)
@@ -80,6 +79,13 @@ int main(int argc , char **argv)
 		}
 		tokens = tokenizing(line, " \n");
 	
+		if(_strncmp(tokens[0], "/", 1) != 0 && _strncmp(tokens[0], "./", 2) != 0 &&
+		  _strncmp(tokens[0], "../", 3) != 0)
+		{
+			cmd_path = check_paths("ls");
+			free(cmd_path);
+		}
+		
 		if (program_search(tokens[0]))
 		{
 			printf("start\n");
