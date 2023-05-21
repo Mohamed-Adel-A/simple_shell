@@ -86,14 +86,14 @@ int main(int argc , char **argv)
 			if (cmd_path != NULL)
 				tokens[0] = cmd_path;
 		}
-		if (program_search(tokens[0]))
+		if (access(tokens[0], F_OK | X_OK) == 0)
 		{
 			/*printf("start\n");*/
 			cpid = fork();
 			if (cpid == 0)
 			{
 				/*printf("exexuting... (cpid =%i)\n", cpid);*/
-				exe_st = execve(tokens[0], tokens, NULL);
+				exe_st = execve(tokens[0], tokens, environ);
 				if (exe_st == -1)
 				{
 					perror(argv[0]);
@@ -109,7 +109,7 @@ int main(int argc , char **argv)
 		else
 		{
 			/*printf("else: \n");*/
-			errno = ENOENT;
+			/*errno = ENOENT;*/
 			perror(argv[0]);
 		}
 
