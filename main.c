@@ -46,11 +46,14 @@ int main(int argc , char **argv)
 
 	(void)argc;
 	/**char *cmd[] = {"/bin/ls", "-l", NULL};*/
+	
+	/* intializing enviroment variables */
 	environ = create_env();
+	
+	/*
 	printf("Path =%s\n", _getenv("PATH"));
 	_setenv("new var", "new value", 1);
 	printf("Path =%s\n", _getenv("new var"));
-	/*
 	print_env();
 	_unsetenv("LS_COLORS");
 	print_env();
