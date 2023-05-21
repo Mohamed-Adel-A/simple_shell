@@ -1,7 +1,9 @@
 #include "shell.h"
 
+/*****************************************/
 void print_env(void);
 char *_getenv(const char *variable_name);
+/*****************************************/
 
 /**
  * print_env - print all enviroment variables
