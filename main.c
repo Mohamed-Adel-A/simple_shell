@@ -54,7 +54,7 @@ int main(int argc , char **argv)
 	_unsetenv("LS_COLORS");
 	print_env();
 	
-	cmd_path = check_paths("GoCmd");
+	cmd_path = check_paths("ls");
 	free(cmd_path);
 	
 	
