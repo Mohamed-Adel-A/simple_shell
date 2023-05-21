@@ -10,7 +10,7 @@ char *check_paths(char *cmd)
 	all_paths = _strdup(_getenv("PATH"));
 	paths_array = tokenizing(all_paths, ":");
 
-	/*
+	
 	for (i = 0 ; paths_array[i] != NULL ; i++)
 	{
 		path_len = _strlen(paths_array[i]);
@@ -24,8 +24,9 @@ char *check_paths(char *cmd)
 			printf("The correct path: %s\n", single_path);
 			break;
 		}
+		free(single_path);
 	}
-	*/
+	
 
 	free(all_paths);
 	free(paths_array);
