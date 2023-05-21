@@ -55,7 +55,7 @@ int main(int argc , char **argv)
 	print_env();
 	
 	cmd_path = check_paths("GoCmd");
-
+	free(cmd_path);
 	
 	while (1)
 	{
