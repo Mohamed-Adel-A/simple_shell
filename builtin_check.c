@@ -21,11 +21,10 @@ typedef struct buitins
 int (*check_builtin(char *cmd))(char *)
 {
 	int i = 0, cmd_len;
-	buitin_t builtins_array[] = { {"exit", exit_builtin},
-							   {"env", env_builtin},
-							   {"cd", cd_builtin},
-							   {NULL, NULL}
-							  };
+	buitin_t builtins_array[] = { {"exit", builtin_exit},
+				     {"env", builtin_env},
+				     {NULL, NULL}
+				    };
 	if (cmd == NULL)
 		return (NULL);
 
