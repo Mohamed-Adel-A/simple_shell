@@ -83,11 +83,11 @@ int main(int argc , char **argv)
 		{
 			cmd_path = check_paths(tokens[0]);
 			if (cmd_path != NULL)
-				free(cmd_path);
+				tokens[0] = cmd_path;
 		}
-		else if (program_search(tokens[0]))
+		if (program_search(tokens[0]))
 		{
-			printf("start\n");
+			/*printf("start\n");*/
 			cpid = fork();
 			if (cpid == 0)
 			{
@@ -114,6 +114,7 @@ int main(int argc , char **argv)
 
 		free(tokens);
 		free(line);
+		free(cmd_path);
 		
 		if (!isatty(STDIN_FILENO))
 			break;
