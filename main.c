@@ -97,7 +97,7 @@ int main(int argc , char **argv)
 				free(tokens);
 				free(line);
 				free(cmd_path);
-				break;
+				continue;
 			}
 			else
 			{
