@@ -1,12 +1,11 @@
 #include "shell.h"
 
-char *check_paths(char **args)
+char *check_paths(char *cmd)
 {
-	char *all_paths, *single_path, *cmd;
+	char *all_paths, *single_path;
 	char **paths_array;
 	int i = 0, cmd_len, path_len;
 
-	cmd = arg[0];
 	cmd_len = _strlen(cmd);
 	all_paths = _strdup(_getenv("PATH"));
 	paths_array = tokenizing(all_paths, ":");
