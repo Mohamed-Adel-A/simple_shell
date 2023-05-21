@@ -43,6 +43,7 @@ int main(int argc , char **argv)
 	ssize_t getline_ret;
 	pid_t cpid;
 	char *cmd_path = NULL;
+	int (*builtin_func)(char *);
 
 	(void)argc;
 	/**char *cmd[] = {"/bin/ls", "-l", NULL};*/
@@ -86,9 +87,24 @@ int main(int argc , char **argv)
 		if(_strncmp(tokens[0], "/", 1) != 0 && _strncmp(tokens[0], "./", 2) != 0 &&
 		  _strncmp(tokens[0], "../", 3) != 0)
 		{
-			cmd_path = check_paths(tokens[0]);
-			if (cmd_path != NULL)
-				tokens[0] = cmd_path;
+			builtin_func = check_builtin(char *cmd);
+			if (builtin_func != NULL)
+			{
+				if(builtin_func(tokens[1]) == -1)
+				{
+					perror(tokens[0]);
+				}
+				free(tokens);
+				free(line);
+				free(cmd_path);
+				break;
+			}
+			else
+			{
+				cmd_path = check_paths(tokens[0]);
+				if (cmd_path != NULL)
+					tokens[0] = cmd_path;
+			}
 		}
 		if (access(tokens[0], F_OK | X_OK) == 0)
 		{
