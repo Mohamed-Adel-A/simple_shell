@@ -73,6 +73,7 @@ int main(int argc , char **argv)
 		{
 			free(line);
 			free_env();
+			_puts("\n");
 			exit(EXIT_SUCCESS);
 		}
 		else if (check_empty_line(line))
