@@ -42,7 +42,7 @@ int main(int argc , char **argv)
 	size_t line_len = 0;
 	ssize_t getline_ret;
 	pid_t cpid;
-	/*char *cmd_path = NULL;*/
+	char *cmd_path = NULL;
 
 	(void)argc;
 	/**char *cmd[] = {"/bin/ls", "-l", NULL};*/
@@ -54,9 +54,9 @@ int main(int argc , char **argv)
 	_unsetenv("LS_COLORS");
 	print_env();
 	
-	/*cmd_path = check_paths("GoCmd");
+	cmd_path = check_paths("GoCmd");
 	free(cmd_path);
-	*/
+	
 	
 	while (1)
 	{
