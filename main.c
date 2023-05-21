@@ -61,6 +61,7 @@ int main(int argc , char **argv)
 		line = NULL;
 		tokens = NULL;
 		line_len = 0;
+		cmd_path = NULL;
 		
 		prompt();
 		
