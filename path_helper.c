@@ -2,13 +2,13 @@
 
 char *check_paths(char *cmd)
 {
-	char *all_paths, *single_path;
+	char *all_paths, *single_path = NULL;
 	char **paths_array;
 	int i = 0, cmd_len, path_len;
 
 	cmd_len = _strlen(cmd);
 	all_paths = _strdup(_getenv("PATH"));
-	paths_array = tokenizing(all_paths, ":");
+	/*paths_array = tokenizing(all_paths, ":");
 
 	for (i = 0 ; paths_array[i] != NULL ; i++)
 	{
@@ -26,6 +26,7 @@ char *check_paths(char *cmd)
 	}
 
 	free(all_paths);
+	*/
 	free(paths_array);
 		
 	return (single_path);	
