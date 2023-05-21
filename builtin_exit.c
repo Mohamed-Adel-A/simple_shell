@@ -1,5 +1,11 @@
 #include "shell.h"
 
+/**
+ * builtin_exit - builtin function associated with exit cmd
+ * @args - arguments
+ *
+ * Return: 0 if success, -1 in case of failure
+ */
 int builtin_exit(char **args)
 {
 	char *exit_st_str = args[1];
