@@ -26,9 +26,11 @@ char *check_paths(char *cmd)
 	}
 
 	free(all_paths);
-	*/
 	free(paths_array);
-		
+	*/
+	
+	free(all_paths);
+	
 	return (single_path);	
 }
 
