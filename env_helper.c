@@ -1,11 +1,13 @@
 #include "shell.h"
 
+/***************************************************************/
 char **create_env();
 void free_env(void);
 char *concat_name_value(const char *name, const char *value,
 		       int name_len, int value_len);
 int _setenv(const char *name, const char *value, int overwrite);
 int _unsetenv(const char *name);
+/***************************************************************/
 
 /**
  * create_env - copy enviroment variable to new env variable
