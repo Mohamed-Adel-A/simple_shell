@@ -42,7 +42,7 @@ int main(int argc , char **argv)
 	size_t line_len = 0;
 	ssize_t getline_ret;
 	pid_t cpid;
-	char *cmd_path = NULL;
+	/*char *cmd_path = NULL;*/
 
 	(void)argc;
 	/**char *cmd[] = {"/bin/ls", "-l", NULL};*/
