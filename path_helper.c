@@ -1,5 +1,5 @@
 #include "shell"
-
+/*
 char *check_paths(char *cmd)
 {
 	char *all_paths;
@@ -25,3 +25,4 @@ char *check_paths(char *cmd)
 
 	return (single_path);	
 }
+*/
