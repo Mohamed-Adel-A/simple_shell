@@ -87,7 +87,7 @@ int main(int argc , char **argv)
 		if(_strncmp(tokens[0], "/", 1) != 0 && _strncmp(tokens[0], "./", 2) != 0 &&
 		  _strncmp(tokens[0], "../", 3) != 0)
 		{
-			builtin_func = check_builtin(char *cmd);
+			builtin_func = check_builtin(tokens[0]);
 			if (builtin_func != NULL)
 			{
 				if(builtin_func(tokens[1]) == -1)
