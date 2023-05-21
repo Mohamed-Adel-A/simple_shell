@@ -2,8 +2,8 @@
 
 char *check_paths(char *cmd)
 {
-	char *all_paths;
-	char *paths_array, *single_path;
+	char *all_paths, *single_path;
+	char **paths_array;
 	int i = 0, cmd_len, path_len;
 
 	cmd_len = _strlen(cmd);
