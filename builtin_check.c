@@ -1,5 +1,9 @@
 #include "shell.h"
 
+/****************************************************/
+int (*check_builtin(char *cmd))(char **);
+/****************************************************/
+
 /**
  * struct buitins - struct contains builins names and fuctions
  * @name: string contains the command to be used to call the function
@@ -9,7 +13,7 @@
 typedef struct buitins
 {
 	char *name;
-	int (*function)(char *arg); 
+	int (*function)(char **args); 
 } buitin_t;
 
 /**
@@ -18,7 +22,7 @@ typedef struct buitins
  *
  * Return: pointer to the function to be called of NUll if not
  */
-int (*check_builtin(char *cmd))(char *)
+int (*check_builtin(char *cmd))(char **)
 {
 	int i = 0, cmd_len;
 	buitin_t builtins_array[] = { {"exit", builtin_exit},
