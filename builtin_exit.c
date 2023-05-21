@@ -3,7 +3,7 @@
 int builtin_exit(char *exit_st_str)
 {
 	/*char *exit_st_str;*/
-	int exit_st_int;
+	int exit_st_int = 0;
 
 	if (_isnumber(exit_st_str))
 	{
