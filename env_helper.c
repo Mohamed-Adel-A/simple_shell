@@ -87,7 +87,7 @@ void free_env(void)
 char *concat_name_value(const char *name, const char *value,
 		       int name_len, int value_len)
 {
-	char *new_variable, *equal_sign = "=";
+	char *new_variable;
 
 	new_variable = malloc((name_len + value_len + 2) * sizeof(char));
 	if (new_variable == NULL)
