@@ -7,7 +7,12 @@ void print_env(void);
 char *_getenv(const char *variable_name);
 /*****************************************/
 
-
+/**
+ * builtin_setenv - builtin function associated with setenv cmd
+ * @args - arguments
+ *
+ * Return: 0 if success, -1 in failure
+ */
 int builtin_setenv(char **args)
 {
 	int setenv_ret;
@@ -21,6 +26,24 @@ int builtin_setenv(char **args)
 	return (0);
 }
 
+/**
+ * builtin_unsetenv - builtin function associated with unsetenv cmd
+ * @args - arguments
+ *
+ * Return: 0 if success, -1 in failure
+ */
+int builtin_unsetenv(char **args)
+{
+	int unsetenv_ret;
+
+	unsetenv_ret = _unsetenv(args[1]);
+	if (unsetenv_ret == -1)
+	{
+		return (-1);
+	}
+
+	return (0);
+}
 
 /**
  * buitin_en - the fuction associated with env cmd
