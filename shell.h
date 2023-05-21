@@ -15,6 +15,8 @@ extern char **environ;
 /* builtin_cheak.c */
 int (*check_builtin(char *cmd))(char *);
 
+/* builtin_exit */
+int builtin_exit(char *exit_st_str);
 
 /* atoi.c */
 int _isnumber(const char *str);
