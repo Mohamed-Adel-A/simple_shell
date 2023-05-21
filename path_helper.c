@@ -25,6 +25,7 @@ char *check_paths(char *cmd)
 			break;
 		}
 		free(single_path);
+		single_path = NULL;
 	}
 	
 
