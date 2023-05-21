@@ -83,7 +83,8 @@ int main(int argc , char **argv)
 		  _strncmp(tokens[0], "../", 3) != 0)
 		{
 			cmd_path = check_paths(tokens[0]);
-			free(cmd_path);
+			if (cmd_path != NUU)
+				free(cmd_path);
 		}
 		else if (program_search(tokens[0]))
 		{
