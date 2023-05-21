@@ -13,7 +13,7 @@
 extern char **environ;
 
 /* builtin_cheak.c */
-int check_builtin(char *cmd);
+int (*check_builtin(char *cmd))(char *)
 
 
 /* atoi.c */
