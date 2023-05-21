@@ -45,9 +45,11 @@ char **create_env()
 		}
 		strcpy(env_var, environ[i]);
 		new_environ[i] = env_var;
+		printf("i = %i \n", i;);
 		i++;
 	}
 	new_environ[i] = NULL;
+	new_environ[i + 1] = NULL;
 
 	printf("environ = %p, new_environ = %p\n", (void *)environ, (void *)new_environ);
 	/*free(environ);*/
