@@ -90,7 +90,7 @@ int main(int argc , char **argv)
 			builtin_func = check_builtin(tokens[0]);
 			if (builtin_func != NULL)
 			{
-				if(builtin_func(tokens[1]) == -1)
+				if(builtin_func(tokens) == -1)
 				{
 					perror(tokens[0]);
 				}
