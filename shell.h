@@ -13,6 +13,10 @@
 extern char **environ;
 
 
+/* atoi.c */
+int _isnumber(const char *str);
+int _atoi(const char *str);
+
 /* _getline.c file */
 int _getchar(FILE *stream);
 ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
