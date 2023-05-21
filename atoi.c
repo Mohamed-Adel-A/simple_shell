@@ -4,7 +4,7 @@
  * _isnumber - check if string is number
  * @str: the string to be checked
  *
- * Retrun: 1 if str is number, 0 if not
+ * Return: 1 if str is number, 0 if not
  */
 int _isnumber(const char *str)
 {
