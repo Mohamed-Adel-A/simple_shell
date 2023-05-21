@@ -66,7 +66,7 @@ int _atoi(const char *str)
 }
 
 /**
- * _atoi - convert integer to sting
+ * _itoa - convert integer to sting
  * @int_value: integer value to be converted
  * @str: pointer to string that will contain the string
  *
