@@ -21,7 +21,7 @@ char *check_paths(char *cmd)
 		single_path[path_len + cmd_len + 1] = '\0';
 		if (access(single_path, F_OK) == 0)
 		{
-			printf("The correct path: %s\n", single_path);
+			/*printf("The correct path: %s\n", single_path);*/
 			break;
 		}
 		free(single_path);
