@@ -82,7 +82,7 @@ int main(int argc , char **argv)
 		if(_strncmp(tokens[0], "/", 1) != 0 && _strncmp(tokens[0], "./", 2) != 0 &&
 		  _strncmp(tokens[0], "../", 3) != 0)
 		{
-			cmd_path = check_paths("ls");
+			cmd_path = check_paths(tokens[0]);
 			free(cmd_path);
 		}
 		
