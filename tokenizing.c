@@ -6,10 +6,10 @@
  *
  * Return: pointer to tokens array
  */
-char **tokenizing(char *line)
+char **tokenizing(char *line, char *delim)
 {
 	char *token, *line_cpy;
-	char *delim = " \n";
+	/*char *delim = " \n";*/
 	char **tokens;
 	int tokens_count = 0;
 	long int token_idx;
