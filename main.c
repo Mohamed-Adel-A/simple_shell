@@ -85,8 +85,7 @@ int main(int argc , char **argv)
 			cmd_path = check_paths(tokens[0]);
 			free(cmd_path);
 		}
-		
-		if (program_search(tokens[0]))
+		else if (program_search(tokens[0]))
 		{
 			printf("start\n");
 			cpid = fork();
