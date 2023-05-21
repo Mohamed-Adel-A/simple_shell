@@ -73,7 +73,7 @@ int main(int argc , char **argv)
 			free(line);
 			continue;
 		}
-		tokens = tokenizing(line);
+		tokens = tokenizing(line, " \n");
 	
 		if (program_search(tokens[0]))
 		{
