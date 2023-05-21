@@ -1,11 +1,12 @@
 #include "shell.h"
 
-char *check_paths(char *cmd)
+char *check_paths(char **args)
 {
-	char *all_paths, *single_path;
+	char *all_paths, *single_path, *cmd;
 	char **paths_array;
 	int i = 0, cmd_len, path_len;
 
+	cmd = arg[0];
 	cmd_len = _strlen(cmd);
 	all_paths = _strdup(_getenv("PATH"));
 	paths_array = tokenizing(all_paths, ":");
@@ -21,13 +22,13 @@ char *check_paths(char *cmd)
 		if (access(single_path, F_OK) == 0)
 		{
 			printf("The correct path: %s\n", single_path);
+			break
 		}
-		
 	}
 
 	free(all_paths);
 	free(paths_array);
-
+		
 	return (single_path);	
 }
 
