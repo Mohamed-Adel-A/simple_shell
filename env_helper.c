@@ -23,7 +23,7 @@ char **create_env()
 		i++;
 	}
 
-	new_environ = malloc((i + 1) * sizeof(char *));
+	new_environ = malloc((i + 2) * sizeof(char *));
 	if (new_environ == NULL)
 	{
 		errno = ENOMEM;
