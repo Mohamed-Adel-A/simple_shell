@@ -12,9 +12,16 @@ char *check_paths(char *cmd)
 	
 	for (i = 0 ; paths_array[i] != NULL ; i++)
 	{
-		single_path = malloc(sizeof(char) * (_strlen(paths_array[i]) + _strlen(cmd) + 1));
-		_memcpy(single_path, _strlen(paths_array[i], );
-		printf("&s\n", paths_array[i]);
+		path_len = _strlen(paths_array[i]);
+		single_path = malloc(sizeof(char) * (path_len + cmd_len + 1));
+		_memcpy(single_path, paths_array[i], path_len);
+		_memcpy(single_path + path_len, cmd, cmd_len);
+		single_path[path_len + cmd_len] = '\0'; 
+		printf("&s\n", single_path);
 	}
-	
+
+	free(all_paths);
+	free(paths_array);
+
+	return (single_path);	
 }
