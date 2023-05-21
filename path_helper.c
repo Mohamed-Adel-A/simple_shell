@@ -22,7 +22,7 @@ char *check_paths(char **args)
 		if (access(single_path, F_OK) == 0)
 		{
 			printf("The correct path: %s\n", single_path);
-			break
+			break;
 		}
 	}
 
