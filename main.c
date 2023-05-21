@@ -50,12 +50,11 @@ int main(int argc , char **argv)
 	printf("Path =%s\n", _getenv("PATH"));
 	_setenv("new var", "new value", 1);
 	printf("Path =%s\n", _getenv("new var"));
+	/*
 	print_env();
 	_unsetenv("LS_COLORS");
 	print_env();
-	
-	
-	
+	*/	
 	
 	while (1)
 	{
