@@ -60,7 +60,7 @@ int extract_path(const char *str, char *path, char *file_name);
 int program_search(const char *fullpath);
 
 /* PATH */
-/*char *check_paths(char *cmd);*/
+char *check_paths(char *cmd);
 
 
 #endif
