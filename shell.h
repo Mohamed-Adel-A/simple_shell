@@ -43,7 +43,7 @@ void *_memcpy(void *dest, const void *src, size_t n);
 void *_realloc(void *ptr, size_t size);
 
 /* tokenizing.c */
-char **tokenizing(char *line);
+char **tokenizing(char *line, char *delim);
 
 /* env_helper.c */
 char **create_env();
