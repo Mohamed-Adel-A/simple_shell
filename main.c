@@ -43,7 +43,7 @@ int main(int argc , char **argv)
 	ssize_t getline_ret;
 	pid_t cpid;
 	char *cmd_path = NULL;
-	int (*builtin_func)(char *);
+	int (*builtin_func)(char **);
 
 	(void)argc;
 	/**char *cmd[] = {"/bin/ls", "-l", NULL};*/
