@@ -6,6 +6,25 @@ char *_getenv(const char *variable_name);
 /*****************************************/
 
 /**
+ * buitin_en - the fuction associated with env cmd
+ * @args: the arguments of the command
+ *
+ * Return: 0 if success, -1 if failed
+ */
+int builtin_env(char *args)
+{
+	if (args[1] != NULL)
+	{
+		errno = EINVAL;
+		return (-1);
+	}
+
+	print_env();
+	return (0);
+}
+
+
+/**
  * print_env - print all enviroment variables
  *
  * Return: void
