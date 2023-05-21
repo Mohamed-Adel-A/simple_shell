@@ -2,6 +2,7 @@
 
 /*****************************************/
 int builtin_setenv(char **args);
+int builtin_unsetenv(char **args);
 int builtin_env(char **args);
 void print_env(void);
 char *_getenv(const char *variable_name);
