@@ -33,7 +33,7 @@ int (*check_builtin(char *cmd))(char *)
 	{
 		if (_strncmp(builtins_array.name, cmd, cmd_len + 1) == 0)
 		{
-			return (builtins_array[i].function);
+			return (builtins_array[i]->function);
 		}
 	}
 
