@@ -49,7 +49,7 @@ char **create_env()
 	}
 	new_environ[i] = NULL;
 
-	printf("environ = %p, new_environ = %p\n", environ, new_environ);
+	printf("environ = %p, new_environ = %p\n", (void *)environ, (void *)new_environ);
 	/*free(environ);*/
 	environ = new_environ;
 	return (environ);
