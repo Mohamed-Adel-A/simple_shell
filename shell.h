@@ -16,6 +16,7 @@ extern char **environ;
 /* atoi.c */
 int _isnumber(const char *str);
 int _atoi(const char *str);
+char *_itoa(int int_value, char *str);
 
 /* _getline.c file */
 int _getchar(FILE *stream);
