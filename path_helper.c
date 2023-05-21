@@ -17,7 +17,7 @@ char *check_paths(char *cmd)
 		_memcpy(single_path, paths_array[i], path_len);
 		_memcpy(single_path + path_len, cmd, cmd_len);
 		single_path[path_len + cmd_len] = '\0'; 
-		printf("&s\n", single_path);
+		printf("%s\n", single_path);
 	}
 
 	free(all_paths);
