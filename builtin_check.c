@@ -28,6 +28,7 @@ int (*check_builtin(char *cmd))(char **)
 	buitin_t builtins_array[] = { {"exit", builtin_exit},
 				     {"env", builtin_env},
 				     {"setenv", builtin_setenv},
+				     {"unsetenv", builtin_unsetenv},
 				     {NULL, NULL}
 				    };
 	if (cmd == NULL)
