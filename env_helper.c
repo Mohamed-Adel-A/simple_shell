@@ -23,17 +23,16 @@ char **create_env()
 		i++;
 	}
 
-	new_environ = malloc((i + 1) * sizeof(char *));
+	new_environ = malloc((i + 2) * sizeof(char *));
 	if (new_environ == NULL)
 	{
 		errno = ENOMEM;
 		return (NULL);
 	}
 
-	i = 0;
-	while (environ[i] != NULL)
+	for (i = 0 ; environ[i] != NULL ; i++)
 	{
-		env_var = malloc(sizeof(char) * (_strlen(environ[i]) + 2));
+		env_var = malloc(sizeof(char) * (_strlen(environ[i]) + 1));
 		if (env_var == NULL)
 		{
 			i--;
@@ -46,7 +45,6 @@ char **create_env()
 		strcpy(env_var, environ[i]);
 		new_environ[i] = env_var;
 		printf("i = %i, new_env = %p\n", i, (void *)new_environ[i]);
-		i++;
 	}
 	new_environ[i] = NULL;
 
