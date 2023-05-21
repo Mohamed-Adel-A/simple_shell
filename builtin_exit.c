@@ -24,3 +24,6 @@ int builtin_exit()
 	/*free_vars();*/
 	exit (exit_st_int);
 }
+
+
+
