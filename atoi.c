@@ -14,6 +14,7 @@ int _isnumber(const char *str)
 	{
 		i++;
 	}
+
 	if (str[i] == '+' || str[i] == '-')
 	{
 		i++;
@@ -26,6 +27,7 @@ int _isnumber(const char *str)
 			return (0);
 		}
 	}
+
 	return (1);
 }
 
