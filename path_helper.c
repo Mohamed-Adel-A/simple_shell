@@ -13,7 +13,7 @@ char *check_paths(char *cmd)
 	for (i = 0 ; paths_array[i] != NULL ; i++)
 	{
 		path_len = _strlen(paths_array[i]);
-		single_path = malloc(sizeof(char) * (path_len + cmd_len + 1));
+		single_path = malloc(sizeof(char) * (path_len + cmd_len + 2));
 		_memcpy(single_path, paths_array[i], path_len);
 		single_path[path_len] = '/'; 
 		_memcpy(single_path + path_len + 1, cmd, cmd_len);
