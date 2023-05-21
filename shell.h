@@ -13,10 +13,10 @@
 extern char **environ;
 
 /* builtin_cheak.c */
-int (*check_builtin(char *cmd))(char *);
+int (*check_builtin(char *cmd))(char **);
 
 /* builtin_exit */
-int builtin_exit(char *exit_st_str);
+int builtin_exit(char **args);
 
 /* atoi.c */
 int _isnumber(const char *str);
@@ -53,13 +53,13 @@ char **tokenizing(char *line, char *delim);
 /* env_helper.c */
 char **create_env();
 void free_env();
-char *_getenv(const char *variable_name);
 int _setenv(const char *name, const char *value, int overwrite);
 int _unsetenv(const char *name);
 
 /* env2_helper.c */
-int builtin_env(char *args);
-void print_env();
+int builtin_env(char **args);
+void print_env(void);
+char *_getenv(const char *variable_name);
 
 
 /*searchdir.c */
