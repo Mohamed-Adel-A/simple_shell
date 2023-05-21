@@ -19,10 +19,10 @@ int _isnumber(const char *str)
 	{
 		i++;
 	}
-	
+
 	for (; str[i] != '\0' ; i++)
 	{
-		if(!(str[i] >= '0' && str[i] <= '9'))
+		if (!(str[i] >= '0' && str[i] <= '9'))
 		{
 			return (0);
 		}
@@ -37,7 +37,7 @@ int _isnumber(const char *str)
  * _atoi - convert string to integer
  * @str: integer to be coverted
  *
- * Retrun: the converted integer
+ * Return: the converted integer
  */
 int _atoi(const char *str)
 {
@@ -49,7 +49,7 @@ int _atoi(const char *str)
 	}
 	if (str[i] == '+' || str[i] == '-')
 	{
-		if(str[i] == '-')
+		if (str[i] == '-')
 		{
 			minus = -1;
 		}
