@@ -29,11 +29,11 @@ int (*check_builtin(char *cmd))(char *)
 		return (NULL);
 
 	cmd_len = _strlen(cmd);
-	for (i = 0; builtins_array[i]->name != NULL; i++)
+	for (i = 0; builtins_array[i].name != NULL; i++)
 	{
-		if (_strncmp(builtins_array.name, cmd, cmd_len + 1) == 0)
+		if (_strncmp(builtins_array[i].name, cmd, cmd_len + 1) == 0)
 		{
-			return (builtins_array[i]->function);
+			return (builtins_array[i].function);
 		}
 	}
 
