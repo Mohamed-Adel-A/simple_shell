@@ -82,6 +82,7 @@ int main(int argc , char **argv)
 			free(line);
 			continue;
 		}
+		handle_comments(line);
 		tokens = tokenizing(line, " \n");
 	
 		if(_strncmp(tokens[0], "/", 1) != 0 && _strncmp(tokens[0], "./", 2) != 0 &&
