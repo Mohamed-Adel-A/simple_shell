@@ -4,6 +4,7 @@
 int (*check_builtin(char *cmd))(char **);
 /****************************************************/
 
+
 /**
  * check_builtin - check if the command is buitlin command
  * @cmd: the command to be checked
@@ -19,6 +20,7 @@ int (*check_builtin(char *cmd))(char **)
 				     {"unsetenv", builtin_unsetenv},
 				     {NULL, NULL}
 				    };
+
 	if (cmd == NULL)
 		return (NULL);
 
@@ -31,5 +33,5 @@ int (*check_builtin(char *cmd))(char **)
 		}
 	}
 
-	return (NULL);			
+	return (NULL);	
 }
