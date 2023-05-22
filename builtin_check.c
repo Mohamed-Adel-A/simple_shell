@@ -5,18 +5,6 @@ int (*check_builtin(char *cmd))(char **);
 /****************************************************/
 
 /**
- * struct buitins - struct contains builins names and fuctions
- * @name: string contains the command to be used to call the function
- * @funcction: pointer to the buitin function to be called
- *
- */
-typedef struct buitins
-{
-	char *name;
-	int (*function)(char **args); 
-} buitin_t;
-
-/**
  * check_builtin - check if the command is buitlin command
  * @cmd: the command to be checked
  *
