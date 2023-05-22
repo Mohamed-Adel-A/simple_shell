@@ -12,6 +12,19 @@
 
 extern char **environ;
 
+/**
+ * struct buitins - struct contains builins names and fuctions
+ * @name: string contains the command to be used to call the function
+ * @function: pointer to the buitin function to be called
+ *
+ */
+typedef struct buitins
+{
+	char *name;
+	int (*function)(char **args);
+} buitin_t;
+
+
 /* builtin_cheak.c */
 int (*check_builtin(char *cmd))(char **);
 
