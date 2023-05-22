@@ -1,5 +1,19 @@
 #include "shell.h"
 
+char *_strtok(char *s, char *delim)
+{
+	int i;
+	static char *last = NULL;
+	char *current;
+
+	if (delima == 
+	if (s == NULL)
+		return (NULL);
+	current = last;
+	    
+}
+
+
 /**
  * _getc - get char from stream
  * @stream: IO stream
