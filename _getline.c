@@ -6,7 +6,7 @@ char *_strtok(char *s, char *delim)
 	static char *current = NULL;
 	char *start;
 
-	if (delima == NULL)
+	if (delim == NULL)
 		return (s);
 
 	if (s != NULL)
@@ -19,15 +19,14 @@ char *_strtok(char *s, char *delim)
 		return (NULL);
 	}
 	
-
 	start = current;
 	for (i = 0; current[i] != '\0' ; i++)
 	{
 		if (_strchar(delim, current[i]) != -1)
 			break;
 	}
-	
-	if (current[i] == '\0')
+
+    	if (current[i] == '\0')
 	{
 		current = NULL;
 	}
