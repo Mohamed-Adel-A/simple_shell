@@ -43,6 +43,7 @@ char *_strtok(char *s, char *delim)
 		return (NULL);
 	}
 	
+	start = &current[i];	
 	for (; current[i] != '\0' ; i++)
 	{
 		if (_strchar(delim, current[i]) != -1)
