@@ -18,6 +18,12 @@ int builtin_setenv(char **args)
 {
 	int setenv_ret;
 
+	if (args[3] != NULL)
+	{
+		errno = EINVAL;
+		return (-1);
+	}
+
 	setenv_ret = _setenv(args[1], args[2], 1);
 	if (setenv_ret == -1)
 	{
@@ -36,6 +42,12 @@ int builtin_setenv(char **args)
 int builtin_unsetenv(char **args)
 {
 	int unsetenv_ret;
+
+	if (args[2] != NULL)
+	{
+		errno = EINVAL;
+		return (-1);
+	}
 
 	unsetenv_ret = _unsetenv(args[1]);
 	if (unsetenv_ret == -1)
