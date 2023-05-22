@@ -1,5 +1,57 @@
 #include "shell.h"
 
+/***********************************************/
+char *_strtok(char *s, char *delim);
+char **tokenizing(char *line, char *delim);
+/***********************************************/
+
+/**
+ * _strtok - convert string to series of tokens
+ * @s: string to be converted
+ * @delim: dilimits that are used in parsing
+ *
+ * Return: poiter to the next part, NULL in the end
+ */
+char *_strtok(char *s, char *delim)
+{
+	int i;
+	static char *current = NULL;
+	char *start;
+
+	if (delim == NULL)
+		return (s);
+
+	if (s != NULL)
+	{
+		current = s;
+	}
+	
+	if (s == NULL && current == NULL)
+	{
+		return (NULL);
+	}
+	
+	start = current;
+	for (i = 0; current[i] != '\0' ; i++)
+	{
+		if (_strchar(delim, current[i]) != -1)
+			break;
+	}
+
+    	if (current[i] == '\0')
+	{
+		current = NULL;
+	}
+	else
+	{
+		current[i] = '\0';
+		current += (i + 1);
+	}
+
+	return (start);    
+}
+
+
 /**
  * tokenizing - split string into tokens
  * @line: string to be splited
@@ -20,23 +72,23 @@ char **tokenizing(char *line, char *delim)
 
 	line_cpy = _strdup(line);
 	/*strcpy(line_c, line);*/
-	token = strtok(line, delim);
+	token = _strtok(line, delim);
 	while (token != NULL)
 	{
-		token = strtok(NULL, delim);
+		token = _strtok(NULL, delim);
 		tokens_count++;
 	}
 
 	tokens = malloc((tokens_count + 1) * sizeof(char *));
 	if (tokens == NULL)
 		return (NULL);
-	token = strtok(line_cpy, delim);
+	token = _strtok(line_cpy, delim);
 	tokens_count = 0;
 	while (token)
 	{
 		token_idx = (token - line_cpy);
 		tokens[tokens_count] = line + token_idx;
-		token = strtok(NULL, delim);
+		token = _strtok(NULL, delim);
 		tokens_count++;
 	}
 	tokens[tokens_count] = NULL;
