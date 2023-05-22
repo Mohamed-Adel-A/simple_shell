@@ -32,7 +32,18 @@ char *_strtok(char *s, char *delim)
 	}
 	
 	start = current;
-	for (i = 0; current[i] != '\0' ; i++)
+	for(i = 0; current[i] != '\0' && (_strchar(delim, current[i]) != -1); i++)
+	{
+	}
+
+	if (current[i] == '\0')
+	{
+		start = '\0';
+		current = NULL;
+		return (NULL);
+	}
+	
+	for (; current[i] != '\0' ; i++)
 	{
 		if (_strchar(delim, current[i]) != -1)
 			break;
