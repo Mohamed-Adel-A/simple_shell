@@ -14,7 +14,7 @@ int builtin_exit(char **args)
 	if (exit_st_str != NULL)
 	{
 		printf("%s\n", exit_st_str);
-		if (_isnumber(exit_st_str))
+		if (_isnumber(exit_st_str) == 0)
 		{
 			errno = EINVAL;
 			return (-1);
