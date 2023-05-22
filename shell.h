@@ -25,6 +25,9 @@ typedef struct buitins
 } buitin_t;
 
 
+/* comments.c */
+int handle_comments(char *line);
+
 /* builtin_cheak.c */
 int (*check_builtin(char *cmd))(char **);
 
