@@ -3,14 +3,41 @@
 char *_strtok(char *s, char *delim)
 {
 	int i;
-	static char *last = NULL;
-	char *current;
+	static char *current = NULL;
+	char *start;
 
-	if (delima == 
-	if (s == NULL)
+	if (delima == NULL)
+		return (s);
+
+	if (s != NULL)
+	{
+		current = s;
+	}
+	
+	if (s == NULL && current == NULL)
+	{
 		return (NULL);
-	current = last;
-	    
+	}
+	
+
+	start = current;
+	for (i = 0; current[i] != '\0' ; i++)
+	{
+		if (_strchar(delim, current[i]) != -1)
+			break;
+	}
+	
+	if (current[i] == '\0')
+	{
+		current = NULL;
+	}
+	else
+	{
+		current[i] = '\0';
+		current += (i + 1);
+	}
+
+	return (start);    
 }
 
 
