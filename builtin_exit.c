@@ -11,6 +11,12 @@ int builtin_exit(char **args)
 	char *exit_st_str = args[1];
 	int exit_st_int = 0;
 
+	if (args[2] != NULL)
+	{
+		errno = EINVAL;
+		return (-1);
+	}
+
 	if (exit_st_str != NULL)
 	{
 		if (_isnumber(exit_st_str) == 0)
