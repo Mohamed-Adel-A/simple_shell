@@ -64,6 +64,7 @@ void *_memcpy(void *dest, const void *src, size_t n);
 void *_realloc(void *ptr, size_t size);
 
 /* tokenizing.c */
+char *_strtok(char *s, char *delim);
 char **tokenizing(char *line, char *delim);
 
 /* env_helper.c */
