@@ -72,23 +72,23 @@ char **tokenizing(char *line, char *delim)
 
 	line_cpy = _strdup(line);
 	/*strcpy(line_c, line);*/
-	token = _strtok(line, delim);
+	token = strtok(line, delim);
 	while (token != NULL)
 	{
-		token = _strtok(NULL, delim);
+		token = strtok(NULL, delim);
 		tokens_count++;
 	}
 
 	tokens = malloc((tokens_count + 1) * sizeof(char *));
 	if (tokens == NULL)
 		return (NULL);
-	token = _strtok(line_cpy, delim);
+	token = strtok(line_cpy, delim);
 	tokens_count = 0;
 	while (token)
 	{
 		token_idx = (token - line_cpy);
 		tokens[tokens_count] = line + token_idx;
-		token = _strtok(NULL, delim);
+		token = strtok(NULL, delim);
 		tokens_count++;
 	}
 	tokens[tokens_count] = NULL;
