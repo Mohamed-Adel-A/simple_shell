@@ -26,7 +26,7 @@ int builtin_exit(char **args)
 			return (-1);
 		}
 
-		printf("s: %s\n", exit_st_str);
+		printf("s: %s : %i\n", exit_st_str, _isnumber(exit_st_str));
 		exit_st_int = _atoi(exit_st_str);
 		printf("i: %i\n", exit_st_int);
 		if (exit_st_int < 0)
