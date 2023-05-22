@@ -3,7 +3,7 @@
 /**
  * tokenizing - split string into tokens
  * @line: string to be splited
- * @delim: delimiter to split string upon 
+ * @delim: delimiter to split string upon
  *
  * Return: pointer to tokens array
  */
@@ -24,7 +24,7 @@ char **tokenizing(char *line, char *delim)
 	while (token != NULL)
 	{
 		token = strtok(NULL, delim);
-		tokens_count++;	
+		tokens_count++;
 	}
 
 	tokens = malloc((tokens_count + 1) * sizeof(char *));
