@@ -2,7 +2,7 @@
 
 /**
  * builtin_exit - builtin function associated with exit cmd
- * @args - arguments
+ * @args: arguments
  *
  * Return: 0 if success, -1 in case of failure
  */
@@ -32,7 +32,7 @@ int builtin_exit(char **args)
 	}
 
 	/*free_vars();*/
-	exit (exit_st_int);
+	exit(exit_st_int);
 }
 
 
