@@ -23,12 +23,12 @@ void *_memcpy(void *dest, const void *src, size_t n)
 	for (i = 0 ; i < n ; i++)
 		d[i] = s[i];
 
-	return dest;
+	return (dest);
 }
 
 /**
- *  _realloc - reallocate memeory to a new size
- * @prt: pointer to memory to be allocated
+ * _realloc - reallocate memeory to a new size
+ * @ptr: pointer to memory to be allocated
  * @size: new size
  *
  * Return: pointer to new memory, or NULL on error
