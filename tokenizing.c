@@ -15,7 +15,7 @@ char **tokenizing(char *line, char *delim);
 char *_strtok(char *s, char *delim)
 {
 	int i;
-	static char *current = NULL;
+	static char *current;
 	char *start;
 
 	if (delim == NULL)
@@ -25,14 +25,14 @@ char *_strtok(char *s, char *delim)
 	{
 		current = s;
 	}
-	
+
 	if (s == NULL && current == NULL)
 	{
 		return (NULL);
 	}
-	
+
 	start = current;
-	for(i = 0; current[i] != '\0' && (_strchar(delim, current[i]) != -1); i++)
+	for (i = 0; current[i] != '\0' && (_strchar(delim, current[i]) != -1); i++)
 	{
 	}
 
@@ -42,15 +42,15 @@ char *_strtok(char *s, char *delim)
 		current = NULL;
 		return (NULL);
 	}
-	
-	start = &current[i];	
+
+	start = &current[i];
 	for (; current[i] != '\0' ; i++)
 	{
 		if (_strchar(delim, current[i]) != -1)
 			break;
 	}
 
-    	if (current[i] == '\0')
+	if (current[i] == '\0')
 	{
 		current = NULL;
 	}
@@ -60,7 +60,7 @@ char *_strtok(char *s, char *delim)
 		current += (i + 1);
 	}
 
-	return (start);    
+	return (start);
 }
 
 
