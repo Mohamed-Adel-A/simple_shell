@@ -33,5 +33,5 @@ int (*check_builtin(char *cmd))(char **)
 		}
 	}
 
-	return (NULL);	
+	return (NULL);
 }
