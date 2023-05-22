@@ -18,7 +18,7 @@ int builtin_exit(char **args)
 			errno = EINVAL;
 			return (-1);
 		}
-	
+
 		exit_st_int = _atoi(exit_st_str);
 		if (exit_st_int < 0)
 		{
