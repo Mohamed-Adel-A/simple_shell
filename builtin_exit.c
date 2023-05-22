@@ -21,14 +21,14 @@ int builtin_exit(char **args)
 	{
 		if (_isnumber(exit_st_str) == 0)
 		{
-			prinf("is number\n");
+			printf("is number\n");
 			errno = EINVAL;
 			return (-1);
 		}
 
-		prinf("s: %s\n", exit_st_str);
+		printf("s: %s\n", exit_st_str);
 		exit_st_int = _atoi(exit_st_str);
-		prinf("i: %i\n", exit_st_int);
+		printf("i: %i\n", exit_st_int);
 		if (exit_st_int < 0)
 		{
 			errno = EINVAL;
