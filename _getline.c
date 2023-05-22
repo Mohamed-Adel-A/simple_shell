@@ -1,45 +1,5 @@
 #include "shell.h"
 
-char *_strtok(char *s, char *delim)
-{
-	int i;
-	static char *current = NULL;
-	char *start;
-
-	if (delim == NULL)
-		return (s);
-
-	if (s != NULL)
-	{
-		current = s;
-	}
-	
-	if (s == NULL && current == NULL)
-	{
-		return (NULL);
-	}
-	
-	start = current;
-	for (i = 0; current[i] != '\0' ; i++)
-	{
-		if (_strchar(delim, current[i]) != -1)
-			break;
-	}
-
-    	if (current[i] == '\0')
-	{
-		current = NULL;
-	}
-	else
-	{
-		current[i] = '\0';
-		current += (i + 1);
-	}
-
-	return (start);    
-}
-
-
 /**
  * _getc - get char from stream
  * @stream: IO stream
