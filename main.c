@@ -69,6 +69,9 @@ int getting_line(shell_data_t *sh_data)
 	size_t line_len = 0;
 	char *line = NULL;
 
+	sh_data->line = NULL;
+	sh_data->tokens = NULL;
+
 	getline_ret = _getline(&line, &line_len, stdin);
 	if (getline_ret == -1)
 	{
@@ -88,7 +91,46 @@ int getting_line(shell_data_t *sh_data)
 	return (0);
 }
 
+/**
+ * getting_line - check cmd for builtin and path
+ * @sh_data: shell data
+ *
+ * Return: 0 in success, -1 in failure
+ */
+int check_cmd(shell_data_t *sh_data)
+{
+	int (*builtin_func)(char **);
 
+	sh_data->cmd_path = NULL;
+
+	if(_strncmp(sh_data->tokens[0], "/", 1) != 0 && _strncmp(sh_data->tokens[0], "./", 2) != 0 &&
+		  _strncmp(sh_data->tokens[0], "../", 3) != 0)
+	{
+		builtin_func = check_builtin(sh_data->tokens[0]);
+		if (builtin_func != NULL)
+		{
+			if(builtin_func(sh_data->tokens) == -1)
+			{
+				perror(sh_data->tokens[0]);
+			}
+			free(sh_data->tokens);
+			free(sh_data->line);
+			free(sh_data->cmd_path);
+			return (-1);
+		}
+		else
+		{
+			sh_data->cmd_path = check_paths(sh_data->tokens[0]);
+			if (sh_data->cmd_path != NULL)
+				sh_data->tokens[0] = sh_data->cmd_path;
+			else
+			{
+				perror(sh_data->tokens[0]);
+			}
+		}
+	}
+	return (0);
+}
 
 int main(int argc , char **argv)
 {
@@ -101,7 +143,7 @@ int main(int argc , char **argv)
 	
 	int exe_st;
 	pid_t cpid;
-	int (*builtin_func)(char **);
+	
 	shell_data_t sh_data;
 
 	(void)argc;
@@ -112,9 +154,7 @@ int main(int argc , char **argv)
 	
 	while (1)
 	{
-		sh_data.line = NULL;
-		sh_data.tokens = NULL;
-		sh_data.cmd_path = NULL;
+		
 		exe_st = 0;
 		
 		/*
@@ -148,6 +188,9 @@ int main(int argc , char **argv)
 		*/
 
 		/* check cmd and builtins and then PATH*/
+		if (check_cmd(&sh_data) == -1)
+			continue;
+		/*
 		if(_strncmp(sh_data.tokens[0], "/", 1) != 0 && _strncmp(sh_data.tokens[0], "./", 2) != 0 &&
 		  _strncmp(sh_data.tokens[0], "../", 3) != 0)
 		{
@@ -170,7 +213,7 @@ int main(int argc , char **argv)
 					sh_data.tokens[0] = sh_data.cmd_path;
 			}
 		}
-		
+		*/
 		
 		/*execute*/
 		if (access(sh_data.tokens[0], F_OK | X_OK) == 0)
