@@ -34,42 +34,102 @@ void prompt(void)
 	 return (1);
  }
 
+typedef struct shell_data
+{
+	char *line;
+	char **tokens;
+	int wstatus;
+	char *cmd_path;
+	unsigned int cmd_index;
+} shell_data_t;
+
+/**
+ * getting_line - get line via getline and then check the line
+ * @sh_data: shell data
+ *
+ * Return: 0 in success, -1 in failure
+ */
+int getting_line(shell_data_t sh_data)
+{
+	ssize_t getline_ret;
+	size_t line_len = 0;
+	char *line = NULL;
+
+	getline_ret = _getline(&line), &line_len, stdin);
+	if (getline_ret == -1)
+	{
+		free_all();
+		_puts("\n");
+		exit(EXIT_SUCCESS);
+	}
+	else if (check_empty_line(line))
+	{
+		free(line);
+		return (-1);
+	}
+
+	handle_comments(line);
+	sh_data->line = line;
+	sh_data->tokens = tokenizing(line, " \n");
+	return (0)
+}
+
+/**
+ * free_all - free all variables
+ * @sh_data: shell data
+ *
+ * Return: void
+ */
+void free_all(shell_data_t *sh_data)
+{
+	free(sh_data->line);
+	free(sh_data->tokens);
+	free(sh_data->cmd_path);
+	free_env();
+}
+
+
 int main(int argc , char **argv)
 {
+	/*
 	char *line = NULL;
 	char **tokens = NULL;
-	int exe_st, wstatus;
 	size_t line_len = 0;
-	ssize_t getline_ret;
+	*/
+	
+	int exe_st, wstatus;
 	pid_t cpid;
 	char *cmd_path = NULL;
 	int (*builtin_func)(char **);
+	shell_data_t sh_data;
 
 	(void)argc;
 	/**char *cmd[] = {"/bin/ls", "-l", NULL};*/
 	
 	/* intializing enviroment variables */
-	environ = create_env();
-	
-	/*
-	printf("Path =%s\n", _getenv("PATH"));
-	_setenv("new var", "new value", 1);
-	printf("Path =%s\n", _getenv("new var"));
-	print_env();
-	_unsetenv("LS_COLORS");
-	print_env();
-	*/	
+	environ = create_env();	
 	
 	while (1)
 	{
+		sh_data.line = NULL;
+		sh_data.tokens = NULL;
+		sh_data.cmd_path = NULL;
+		line_len = 0;
+		exe_st = 0;
+		
+		/*
 		line = NULL;
 		tokens = NULL;
 		line_len = 0;
 		cmd_path = NULL;
 		exe_st = 0;
+		*/
 		
 		prompt();
-		
+		/* getting the line and handling it */
+		if (getting_line(&sh_data) == -1)
+			continue;
+		/*
 		getline_ret = _getline(&line, &line_len, stdin);
 		if (getline_ret == -1)
 		{
@@ -85,7 +145,9 @@ int main(int argc , char **argv)
 		}
 		handle_comments(line);
 		tokens = tokenizing(line, " \n");
-	
+		*/
+
+		/* check cmd and builtins and then PATH*/
 		if(_strncmp(tokens[0], "/", 1) != 0 && _strncmp(tokens[0], "./", 2) != 0 &&
 		  _strncmp(tokens[0], "../", 3) != 0)
 		{
@@ -108,6 +170,9 @@ int main(int argc , char **argv)
 					tokens[0] = cmd_path;
 			}
 		}
+		
+		
+		/*execute*/
 		if (access(tokens[0], F_OK | X_OK) == 0)
 		{
 			/*printf("start\n");*/
