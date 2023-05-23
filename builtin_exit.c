@@ -89,7 +89,7 @@ int builtin_cd(char **args)
  */
 int change_dir(char *olddir, char *newdir)
 {
-	char *old, *new;
+	char *old = NULL, *new = NULL;
 
 	if (chdir(newdir) == -1)
 	{
@@ -102,7 +102,7 @@ int change_dir(char *olddir, char *newdir)
 	new = getcwd(new, PATH_MAX);
 
 	_setenv("OLDPWD", old, 1);
-	_setenv("PWD", newd, 1);
+	_setenv("PWD", new, 1);
 
 	free(old);
 	free(new);
