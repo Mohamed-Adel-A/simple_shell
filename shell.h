@@ -25,6 +25,15 @@ typedef struct buitins
 	int (*function)(char **args);
 } buitin_t;
 
+typedef struct shell_data
+{
+	char *line;
+	char **tokens;
+	int wstatus;
+	char *cmd_path;
+	unsigned int cmd_index;
+} shell_data_t;
+
 
 /* comments.c */
 int handle_comments(char *line);
