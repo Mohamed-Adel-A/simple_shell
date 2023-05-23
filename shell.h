@@ -34,6 +34,8 @@ typedef struct shell_data
 	unsigned int cmd_index;
 } shell_data_t;
 
+/* main.c */
+void free_all(shell_data_t *sh_data);
 
 /* comments.c */
 int handle_comments(char *line);
