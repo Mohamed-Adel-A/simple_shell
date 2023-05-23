@@ -95,6 +95,7 @@ int builtin_cd(char **args)
 	newdir = args[1];
 	olddir = _getenv("PWD");		
 	chdir_ret = chdir(newdir);
+	printf("%s : %s\n", args[1], newdir);
 	if (chdir_ret == -1)
 	{
 		return (-1);
