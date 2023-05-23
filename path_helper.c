@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * check_path - search for cmd in paths in PATH
+ * check_paths - search for cmd in paths in PATH
  * @cmd: the program name
  *
  * Return: pointer to full path of the program, NULL if not found
