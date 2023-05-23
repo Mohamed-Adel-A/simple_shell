@@ -44,18 +44,32 @@ typedef struct shell_data
 } shell_data_t;
 
 /**
+ * free_all - free all variables
+ * @sh_data: shell data
+ *
+ * Return: void
+ */
+void free_all(shell_data_t *sh_data)
+{
+	free(sh_data->line);
+	free(sh_data->tokens);
+	free(sh_data->cmd_path);
+	free_env();
+}
+
+/**
  * getting_line - get line via getline and then check the line
  * @sh_data: shell data
  *
  * Return: 0 in success, -1 in failure
  */
-int getting_line(shell_data_t sh_data)
+int getting_line(shell_data_t *sh_data)
 {
 	ssize_t getline_ret;
 	size_t line_len = 0;
 	char *line = NULL;
 
-	getline_ret = _getline(&line), &line_len, stdin);
+	getline_ret = _getline(&line, &line_len, stdin);
 	if (getline_ret == -1)
 	{
 		free_all();
@@ -71,22 +85,9 @@ int getting_line(shell_data_t sh_data)
 	handle_comments(line);
 	sh_data->line = line;
 	sh_data->tokens = tokenizing(line, " \n");
-	return (0)
+	return (0);
 }
 
-/**
- * free_all - free all variables
- * @sh_data: shell data
- *
- * Return: void
- */
-void free_all(shell_data_t *sh_data)
-{
-	free(sh_data->line);
-	free(sh_data->tokens);
-	free(sh_data->cmd_path);
-	free_env();
-}
 
 
 int main(int argc , char **argv)
@@ -114,7 +115,6 @@ int main(int argc , char **argv)
 		sh_data.line = NULL;
 		sh_data.tokens = NULL;
 		sh_data.cmd_path = NULL;
-		line_len = 0;
 		exe_st = 0;
 		
 		/*
