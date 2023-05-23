@@ -111,7 +111,7 @@ void excuting_cmd(shell_data_t *sh_data, char **argv)
 	{
 		perror(argv[0]);
 	}
- }
+}
 
 
 /**
@@ -123,7 +123,6 @@ void excuting_cmd(shell_data_t *sh_data, char **argv)
  */
 int main(int argc, char **argv)
 {
-	
 	shell_data_t sh_data;
 	(void)argc;
 
@@ -132,7 +131,6 @@ int main(int argc, char **argv)
 
 	while (1)
 	{
-		
 
 		prompt();
 		/* getting the line and handling it */
@@ -149,11 +147,11 @@ int main(int argc, char **argv)
 		free(sh_data.tokens);
 		free(sh_data.line);
 		free(sh_data.cmd_path);
-		
+
 		if (!isatty(STDIN_FILENO))
 			break;
 	}
 
 	free_env();
-	return (0);	
+	return (0);
 }
