@@ -30,11 +30,11 @@ typedef struct buitins
 int handle_comments(char *line);
 
 /* builtin_cheak.c */
-int (*check_builtin(char *cmd))(char **);
+int (*check_builtin(char *cmd))(shell_data_t *sh_data);
 
 /* builtin_exit */
-int builtin_exit(char **args);
-int builtin_cd(char **args);
+int builtin_exit(shell_data_t *sh_data);
+int builtin_cd(shell_data_t *sh_data);
 
 /* atoi.c */
 int _isnumber(const char *str);
@@ -76,9 +76,9 @@ int _setenv(const char *name, const char *value, int overwrite);
 int _unsetenv(const char *name);
 
 /* env2_helper.c */
-int builtin_setenv(char **args);
-int builtin_unsetenv(char **args);
-int builtin_env(char **args);
+int builtin_setenv(shell_data_t *sh_data);
+int builtin_unsetenv(shell_data_t *sh_data);
+int builtin_env(shell_data_t *sh_data);
 void print_env(void);
 char *_getenv(const char *variable_name);
 
