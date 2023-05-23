@@ -1,5 +1,12 @@
 #include "shell.h"
 
+/******************************************************/
+int builtin_exit(char **args);
+int builtin_cd(char **args);
+int change_dir(char *olddir, char *newdir);
+/******************************************************/
+
+
 /**
  * builtin_exit - builtin function associated with exit cmd
  * @args: arguments
@@ -51,9 +58,6 @@ int builtin_exit(char **args)
  */
 int builtin_cd(char **args)
 {
-	int chdir_ret;
-	char *home_dir, *olddir, *newdir;
-
 	/* cd (without any arguments) */
 	if (args[1] == NULL)
 	{
@@ -74,7 +78,6 @@ int builtin_cd(char **args)
 
 	/* cd [dir] */
 	return (change_dir(_getenv("PWD"), args[1]));
-
 }
 
 /**
