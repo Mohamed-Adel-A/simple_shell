@@ -86,8 +86,8 @@ int builtin_cd(char **args)
 			return (-1);
 		}
 
-		_setenv("PWD", newdir, 1);
 		_setenv("OLDPWD", olddir, 1);
+		_setenv("PWD", newdir, 1);		
 		return (0);
 	}
 
@@ -101,7 +101,7 @@ int builtin_cd(char **args)
 		return (-1);
 	}
 
-	_setenv("PWD", newdir, 1);
 	_setenv("OLDPWD", olddir, 1);
+	_setenv("PWD", newdir, 1);
 	return (0);
 }
