@@ -46,8 +46,9 @@ int check_cmd(shell_data_t *sh_data)
 {
 	int (*builtin_func)(shell_data_t *);
 
-	if (_strncmp(sh_data->tokens[0], "/", 1) != 0 && _strncmp(sh_data->tokens[0], "./", 2) != 0 &&
-		  _strncmp(sh_data->tokens[0], "../", 3) != 0)
+	if (_strncmp(sh_data->tokens[0], "/", 1) != 0 &&
+	    _strncmp(sh_data->tokens[0], "./", 2) != 0 &&
+	    _strncmp(sh_data->tokens[0], "../", 3) != 0)
 	{
 		builtin_func = check_builtin(sh_data->tokens[0]);
 		if (builtin_func != NULL)
@@ -89,14 +90,14 @@ int main(int argc, char **argv)
 	pid_t cpid;
 	shell_data_t sh_data;
 	(void)argc;
-	
+
 	/* intializing enviroment variables */
 	environ = create_env();	
-	
+
 	while (1)
 	{
 		exe_st = 0;
-		
+
 		prompt();
 		/* getting the line and handling it */
 		if (getting_line(&sh_data) == -1)
@@ -105,15 +106,13 @@ int main(int argc, char **argv)
 		/* check cmd and builtins and then PATH*/
 		if (check_cmd(&sh_data) == -1)
 			continue;
-		
+
 		/*execute*/
 		if (access(sh_data.tokens[0], F_OK | X_OK) == 0)
 		{
-			/*printf("start\n");*/
 			cpid = fork();
 			if (cpid == 0)
 			{
-				/*printf("exexuting... (cpid =%i)\n", cpid);*/
 				exe_st = execve(sh_data.tokens[0], sh_data.tokens, environ);
 				if (exe_st == -1)
 				{
@@ -124,12 +123,10 @@ int main(int argc, char **argv)
 			else
 			{
 				wait(&(sh_data.wstatus));
-				/*printf("Done %i : %i (cpid =%i)\n", exe_st, sh_data.wstatus, cpid);*/
 			}
 		}
 		else
 		{
-			/*errno = ENOENT;*/
 			perror(argv[0]);
 		}
 
