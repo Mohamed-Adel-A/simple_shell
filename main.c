@@ -78,6 +78,43 @@ int check_cmd(shell_data_t *sh_data)
 }
 
 /**
+ * excuting_cmd - executing shell commands
+ * @
+ *
+ * Return: 0 in success, -1 in faliure
+ */
+void excuting_cmd(shell_data_t *sh_data, char **argv)
+{
+	int exe_st;
+	pid_t cpid;
+
+	exe_st = 0;
+
+	if (access(sh_data->tokens[0], F_OK | X_OK) == 0)
+	{
+		cpid = fork();
+		if (cpid == 0)
+		{
+			exe_st = execve(sh_data->tokens[0], sh_data->tokens, environ);
+			if (exe_st == -1)
+			{
+				perror(argv[0]);
+				exit(0);
+			}
+		}
+		else
+		{
+			wait(&(sh_data->wstatus));
+		}
+	}
+	else
+	{
+		perror(argv[0]);
+	}
+ }
+
+
+/**
  * main - main function
  * @argc: argc
  * @argv: argv
@@ -86,8 +123,7 @@ int check_cmd(shell_data_t *sh_data)
  */
 int main(int argc, char **argv)
 {
-	int exe_st;
-	pid_t cpid;
+	
 	shell_data_t sh_data;
 	(void)argc;
 
@@ -96,7 +132,7 @@ int main(int argc, char **argv)
 
 	while (1)
 	{
-		exe_st = 0;
+		
 
 		prompt();
 		/* getting the line and handling it */
@@ -108,27 +144,7 @@ int main(int argc, char **argv)
 			continue;
 
 		/*execute*/
-		if (access(sh_data.tokens[0], F_OK | X_OK) == 0)
-		{
-			cpid = fork();
-			if (cpid == 0)
-			{
-				exe_st = execve(sh_data.tokens[0], sh_data.tokens, environ);
-				if (exe_st == -1)
-				{
-					perror(argv[0]);
-					exit(0);
-				}
-			}
-			else
-			{
-				wait(&(sh_data.wstatus));
-			}
-		}
-		else
-		{
-			perror(argv[0]);
-		}
+		excuting_cmd(&sh_data, argv)
 
 		free(sh_data.tokens);
 		free(sh_data.line);
