@@ -13,7 +13,14 @@
 
 extern char **environ;
 
-
+/**
+ * shell_data - struct shell data
+ * @line: entered line
+ * @tokens: line after tokenizing
+ * @wstatus: wait status
+ * @cmd_path: string holds path and cmd
+ * @cmd_index: enteries indexing
+ */
 typedef struct shell_data
 {
 	char *line;
@@ -84,8 +91,8 @@ char *_strtok(char *s, char *delim);
 char **tokenizing(char *line, char *delim);
 
 /* env_helper.c */
-char **create_env();
-void free_env();
+char **create_env(void);
+void free_env(void);
 int _setenv(const char *name, const char *value, int overwrite);
 int _unsetenv(const char *name);
 
