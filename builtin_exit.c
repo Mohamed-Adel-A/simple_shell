@@ -50,7 +50,7 @@ int builtin_exit(char **args)
 int builtin_cd(char **args)
 {
 	int chdir_ret;
-	char *home_dir;
+	char *home_dir, *olddir, *newdir;
 
 	if (args[2] != NULL)
 	{
@@ -58,7 +58,8 @@ int builtin_cd(char **args)
 		return (-1);
 	}
 
-	if (args[2] == NULL)
+	/* cd (without any arguments) */
+	if (args[1] == NULL)
 	{
 		home_dir = _getenv("HOME");
 		chdir_ret = chdir(home_dir);
@@ -72,13 +73,33 @@ int builtin_cd(char **args)
 		return (0); 
 	}
 
+	/* cd - */
+	if(_strncmp(args[1], "-", 2) != 0)
+	{
+		newdir = _getenv("OLDPWD");
+		olddir = _getenv("PWD");
+		
+		chdir_ret = chdir(newdir);
+		if (chdir_ret == -1)
+		{
+			return (-1);
+		}
 
-	chdir_ret = chdir(args[2]);
+		_setenv("PWD", newdir, 1);
+		_setenv("OLDPWD", olddir, 1);
+		return (0);
+	}
+
+	/* cd [dir] */
+	newdir = args[1];
+	olddir = _getenv("PWD");		
+	chdir_ret = chdir(newdir);
 	if (chdir_ret == -1)
 	{
 		return (-1);
 	}
-	
-	_setenv("PWD", args[2], 1);
+
+	_setenv("PWD", newdir, 1);
+	_setenv("OLDPWD", olddir, 1);
 	return (0);
 }
