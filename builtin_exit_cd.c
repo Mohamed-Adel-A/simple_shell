@@ -9,7 +9,7 @@ int change_dir(char *olddir, char *newdir);
 
 /**
  * builtin_exit - builtin function associated with exit cmd
- * @args: arguments
+ * @sh_data: arguments
  *
  * Return: 0 if success, -1 in case of failure
  */
@@ -18,8 +18,6 @@ int builtin_exit(shell_data_t *sh_data)
 	char **args = sh_data->tokens;
 	char *exit_st_str = args[1];
 	int exit_st_int = 0;
-
-	
 
 	if (exit_st_str != NULL)
 	{
@@ -55,7 +53,7 @@ int builtin_exit(shell_data_t *sh_data)
 
 /**
  * builtin_cd - builtin function associated with cd cmd
- * @args: arguments
+ * @sh_data: arguments
  *
  * Return: 0 if success, -1 in case of failure
  */
@@ -66,9 +64,9 @@ int builtin_cd(shell_data_t *sh_data)
 	/* cd (without any arguments) */
 	if (args[1] == NULL)
 	{
-		return (change_dir(_getenv("PWD"), _getenv("HOME")));; 
+		return (change_dir(_getenv("PWD"), _getenv("HOME")));
 	}
-	
+
 	if (args[2] != NULL)
 	{
 		errno = EINVAL;
@@ -76,7 +74,7 @@ int builtin_cd(shell_data_t *sh_data)
 	}
 
 	/* cd - */
-	if(_strncmp(args[1], "-", 2) == 0)
+	if (_strncmp(args[1], "-", 2) == 0)
 	{
 		return (change_dir(_getenv("PWD"), _getenv("OLDPWD")));
 	}
