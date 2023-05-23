@@ -143,7 +143,7 @@ int main(int argc, char **argv)
 			continue;
 
 		/*execute*/
-		excuting_cmd(&sh_data, argv)
+		excuting_cmd(&sh_data, argv);
 
 		free(sh_data.tokens);
 		free(sh_data.line);
