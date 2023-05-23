@@ -22,7 +22,7 @@ extern char **environ;
 typedef struct buitins
 {
 	char *name;
-	int (*function)(char **args);
+	int (*function)(shell_data_t *sh_data);
 } buitin_t;
 
 typedef struct shell_data
