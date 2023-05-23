@@ -101,6 +101,8 @@ int builtin_cd(char **args)
 		return (-1);
 	}
 
+	newdir = NULL;
+	newdir = getcwd(newdir, MAX_PATH);
 	_setenv("OLDPWD", olddir, 1);
 	_setenv("PWD", newdir, 1);
 	return (0);
