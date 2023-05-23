@@ -72,7 +72,7 @@ int getting_line(shell_data_t *sh_data)
 	getline_ret = _getline(&line, &line_len, stdin);
 	if (getline_ret == -1)
 	{
-		free_all();
+		free_all(sh_data);
 		_puts("\n");
 		exit(EXIT_SUCCESS);
 	}
@@ -148,39 +148,39 @@ int main(int argc , char **argv)
 		*/
 
 		/* check cmd and builtins and then PATH*/
-		if(_strncmp(tokens[0], "/", 1) != 0 && _strncmp(tokens[0], "./", 2) != 0 &&
-		  _strncmp(tokens[0], "../", 3) != 0)
+		if(_strncmp(sh_data.tokens[0], "/", 1) != 0 && _strncmp(sh_data.tokens[0], "./", 2) != 0 &&
+		  _strncmp(sh_data.tokens[0], "../", 3) != 0)
 		{
-			builtin_func = check_builtin(tokens[0]);
+			builtin_func = check_builtin(sh_data.tokens[0]);
 			if (builtin_func != NULL)
 			{
-				if(builtin_func(tokens) == -1)
+				if(builtin_func(sh_data.tokens) == -1)
 				{
-					perror(tokens[0]);
+					perror(sh_data.tokens[0]);
 				}
-				free(tokens);
-				free(line);
-				free(cmd_path);
+				free(sh_data.tokens);
+				free(sh_data.line);
+				free(sh_data.cmd_path);
 				continue;
 			}
 			else
 			{
-				cmd_path = check_paths(tokens[0]);
-				if (cmd_path != NULL)
-					tokens[0] = cmd_path;
+				sh_data.cmd_path = check_paths(sh_data.tokens[0]);
+				if (sh_data.cmd_path != NULL)
+					sh_data.tokens[0] = sh_data.cmd_path;
 			}
 		}
 		
 		
 		/*execute*/
-		if (access(tokens[0], F_OK | X_OK) == 0)
+		if (access(sh_data.tokens[0], F_OK | X_OK) == 0)
 		{
 			/*printf("start\n");*/
 			cpid = fork();
 			if (cpid == 0)
 			{
 				/*printf("exexuting... (cpid =%i)\n", cpid);*/
-				exe_st = execve(tokens[0], tokens, environ);
+				exe_st = execve(sh_data.tokens[0], sh_data.tokens, environ);
 				if (exe_st == -1)
 				{
 					perror(argv[0]);
@@ -189,8 +189,8 @@ int main(int argc , char **argv)
 			}
 			else
 			{
-				wait(&wstatus);
-				printf("Done %i : %i (cpid =%i)\n", exe_st, wstatus, cpid);
+				wait(&(sh_data.wstatus));
+				printf("Done %i : %i (cpid =%i)\n", exe_st, sh_data.wstatus, cpid);
 			}
 		}
 		else
@@ -200,9 +200,9 @@ int main(int argc , char **argv)
 			perror(argv[0]);
 		}
 
-		free(tokens);
-		free(line);
-		free(cmd_path);
+		free(sh_data.tokens);
+		free(sh_data.line);
+		free(sh_data.cmd_path);
 		
 		if (!isatty(STDIN_FILENO))
 			break;
