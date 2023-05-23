@@ -66,7 +66,7 @@ int main(int argc , char **argv)
 		tokens = NULL;
 		line_len = 0;
 		cmd_path = NULL;
-		exe_st = 1;
+		exe_st = 0;
 		
 		prompt();
 		
