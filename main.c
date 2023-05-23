@@ -100,7 +100,7 @@ int check_cmd(shell_data_t *sh_data)
 		builtin_func = check_builtin(sh_data->tokens[0]);
 		if (builtin_func != NULL)
 		{
-			if(builtin_func(sh_data->tokens) == -1)
+			if(builtin_func(sh_data) == -1)
 			{
 				perror(sh_data->tokens[0]);
 			}
