@@ -57,6 +57,7 @@ char *_itoa(int int_value, char *str);
 /* _getline.c file */
 int _getchar(FILE *stream);
 ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
+int getting_line(shell_data_t *sh_data);
 
 /* _puts.c file */
 int _putchar(char c);
