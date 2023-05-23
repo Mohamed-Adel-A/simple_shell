@@ -19,7 +19,7 @@ int builtin_exit(shell_data_t *sh_data)
 	char *exit_st_str = args[1];
 	int exit_st_int = 0;
 
-	if (args[2] != NULL)
+	if (args[1] != NULL && args[2] != NULL)
 	{
 		errno = EINVAL;
 		return (-1);
