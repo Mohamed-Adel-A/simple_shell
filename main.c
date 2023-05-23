@@ -37,7 +37,7 @@ void free_all(shell_data_t *sh_data)
 
 
 /**
- * getting_line - check cmd for builtin and path
+ * check_cmd - check cmd for builtin and path
  * @sh_data: shell data
  *
  * Return: 0 in success, -1 in failure
@@ -79,7 +79,8 @@ int check_cmd(shell_data_t *sh_data)
 
 /**
  * excuting_cmd - executing shell commands
- * @
+ * @sh_data: shell data
+ * @argv: argv
  *
  * Return: 0 in success, -1 in faliure
  */
@@ -127,7 +128,7 @@ int main(int argc, char **argv)
 	(void)argc;
 
 	/* intializing enviroment variables */
-	environ = create_env();	
+	environ = create_env();
 
 	while (1)
 	{
