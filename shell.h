@@ -14,7 +14,7 @@
 extern char **environ;
 
 /**
- * shell_data - struct shell data
+ * struct shell_data - struct shell data
  * @line: entered line
  * @tokens: line after tokenizing
  * @wstatus: wait status
