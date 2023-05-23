@@ -126,6 +126,7 @@ int check_cmd(shell_data_t *sh_data)
 			else
 			{
 				perror(sh_data->tokens[0]);
+				return (-1);
 			}
 		}
 	}
