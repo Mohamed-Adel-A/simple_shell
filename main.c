@@ -46,13 +46,13 @@ int check_cmd(shell_data_t *sh_data)
 {
 	int (*builtin_func)(shell_data_t *);
 
-	if(_strncmp(sh_data->tokens[0], "/", 1) != 0 && _strncmp(sh_data->tokens[0], "./", 2) != 0 &&
+	if (_strncmp(sh_data->tokens[0], "/", 1) != 0 && _strncmp(sh_data->tokens[0], "./", 2) != 0 &&
 		  _strncmp(sh_data->tokens[0], "../", 3) != 0)
 	{
 		builtin_func = check_builtin(sh_data->tokens[0]);
 		if (builtin_func != NULL)
 		{
-			if(builtin_func(sh_data) == -1)
+			if (builtin_func(sh_data) == -1)
 			{
 				perror(sh_data->tokens[0]);
 			}
@@ -76,20 +76,18 @@ int check_cmd(shell_data_t *sh_data)
 	return (0);
 }
 
-int main(int argc , char **argv)
+/**
+ * main - main function
+ * @argc: argc
+ * @argv: argv
+ *
+ * Return: 0 in success, non-zero otherwise
+ */
+int main(int argc, char **argv)
 {
-	/*
-	char *line = NULL;
-	char **tokens = NULL;
-	size_t line_len = 0;
-	char *cmd_path = NULL;
-	*/
-	
 	int exe_st;
 	pid_t cpid;
-	
 	shell_data_t sh_data;
-
 	(void)argc;
 	
 	/* intializing enviroment variables */
