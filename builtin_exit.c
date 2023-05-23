@@ -44,8 +44,10 @@ int builtin_exit(char **args)
 
 
 /**
+ * builtin_cd - builtin function associated with cd cmd
+ * @args: arguments
  *
- *
+ * Return: 0 if success, -1 in case of failure
  */
 int builtin_cd(char **args)
 {
@@ -55,16 +57,7 @@ int builtin_cd(char **args)
 	/* cd (without any arguments) */
 	if (args[1] == NULL)
 	{
-		home_dir = _getenv("HOME");
-		chdir_ret = chdir(home_dir);
-
-		if (chdir_ret == -1)
-		{
-			return (-1);
-		}
-
-		_setenv("PWD", home_dir, 1);
-		return (0); 
+		return (change_dir(_getenv("PWD"), _getenv("HOME")));; 
 	}
 	
 	if (args[2] != NULL)
@@ -73,38 +66,42 @@ int builtin_cd(char **args)
 		return (-1);
 	}
 
-	printf("%s : %i\n", args[1], _strncmp(args[1], "-", 2));
 	/* cd - */
 	if(_strncmp(args[1], "-", 2) == 0)
 	{
-		newdir = _getenv("OLDPWD");
-		olddir = _getenv("PWD");
-		
-		chdir_ret = chdir(newdir);
-		if (chdir_ret == -1)
-		{
-			return (-1);
-		}
-
-		_setenv("PWD", newdir, 1);
-		_setenv("OLDPWD", olddir, 1);
-		return (0);
+		return (change_dir(_getenv("PWD"), _getenv("OLDPWD")));
 	}
 
 	/* cd [dir] */
-	newdir = args[1];
-	olddir = _getenv("PWD");		
-	chdir_ret = chdir(newdir);
-	printf("%s : %s\n", args[1], newdir);
-	if (chdir_ret == -1)
+	return (change_dir(_getenv("PWD"), args[1]));
+
+}
+
+/**
+ * change_dir - change current working dir and env variables
+ * @olddir: current directory before change
+ * @newdir: new directory to change wd to
+ *
+ * Return: 0 in success, -1 in failure
+ */
+int change_dir(char *olddir, char *newdir)
+{
+	char *old, *new;
+
+	if (chdir(newdir) == -1)
 	{
 		return (-1);
 	}
 
-	newdir = NULL;
-	newdir = getcwd(newdir, PATH_MAX);
-	_setenv("OLDPWD", olddir, 1);
-	_setenv("PWD", newdir, 1);
-	free(newdir);
+	old = _strdup(olddir);
+
+	new = NULL;
+	new = getcwd(new, PATH_MAX);
+
+	_setenv("OLDPWD", old, 1);
+	_setenv("PWD", newd, 1);
+
+	free(old);
+	free(new);
 	return (0);
 }
