@@ -71,6 +71,7 @@ int getting_line(shell_data_t *sh_data)
 
 	sh_data->line = NULL;
 	sh_data->tokens = NULL;
+	sh_data->cmd_path = NULL;
 
 	getline_ret = _getline(&line, &line_len, stdin);
 	if (getline_ret == -1)
@@ -100,8 +101,6 @@ int getting_line(shell_data_t *sh_data)
 int check_cmd(shell_data_t *sh_data)
 {
 	int (*builtin_func)(char **);
-
-	sh_data->cmd_path = NULL;
 
 	if(_strncmp(sh_data->tokens[0], "/", 1) != 0 && _strncmp(sh_data->tokens[0], "./", 2) != 0 &&
 		  _strncmp(sh_data->tokens[0], "../", 3) != 0)
