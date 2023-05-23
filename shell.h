@@ -33,6 +33,7 @@ int (*check_builtin(char *cmd))(char **);
 
 /* builtin_exit */
 int builtin_exit(char **args);
+int builtin_cd(char **args);
 
 /* atoi.c */
 int _isnumber(const char *str);
