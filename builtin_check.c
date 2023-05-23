@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /****************************************************/
-int (*check_builtin(char *cmd))(char **);
+int (*check_builtin(char *cmd))(shell_data_t *sh_data);
 /****************************************************/
 
 
@@ -11,7 +11,7 @@ int (*check_builtin(char *cmd))(char **);
  *
  * Return: pointer to the function to be called of NUll if not
  */
-int (*check_builtin(char *cmd))(char **)
+int (*check_builtin(char *cmd))(shell_data_t *sh_data)
 {
 	int i = 0, cmd_len;
 	buitin_t builtins_array[] = { {"exit", builtin_exit},
