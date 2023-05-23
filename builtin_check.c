@@ -18,6 +18,7 @@ int (*check_builtin(char *cmd))(char **)
 				     {"env", builtin_env},
 				     {"setenv", builtin_setenv},
 				     {"unsetenv", builtin_unsetenv},
+				     {"cd", builtin_cd},
 				     {NULL, NULL}
 				    };
 
