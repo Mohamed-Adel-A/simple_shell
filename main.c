@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * propmt - print shell prompt
+ * prompt - print shell prompt
  *
  * Return: void
  */
