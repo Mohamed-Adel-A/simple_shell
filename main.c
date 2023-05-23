@@ -34,14 +34,6 @@ void prompt(void)
 	 return (1);
  }
 
-typedef struct shell_data
-{
-	char *line;
-	char **tokens;
-	int wstatus;
-	char *cmd_path;
-	unsigned int cmd_index;
-} shell_data_t;
 
 /**
  * free_all - free all variables
