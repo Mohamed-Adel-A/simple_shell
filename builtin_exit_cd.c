@@ -1,8 +1,8 @@
 #include "shell.h"
 
 /******************************************************/
-int builtin_exit(char **args);
-int builtin_cd(char **args);
+int builtin_exit(shell_data_t *sh_data);
+int builtin_cd(shell_data_t *sh_data);
 int change_dir(char *olddir, char *newdir);
 /******************************************************/
 
@@ -13,8 +13,9 @@ int change_dir(char *olddir, char *newdir);
  *
  * Return: 0 if success, -1 in case of failure
  */
-int builtin_exit(char **args)
+int builtin_exit(shell_data_t *sh_data)
 {
+	char **args = sh_data->tokens;
 	char *exit_st_str = args[1];
 	int exit_st_int = 0;
 
@@ -45,7 +46,7 @@ int builtin_exit(char **args)
 		}
 	}
 
-	/*free_vars();*/
+	free_all(sh_data);
 	exit(exit_st_int);
 }
 
@@ -56,8 +57,10 @@ int builtin_exit(char **args)
  *
  * Return: 0 if success, -1 in case of failure
  */
-int builtin_cd(char **args)
+int builtin_cd(shell_data_t *sh_data)
 {
+	char **args = sh_data->tokens;
+
 	/* cd (without any arguments) */
 	if (args[1] == NULL)
 	{
