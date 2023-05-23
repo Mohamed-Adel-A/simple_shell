@@ -52,12 +52,14 @@ int builtin_cd(char **args)
 	int chdir_ret;
 	char *home_dir, *olddir, *newdir;
 
+	printf("%s", args[2]);
 	if (args[2] != NULL)
 	{
 		errno = EINVAL;
 		return (-1);
 	}
 
+	printf("%s : %i", args[1], _strncmp(args[1], "-", 2));
 	/* cd (without any arguments) */
 	if (args[1] == NULL)
 	{
