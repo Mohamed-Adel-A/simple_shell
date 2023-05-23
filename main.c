@@ -92,7 +92,7 @@ int getting_line(shell_data_t *sh_data)
  */
 int check_cmd(shell_data_t *sh_data)
 {
-	int (*builtin_func)(char **);
+	int (*builtin_func)(shell_data_t *);
 
 	if(_strncmp(sh_data->tokens[0], "/", 1) != 0 && _strncmp(sh_data->tokens[0], "./", 2) != 0 &&
 		  _strncmp(sh_data->tokens[0], "../", 3) != 0)
