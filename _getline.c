@@ -114,7 +114,7 @@ int getting_line(shell_data_t *sh_data)
 	if (getline_ret == -1)
 	{
 		free_all(sh_data);
-		_puts("\n");
+		/* _puts("\n");*/
 		exit(EXIT_SUCCESS);
 	}
 	else if (check_empty_line(line))
