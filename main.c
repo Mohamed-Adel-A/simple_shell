@@ -7,7 +7,7 @@
  */
 void prompt(void)
 {
-	char *prompt = "($) ";
+	char *prompt = "#cisfun$ ";
 	ssize_t write_c;
 
 	if (isatty(STDIN_FILENO))
