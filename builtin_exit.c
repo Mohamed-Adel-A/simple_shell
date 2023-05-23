@@ -49,7 +49,7 @@ int builtin_exit(char **args)
  */
 int builtin_cd(char **args)
 {
-	int i, chdir_ret;
+	int chdir_ret;
 	char *home_dir;
 
 	if (args[2] != NULL)
