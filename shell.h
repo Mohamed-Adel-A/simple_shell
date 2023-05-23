@@ -9,6 +9,7 @@
 #include <string.h>
 #include <dirent.h>
 #include <errno.h>
+#include <limits.h>
 
 extern char **environ;
 
