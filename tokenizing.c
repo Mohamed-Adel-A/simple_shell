@@ -103,6 +103,7 @@ char **tokenizing(char *line, char *delim)
 		token = _strtok(NULL, delim);
 		tokens_count++;
 	}
+
 	tokens[tokens_count] = NULL;
 	free(line_cpy);
 
