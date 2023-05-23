@@ -19,21 +19,6 @@ void prompt(void)
 	}
 }
 
-/**
- * 
- */
- int check_empty_line(const char *line)
- {
-	 int i = 0;
-	 while (line[i] != '\0')
-	 {
-		 if (line[i] != ' ' && line[i] != '\t' && line[i] != '\n')
-			 return (0);
-		 i++;
-	 }
-	 return (1);
- }
-
 
 /**
  * free_all - free all variables
@@ -49,40 +34,7 @@ void free_all(shell_data_t *sh_data)
 	free_env();
 }
 
-/**
- * getting_line - get line via getline and then check the line
- * @sh_data: shell data
- *
- * Return: 0 in success, -1 in failure
- */
-int getting_line(shell_data_t *sh_data)
-{
-	ssize_t getline_ret;
-	size_t line_len = 0;
-	char *line = NULL;
 
-	sh_data->line = NULL;
-	sh_data->tokens = NULL;
-	sh_data->cmd_path = NULL;
-
-	getline_ret = _getline(&line, &line_len, stdin);
-	if (getline_ret == -1)
-	{
-		free_all(sh_data);
-		_puts("\n");
-		exit(EXIT_SUCCESS);
-	}
-	else if (check_empty_line(line))
-	{
-		free(line);
-		return (-1);
-	}
-
-	handle_comments(line);
-	sh_data->line = line;
-	sh_data->tokens = tokenizing(line, " \n");
-	return (0);
-}
 
 /**
  * getting_line - check cmd for builtin and path
