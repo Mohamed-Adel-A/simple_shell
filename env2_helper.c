@@ -10,7 +10,7 @@ char *_getenv(const char *variable_name);
 
 /**
  * builtin_setenv - builtin function associated with setenv cmd
- * @args: arguments
+ * @sh_data: arguments
  *
  * Return: 0 if success, -1 in failure
  */
@@ -36,7 +36,7 @@ int builtin_setenv(shell_data_t *sh_data)
 
 /**
  * builtin_unsetenv - builtin function associated with unsetenv cmd
- * @args: arguments
+ * @sh_data: arguments
  *
  * Return: 0 if success, -1 in failure
  */
@@ -62,7 +62,7 @@ int builtin_unsetenv(shell_data_t *sh_data)
 
 /**
  * builtin_env - the fuction associated with env cmd
- * @args: the arguments of the command
+ * @sh_data: the arguments of the command
  *
  * Return: 0 if success, -1 if failed
  */
