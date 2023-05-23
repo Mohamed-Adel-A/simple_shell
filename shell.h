@@ -13,6 +13,16 @@
 
 extern char **environ;
 
+
+typedef struct shell_data
+{
+	char *line;
+	char **tokens;
+	int wstatus;
+	char *cmd_path;
+	unsigned int cmd_index;
+} shell_data_t;
+
 /**
  * struct buitins - struct contains builins names and fuctions
  * @name: string contains the command to be used to call the function
@@ -25,14 +35,6 @@ typedef struct buitins
 	int (*function)(shell_data_t *sh_data);
 } buitin_t;
 
-typedef struct shell_data
-{
-	char *line;
-	char **tokens;
-	int wstatus;
-	char *cmd_path;
-	unsigned int cmd_index;
-} shell_data_t;
 
 /* main.c */
 void free_all(shell_data_t *sh_data);
