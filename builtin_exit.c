@@ -75,7 +75,7 @@ int builtin_cd(char **args)
 
 	printf("%s : %i\n", args[1], _strncmp(args[1], "-", 2));
 	/* cd - */
-	if(_strncmp(args[1], "-", 2) != 0)
+	if(_strncmp(args[1], "-", 2) == 0)
 	{
 		newdir = _getenv("OLDPWD");
 		olddir = _getenv("PWD");
