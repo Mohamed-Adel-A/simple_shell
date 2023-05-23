@@ -73,7 +73,7 @@ int builtin_cd(char **args)
 		return (-1);
 	}
 
-	printf("%s : %i", args[1], _strncmp(args[1], "-", 2));
+	printf("%s : %i\n", args[1], _strncmp(args[1], "-", 2));
 	/* cd - */
 	if(_strncmp(args[1], "-", 2) != 0)
 	{
