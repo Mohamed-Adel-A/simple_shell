@@ -13,7 +13,7 @@ int handle_comments(char *line)
 	if (line == NULL)
 		return (-1);
 
-	for (i = 0 ; line[i] != '#' && line[i] != '\0' ; i++ )
+	for (i = 0 ; line[i] != '#' && line[i] != '\0' ; i++)
 	{
 	}
 	line[i] = '\0';
