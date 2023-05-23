@@ -174,7 +174,7 @@ int main(int argc , char **argv)
 			else
 			{
 				wait(&(sh_data.wstatus));
-				printf("Done %i : %i (cpid =%i)\n", exe_st, sh_data.wstatus, cpid);
+				/*printf("Done %i : %i (cpid =%i)\n", exe_st, sh_data.wstatus, cpid);*/
 			}
 		}
 		else
