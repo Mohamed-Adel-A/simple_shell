@@ -96,11 +96,11 @@ int main(int argc , char **argv)
 	char *line = NULL;
 	char **tokens = NULL;
 	size_t line_len = 0;
+	char *cmd_path = NULL;
 	*/
 	
-	int exe_st, wstatus;
+	int exe_st;
 	pid_t cpid;
-	char *cmd_path = NULL;
 	int (*builtin_func)(char **);
 	shell_data_t sh_data;
 
