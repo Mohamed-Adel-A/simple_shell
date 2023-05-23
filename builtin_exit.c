@@ -43,4 +43,42 @@ int builtin_exit(char **args)
 }
 
 
+/**
+ *
+ *
+ */
+int builtin_cd(char **args)
+{
+	int i, chdir_ret;
+	char *home_dir;
 
+	if (args[2] != NULL)
+	{
+		errno = EINVAL;
+		return (-1);
+	}
+
+	if (args[2] == NULL)
+	{
+		home_dir = _getenv("HOME");
+		chdir_ret = chdir(home_dir);
+
+		if (chdir_ret == -1)
+		{
+			return (-1);
+		}
+
+		_setenv("PWD", home_dir, 1);
+		return (0); 
+	}
+
+
+	chdir_ret = chdir(args[2]);
+	if (chdir_ret == -1)
+	{
+		return (-1);
+	}
+	
+	_setenv("PWD", args[2], 1);
+	return (0);
+}
