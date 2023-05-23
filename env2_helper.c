@@ -1,9 +1,9 @@
 #include "shell.h"
 
 /*****************************************/
-int builtin_setenv(char **args);
-int builtin_unsetenv(char **args);
-int builtin_env(char **args);
+int builtin_setenv(shell_data_t *sh_data);
+int builtin_unsetenv(shell_data_t *sh_data);
+int builtin_env(shell_data_t *sh_data);
 void print_env(void);
 char *_getenv(const char *variable_name);
 /*****************************************/
@@ -14,8 +14,9 @@ char *_getenv(const char *variable_name);
  *
  * Return: 0 if success, -1 in failure
  */
-int builtin_setenv(char **args)
+int builtin_setenv(shell_data_t *sh_data)
 {
+	char **args = sh_data->tokens;
 	int setenv_ret;
 
 	if (args[3] != NULL)
@@ -39,8 +40,9 @@ int builtin_setenv(char **args)
  *
  * Return: 0 if success, -1 in failure
  */
-int builtin_unsetenv(char **args)
+int builtin_unsetenv(shell_data_t *sh_data)
 {
+	char **args = sh_data->tokens;
 	int unsetenv_ret;
 
 	if (args[2] != NULL)
@@ -64,8 +66,10 @@ int builtin_unsetenv(char **args)
  *
  * Return: 0 if success, -1 if failed
  */
-int builtin_env(char **args)
+int builtin_env(shell_data_t *sh_data)
 {
+	char **args = sh_data->tokens;
+
 	if (args[1] != NULL)
 	{
 		errno = EINVAL;
