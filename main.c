@@ -139,73 +139,22 @@ int main(int argc , char **argv)
 	shell_data_t sh_data;
 
 	(void)argc;
-	/**char *cmd[] = {"/bin/ls", "-l", NULL};*/
 	
 	/* intializing enviroment variables */
 	environ = create_env();	
 	
 	while (1)
 	{
-		
 		exe_st = 0;
-		
-		/*
-		line = NULL;
-		tokens = NULL;
-		line_len = 0;
-		cmd_path = NULL;
-		exe_st = 0;
-		*/
 		
 		prompt();
 		/* getting the line and handling it */
 		if (getting_line(&sh_data) == -1)
 			continue;
-		/*
-		getline_ret = _getline(&line, &line_len, stdin);
-		if (getline_ret == -1)
-		{
-			free(line);
-			free_env();
-			_puts("\n");
-			exit(EXIT_SUCCESS);
-		}
-		else if (check_empty_line(line))
-		{
-			free(line);
-			continue;
-		}
-		handle_comments(line);
-		tokens = tokenizing(line, " \n");
-		*/
 
 		/* check cmd and builtins and then PATH*/
 		if (check_cmd(&sh_data) == -1)
 			continue;
-		/*
-		if(_strncmp(sh_data.tokens[0], "/", 1) != 0 && _strncmp(sh_data.tokens[0], "./", 2) != 0 &&
-		  _strncmp(sh_data.tokens[0], "../", 3) != 0)
-		{
-			builtin_func = check_builtin(sh_data.tokens[0]);
-			if (builtin_func != NULL)
-			{
-				if(builtin_func(sh_data.tokens) == -1)
-				{
-					perror(sh_data.tokens[0]);
-				}
-				free(sh_data.tokens);
-				free(sh_data.line);
-				free(sh_data.cmd_path);
-				continue;
-			}
-			else
-			{
-				sh_data.cmd_path = check_paths(sh_data.tokens[0]);
-				if (sh_data.cmd_path != NULL)
-					sh_data.tokens[0] = sh_data.cmd_path;
-			}
-		}
-		*/
 		
 		/*execute*/
 		if (access(sh_data.tokens[0], F_OK | X_OK) == 0)
@@ -230,7 +179,6 @@ int main(int argc , char **argv)
 		}
 		else
 		{
-			/*printf("else: \n");*/
 			/*errno = ENOENT;*/
 			perror(argv[0]);
 		}
