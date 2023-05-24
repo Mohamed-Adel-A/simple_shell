@@ -52,6 +52,9 @@ void prompt(void);
 void free_all(shell_data_t *sh_data);
 
 /* handle_variables.c */
+void free_variables(shell_data_t *sh_data);
+int add_variable(char *var, shell_data_t *sh_data);
+int check_variable(int token_idx, shell_data_t *sh_data);
 int handle_variables(shell_data_t *sh_data);
 
 /* utilities */
