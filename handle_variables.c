@@ -95,7 +95,7 @@ int check_variable(int token_idx, shell_data_t *sh_data)
 		str = sh_data->tokens[token_idx];
 		free(var_name);
 		var_name = NULL;
-		printf("s[i] : %s ",str[i])
+		printf("s[i] : %s ",str[i]);
 	}
 	return (0);
 }
