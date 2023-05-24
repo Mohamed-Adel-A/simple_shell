@@ -47,6 +47,7 @@ int check_cmd(shell_data_t *sh_data)
 	int (*builtin_func)(shell_data_t *);
 
 	sh_data->cmd_entered = sh_data->tokens[0];
+	sh_data->cmd_path = sh_data->tokens[0];
 
 	if (_strncmp(sh_data->tokens[0], "/", 1) != 0 &&
 	    _strncmp(sh_data->tokens[0], "./", 2) != 0 &&
@@ -67,11 +68,11 @@ int check_cmd(shell_data_t *sh_data)
 		else
 		{
 			sh_data->cmd_path = check_paths(sh_data->tokens[0]);
-			if (sh_data->cmd_path != NULL)
+			/*if (sh_data->cmd_path != NULL)
 			{
 				sh_data->tokens[0] = sh_data->cmd_path;
-			}
-			else
+			}*/
+			if (sh_data->cmd_path == NULL)
 			{
 				perror(sh_data->tokens[0]);
 				return (-1);
@@ -100,7 +101,8 @@ void excuting_cmd(shell_data_t *sh_data, char **argv)
 		cpid = fork();
 		if (cpid == 0)
 		{
-			exe_st = execve(sh_data->tokens[0], sh_data->tokens, environ);
+			signal(SIGINT, SIG_DFL);
+			exe_st = execve(sh_data->cmd_path, sh_data->tokens, environ);
 			if (exe_st == -1)
 			{
 				perror(sh_data->cmd_entered);
