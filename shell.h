@@ -48,6 +48,10 @@ typedef struct buitins
 /* main.c */
 void free_all(shell_data_t *sh_data);
 
+
+/* utilities */
+void handle_signal(int signal_no);
+
 /* comments.c */
 int handle_comments(char *line);
 
