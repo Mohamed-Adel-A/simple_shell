@@ -100,7 +100,7 @@ void excuting_cmd(shell_data_t *sh_data, char **argv)
 		cpid = fork();
 		if (cpid == 0)
 		{
-			exe_st = execve(sh_data->cmd_path, sh_data->tokens, environ);
+			exe_st = execve(sh_data->tokens[0], sh_data->tokens, environ);
 			if (exe_st == -1)
 			{
 				perror(sh_data->cmd_entered);
