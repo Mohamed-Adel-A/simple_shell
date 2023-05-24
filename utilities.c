@@ -7,5 +7,6 @@ void handle_signal(int signal_no)
 	{
 		fflush(stdin);
 		puts("\n");
+		prompt();
 	}
 }
