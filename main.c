@@ -151,7 +151,7 @@ int main(int argc, char **argv)
 		/* getting the line and handling it */
 		if (getting_line(&sh_data) == -1)
 		{
-			sh_data->wstatus = errno;
+			sh_data.wstatus = errno;
 			continue;
 		}
 		if (handle_variables(&sh_data) == -1)
@@ -159,7 +159,7 @@ int main(int argc, char **argv)
 			free(sh_data.line);
 			free(sh_data.tokens);
 			perror("variable error");
-			sh_data->wstatus = errno;
+			sh_data.wstatus = errno;
 			continue;
 		}
 			
@@ -167,7 +167,7 @@ int main(int argc, char **argv)
 		/* check cmd and builtins and then PATH*/
 		if (check_cmd(&sh_data, argv) == -1)
 		{
-			sh_data->wstatus = errno;
+			sh_data.wstatus = errno;
 			continue;
 		}
 
