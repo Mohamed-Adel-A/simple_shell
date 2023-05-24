@@ -76,13 +76,6 @@ int add_variable(char *var, shell_data_t *sh_data)
 
 
 
-int vriable_home_exit()
-{
-	
-}
-
-
-
 /**
  * check_variable - check if there is variable and replace it :\
  * @token_idx: index of the token that have $ in it
