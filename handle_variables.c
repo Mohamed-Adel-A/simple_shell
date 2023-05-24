@@ -59,7 +59,7 @@ int check_variable(int token_idx, shell_data_t *sh_data)
 			var_name = malloc(sizeof(char) * (var_name_len + 1));
 			if (var_name == NULL)
 				return (-1);
-			var_name = _strcpy(var_name, str + var_pos, var_name_len);
+			var_name = _strncpy(var_name, str + var_pos, var_name_len);
 			var_str = _getenv(var_name);
 			if (var_str == NULL)
 			{
