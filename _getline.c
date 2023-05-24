@@ -119,7 +119,6 @@ int getting_line(shell_data_t *sh_data)
 	char *line = NULL;
 
 	getline_ret = _getline(&line, &line_len, stdin);
-	fflush(stdin);
 	if (getline_ret == -1)
 	{
 		free_all(sh_data);
