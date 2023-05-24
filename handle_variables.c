@@ -124,9 +124,9 @@ int check_variable(int token_idx, shell_data_t *sh_data)
 					return (-1);
 				var_name = _strncpy(var_name, str + var_pos + 1, var_name_len);
 				var_str = _getenv(var_name);
+				free(var_name);
 				if (var_str == NULL)
 				{
-					free(var_name);
 					continue;
 				}
 			}
@@ -151,8 +151,6 @@ int check_variable(int token_idx, shell_data_t *sh_data)
 		sh_data->tokens[token_idx] = full_str;
 		str = sh_data->tokens[token_idx];
 		add_variable(full_str, sh_data);
-		free(var_name);
-		var_name = NULL;
 	}
 	return (0);
 }
