@@ -24,7 +24,7 @@ int builtin_exit(shell_data_t *sh_data)
 		free_all(sh_data);
 		exit(errno);
 	}
-	else (exit_st_str != NULL)
+	else
 	{
 		if (args[2] != NULL)
 		{
