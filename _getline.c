@@ -44,7 +44,7 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 	}
 	while (c != '\n')
 	{
-		c = _getc(stream);
+		c = read(stream->_fileno, &c, 1);
 		if (c == -1)
 		{
 			free(lline);
