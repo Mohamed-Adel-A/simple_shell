@@ -90,6 +90,7 @@ int check_variable(int token_idx, shell_data_t *sh_data)
 		sh_data->tokens[token_idx] = full_str;
 		str = sh_data->tokens[token_idx];
 		free(var_name);
+		var_name = NULL
 	}
 	return (0);
 }
