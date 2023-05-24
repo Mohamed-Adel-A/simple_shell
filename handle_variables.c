@@ -89,6 +89,7 @@ int check_variable(int token_idx, shell_data_t *sh_data)
 	char *var_str, number[20], *full_str, *var_name = NULL, *str;
 
 	str = sh_data->tokens[token_idx];
+	i = 0;
 	while (str[i] != '\0')
 	{
 		var_pos = _strchar(str + i, '$') + i;
