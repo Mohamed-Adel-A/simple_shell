@@ -87,7 +87,7 @@ char **tokenizing(char *line, char *delim)
 	token = strtok(line, delim);
 	while (token != NULL)
 	{
-		token = _strtok(NULL, delim);
+		token = strtok(NULL, delim);
 		tokens_count++;
 	}
 
