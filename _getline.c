@@ -34,7 +34,10 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 	static size_t i;
 	char *lline = *lineptr, *new_line, c = 's';
 
-	 i = 0;
+	if (i != 0)
+		return(-1);
+
+	i = 0;
 	if (lline == NULL)
 	{
 		lline = malloc(120 * sizeof(char));
@@ -44,16 +47,16 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 	}
 	while (c != '\n')
 	{
-		c = read(stream->_fileno, &c, 1);
+		c = _getc(stream);
 		printf("%i\n", c);
-		if (c == -1)
+		if ((c == 0 & i == 0) ||c == -1)
 		{
 			free(lline);
 			return (-1);
 		}
 		if (c == 0)
 		{
-			i++;
+			/*i++;*/
 			break;
 		}
 		fflush(stdin);
