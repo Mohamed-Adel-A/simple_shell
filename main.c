@@ -197,5 +197,5 @@ int main(int argc, char **argv)
 	}
 
 	free_env();
-	return (0);
+	return (errno);
 }
