@@ -31,7 +31,7 @@ int _getc(FILE *stream)
  */
 ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 {
-	size_t i = 0;
+	static size_t i = 0;
 	char *lline = *lineptr, *new_line, c;
 
 	if (lline == NULL)
