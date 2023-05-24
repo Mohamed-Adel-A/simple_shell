@@ -33,8 +33,6 @@ int check_variable(int token_idx, shell_data_t *sh_data)
 	char *var_str, number[20], *full_str, *var_name = NULL, *str;
 	
 	str = sh_data->tokens[token_idx];
-	
-
 	while (str[i] != '\0')
 	{
 		printf("str : %s", str);
@@ -90,6 +88,7 @@ int check_variable(int token_idx, shell_data_t *sh_data)
 		strcpy(full_str + var_pos + var_len, str + i);
 
 		sh_data->tokens[token_idx] = full_str;
+		str = sh_data->tokens[token_idx];
 		free(var_name);
 	}
 	return (0);
