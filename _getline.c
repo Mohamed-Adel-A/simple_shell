@@ -18,7 +18,7 @@ int _getc(FILE *stream)
 		return ((int) c);
 	}
 
-	return (EOF);
+	return (rr);
 }
 
 /**
@@ -42,8 +42,19 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 		if (lline == NULL)
 			return (-1);
 	}
-	while ((c = _getc(stream)) != EOF)
+	while (c != '\n')
 	{
+		c = _getc(stream);
+		if (c == -1)
+		{
+			free(lline);
+			return (-1);
+		}
+		if (c == 0)
+		{
+			/*i++;*/
+			break;
+		}
 		fflush(stdin);
 		if (c == 27)
 		{
@@ -70,11 +81,7 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 		if (c == '\n')
 			break;
 	}
-	if (c == EOF)
-	{
-		free(lline);
-		return (-1);
-	}
+
 	lline[i] = '\0';
 	*lineptr = lline;
 	return (i);
