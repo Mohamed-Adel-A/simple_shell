@@ -103,6 +103,7 @@ int check_variable(int token_idx, shell_data_t *sh_data)
 }
 
 
+
 /*
 int check_variable(char *str)
 {
