@@ -57,7 +57,7 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 				*n = 120;
 			else
 				*n += 120;
-			new_line = _realloc(lline, *n);
+			new_line = _realloc(lline, *n, i - 2);
 			if (new_line == NULL)
 			{
 				free(lline);
