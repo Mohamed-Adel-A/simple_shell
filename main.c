@@ -42,7 +42,7 @@ void free_all(shell_data_t *sh_data)
  *
  * Return: 0 in success, -1 in failure
  */
-int check_cmd(shell_data_t *sh_data)
+int check_cmd(shell_data_t *sh_data, char **argv)
 {
 	int (*builtin_func)(shell_data_t *);
 
@@ -74,7 +74,7 @@ int check_cmd(shell_data_t *sh_data)
 			else
 			{
 				/*perror(sh_data->tokens[0]);*/
-				perror("Error");
+				perror(argv[0]);
 				return (-1);
 			}
 		}
@@ -151,7 +151,7 @@ int main(int argc, char **argv)
 			continue;
 
 		/* check cmd and builtins and then PATH*/
-		if (check_cmd(&sh_data) == -1)
+		if (check_cmd(&sh_data, argv) == -1)
 			continue;
 
 		/*execute*/
