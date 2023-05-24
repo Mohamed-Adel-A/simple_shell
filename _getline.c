@@ -47,13 +47,13 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 		{ 
 		    getchar();
 		    c = getchar();
-			if (c == 'A') { // up arrow
+			if (c == 'A') { 
                 write(STDOUT_FILENO, "\nUp arrow pressed\n", 18);
-            } else if (c == 'B') { // down arrow
+            } else if (c == 'B') { 
                 write(STDOUT_FILENO, "\nDown arrow pressed\n", 20);
-            } else if (c == 'C') { // right arrow
+            } else if (c == 'C') { 
                 write(STDOUT_FILENO, "\nRight arrow pressed\n", 21);
-            } else if (c == 'D') { // left arrow
+            } else if (c == 'D') { 
                 write(STDOUT_FILENO, "\nLeft arrow pressed\n", 19);
             }
 		}
