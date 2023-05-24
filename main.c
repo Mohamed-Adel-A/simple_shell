@@ -59,6 +59,7 @@ int check_cmd(shell_data_t *sh_data, char **argv)
 		{
 			if (builtin_func(sh_data) == -1)
 			{
+				errno = 127;
 				perror(sh_data->tokens[0]);
 			}
 			free(sh_data->tokens);
@@ -75,7 +76,7 @@ int check_cmd(shell_data_t *sh_data, char **argv)
 			}
 			else
 			{
-				/*perror(sh_data->tokens[0]);*/
+				errno = 127;
 				perror(argv[0]);
 				return (-1);
 			}
