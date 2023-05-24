@@ -52,7 +52,6 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 	{
 		
 		c = _getc(stream);
-		printf("%i\n", c);
 		if ((c == 0 && i == 0) ||c == -1)
 		{
 			free(lline);
