@@ -31,9 +31,14 @@ int _getc(FILE *stream)
  */
 ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 {
-	size_t i = 0;
+	static size_t i;
 	char *lline = *lineptr, *new_line, c;
 
+	if (i == 0)
+		fflush(stream);
+	else
+		return (-1);
+	i = 0;		
 	if (lline == NULL)
 	{
 		lline = malloc(120 * sizeof(char));
