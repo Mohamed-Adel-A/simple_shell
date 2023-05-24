@@ -1,5 +1,14 @@
 #include "shell.h"
 
+/***********************************************************/
+void free_variables(shell_data_t *sh_data);
+int add_variable(char *var, shell_data_t *sh_data);
+int check_variable(int token_idx, shell_data_t *sh_data);
+int handle_variables(shell_data_t *sh_data);
+/***********************************************************/
+
+
+
 /**
  * free_variables - free varibles from sh_data->variables
  * @sh_data: shell data
