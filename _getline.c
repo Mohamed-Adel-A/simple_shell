@@ -43,6 +43,12 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 	}
 	while ((c = _getc(stream)) != EOF)
 	{
+		if (c == 27) 
+		{ 
+		    getchar();
+		    getchar();
+		}
+
 		if (i >= *n - 1)
 		{
 			if (*n < 120)
