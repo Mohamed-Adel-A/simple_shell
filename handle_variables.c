@@ -125,6 +125,7 @@ int check_variable(int token_idx, shell_data_t *sh_data)
 				var_str = _getenv(var_name);
 				if (var_str == NULL)
 				{
+					free(var_name);
 					continue;
 				}
 			}
