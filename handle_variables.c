@@ -119,6 +119,7 @@ int check_variable(int token_idx, shell_data_t *sh_data)
 				}
 				var_name_len = (i - var_pos - 1);
 				var_name = malloc(sizeof(char) * (var_name_len + 1));
+				printf("var_name address = %p\n", var_name);
 				if (var_name == NULL)
 					return (-1);
 				var_name = _strncpy(var_name, str + var_pos + 1, var_name_len);
@@ -141,6 +142,7 @@ int check_variable(int token_idx, shell_data_t *sh_data)
 		full_len = str_len + var_len + 1;
 
 		full_str = malloc(full_len + 1);
+		printf("full address = %p\n", full_str);
 
 		memcpy(full_str, str, var_pos);
 		memcpy(full_str + var_pos, var_str, var_len);
