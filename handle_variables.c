@@ -37,56 +37,59 @@ int check_variable(int token_idx, shell_data_t *sh_data)
 	if (var_pos == -1)
 		return (0);
 	i = var_pos + 1;
-	
-	if(str[i] == '$')
+
+	while (s[i] != '\0')
 	{
-		var_str = _itoa(getpid(), number);
-		i++;
-		printf("$$ = %s\n", number);
-			
-	}
-	else if (str[1] == '?')
-	{
-		var_str = _itoa(sh_data->wstatus, number);
-		i++;
-	}
-	else
-	{
-		if (_isalpha(str[i]) || str[i] == '_')
+		if(str[i] == '$')
 		{
-			while (str[i] != '\0' && (_isalpha(str[i]) || _isdigit(str[i]) || str[i] == '_' ))
-			{
-				i++;
-			}
-			var_name_len = (i - var_pos - 1);
-			var_name = malloc(sizeof(char) * (var_name_len + 1));
-			if (var_name == NULL)
-				return (-1);
-			var_name = _strncpy(var_name, str + var_pos + 1, var_name_len);
-			var_str = _getenv(var_name);
-			if (var_str == NULL)
-			{
-				return (0);
-			}
+			var_str = _itoa(getpid(), number);
+			i++;
+			printf("$$ = %s\n", number);
+
+		}
+		else if (str[1] == '?')
+		{
+			var_str = _itoa(sh_data->wstatus, number);
+			i++;
 		}
 		else
 		{
-			return (0);
-		}
-	}	
-	
-	var_len = strlen(var_str);
-	str_len = strlen(str) - (i - var_pos);
-	full_len = str_len + var_len + 1;
+			if (_isalpha(str[i]) || str[i] == '_')
+			{
+				while (_isalpha(str[i]) || _isdigit(str[i]) || str[i] == '_' )
+				{
+					i++;
+				}
+				var_name_len = (i - var_pos - 1);
+				var_name = malloc(sizeof(char) * (var_name_len + 1));
+				if (var_name == NULL)
+					return (-1);
+				var_name = _strncpy(var_name, str + var_pos + 1, var_name_len);
+				var_str = _getenv(var_name);
+				if (var_str == NULL)
+				{
+					return (0);
+				}
+			}
+			else
+			{
+				return (0);
+			}
+		}	
 
-	full_str = malloc(full_len + 1);
+		var_len = strlen(var_str);
+		str_len = strlen(str) - (i - var_pos);
+		full_len = str_len + var_len + 1;
 
-	memcpy(full_str, str, var_pos);
-	memcpy(full_str + var_pos, var_str, var_len);
-	strcpy(full_str + var_pos + var_len, str + i);
+		full_str = malloc(full_len + 1);
 
-	sh_data->tokens[token_idx] = full_str;
-	free(var_name);
+		memcpy(full_str, str, var_pos);
+		memcpy(full_str + var_pos, var_str, var_len);
+		strcpy(full_str + var_pos + var_len, str + i);
+
+		sh_data->tokens[token_idx] = full_str;
+		free(var_name);
+	}
 	return (0);
 }
 
