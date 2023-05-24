@@ -20,6 +20,7 @@ extern char **environ;
  * @wstatus: wait status
  * @cmd_path: string holds path and cmd
  * @cmd_index: enteries indexing
+ * @cmd_entered: entered cmd
  */
 typedef struct shell_data
 {
