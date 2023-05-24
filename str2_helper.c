@@ -25,3 +25,28 @@ int _strchar(const char *str, char c)
 
 	return (-1);
 }
+
+
+/**
+ * _strncpy - copy string from src to dest
+ * @dest: pointer to destination string
+ * @src: pointer to source string
+ * @n: number of character to be copied
+ *
+ * Return: pointer to destination string
+ */
+char *_strcpy(char *dest, const char *src, int n)
+{
+	int i;
+
+	if (src == NULL || n == 0)
+		return (dest);
+
+	for (i = 0 ; src[i] != '\0' && i < n ; i++)
+	{
+		dest[i] = src[i];
+	}
+	dest[i] = '\0';
+	return (dest);
+}
+
