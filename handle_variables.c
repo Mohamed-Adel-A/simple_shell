@@ -31,7 +31,7 @@ int check_variable(int token_idx, shell_data_t *sh_data)
 {
 	int i = 0, var_pos, var_len, str_len, full_len, var_name_len;
 	char *var_str, number[20], *full_str, *var_name = NULL, *str;
-	
+
 	str = sh_data->tokens[token_idx];
 	while (str[i] != '\0')
 	{
@@ -41,7 +41,7 @@ int check_variable(int token_idx, shell_data_t *sh_data)
 			return (0);
 		}
 		i = var_pos + 1;
-		if(str[i] == '$')
+		if (str[i] == '$')
 		{
 			var_str = _itoa(getpid(), number);
 			i++;
@@ -56,7 +56,7 @@ int check_variable(int token_idx, shell_data_t *sh_data)
 		{
 			if (_isalpha(str[i]) || str[i] == '_')
 			{
-				while (_isalpha(str[i]) || _isdigit(str[i]) || str[i] == '_' )
+				while (_isalpha(str[i]) || _isdigit(str[i]) || str[i] == '_')
 				{
 					i++;
 				}
@@ -76,7 +76,7 @@ int check_variable(int token_idx, shell_data_t *sh_data)
 				i++;
 				continue;
 			}
-		}	
+		}
 
 		var_len = strlen(var_str);
 		str_len = strlen(str) - (i - var_pos);
@@ -110,7 +110,7 @@ int handle_variables(shell_data_t *sh_data)
 	token = sh_data->tokens[i];
 	while (token != NULL)
 	{
-		if(_strchar(token, '$') != -1)
+		if (_strchar(token, '$') != -1)
 		{
 			check_ret = check_variable(i, sh_data);
 			if (check_ret == -1)
