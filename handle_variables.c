@@ -38,7 +38,7 @@ int check_variable(int token_idx, shell_data_t *sh_data)
 		return (0);
 	i = var_pos + 1;
 
-	while (s[i] != '\0')
+	while (str[i] != '\0')
 	{
 		if(str[i] == '$')
 		{
