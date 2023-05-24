@@ -197,6 +197,7 @@ int main(int argc, char **argv)
 			break;
 	}
 
+	printf("erron = %i\n", errno);
 	free_env();
 	return (errno);
 }
