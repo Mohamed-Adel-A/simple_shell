@@ -33,9 +33,12 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 {
 	static size_t i;
 	char *lline = *lineptr, *new_line, c = 's';
+	size_t m;
 
 	if (i != 0)
 		return(-1);
+	else
+		fflush(stdin);		
 
 	i = 0;
 	if (lline == NULL)
@@ -47,7 +50,7 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 	}
 	while (c != '\n')
 	{
-		fflush(stdin);
+		
 		c = _getc(stream);
 		printf("%i\n", c);
 		if ((c == 0 && i == 0) ||c == -1)
@@ -88,6 +91,9 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 	}
 
 	lline[i] = '\0';
+	m = i;
+	if (c != 0)
+		i = 0;
 	*lineptr = lline;
 	return (i);
 }
