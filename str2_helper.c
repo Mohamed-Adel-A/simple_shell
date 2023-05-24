@@ -35,7 +35,7 @@ int _strchar(const char *str, char c)
  *
  * Return: pointer to destination string
  */
-char *_strcpy(char *dest, const char *src, int n)
+char *_strncpy(char *dest, const char *src, int n)
 {
 	int i;
 
