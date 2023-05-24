@@ -46,6 +46,7 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 		if (c == 27) 
 		{ 
 		    getchar();
+			getchar();
 		    c = getchar();
 			if (c == 'A') { 
                 write(STDOUT_FILENO, "\nUp arrow pressed\n", 18);
