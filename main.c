@@ -171,7 +171,7 @@ int main(int argc, char **argv)
 		{
 			free(sh_data.line);
 			free(sh_data.tokens);
-			free_variables(sh_data);
+			free_variables(&sh_data);
 			perror("variable error");
 			sh_data.wstatus = errno;
 			continue;
@@ -188,7 +188,7 @@ int main(int argc, char **argv)
 		excuting_cmd(&sh_data, argv);
 
 		free(sh_data.tokens);
-		free_variables(sh_data);
+		free_variables(&sh_data);
 		free(sh_data.line);
 		free(sh_data.cmd_path);
 
