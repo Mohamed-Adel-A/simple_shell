@@ -35,14 +35,14 @@ int check_variable(int token_idx, shell_data_t *sh_data)
 	str = sh_data->tokens[token_idx];
 	while (str[i] != '\0')
 	{
-		printf("str : %s\n", str + i);
+		printf("str : %s\n", str);
 		var_pos = _strchar(str + i, '$');
 		if (var_pos == -1)
 		{
 			printf("here\n");
 			return (0);
 		}
-		i = var_pos + 1;
+		i = var_pos + i + 1;
 		printf("there i = %i\n", i);
 		printf("s[i] : %c \n",str[i]);
 		if(str[i] == '$')
