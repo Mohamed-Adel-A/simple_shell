@@ -46,7 +46,7 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 	{
 		fflush(stdin);
 		printf("%i\n",c);
-		if (c = 27)
+		if (c == 27)
 		{
 			_getc(stream);
 			_getc(stream);
