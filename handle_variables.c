@@ -82,6 +82,7 @@ int check_variable(int token_idx, shell_data_t *sh_data)
 	memcpy(full_str + var_pos, var_str, var_len);
 	strcpy(full_str + var_pos + var_len, str + i + 1);
 
+	sh_data->tokens[token_idx] = full_str;
 	free(var_name);
 	return (0);
 }
