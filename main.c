@@ -151,8 +151,8 @@ int main(int argc, char **argv)
 			continue;
 		if (handle_variables(&sh_data) == -1)
 		{
-			free(sh_data->line);
-			free(sh_data->tokens);
+			free(sh_data.line);
+			free(sh_data.tokens);
 			perror("variable error");
 			continue;
 		}
