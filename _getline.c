@@ -106,10 +106,6 @@ int getting_line(shell_data_t *sh_data)
 	size_t line_len = 0;
 	char *line = NULL;
 
-	sh_data->line = NULL;
-	sh_data->tokens = NULL;
-	sh_data->cmd_path = NULL;
-
 	getline_ret = _getline(&line, &line_len, stdin);
 	if (getline_ret == -1)
 	{
