@@ -30,6 +30,7 @@ void *_memcpy(void *dest, const void *src, size_t n)
  * _realloc - reallocate memeory to a new size
  * @ptr: pointer to memory to be allocated
  * @size: new size
+ * @cpy_size: copy size
  *
  * Return: pointer to new memory, or NULL on error
  */
