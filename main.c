@@ -131,6 +131,7 @@ int main(int argc, char **argv)
 	shell_data_t sh_data;
 	(void)argc;
 
+	signal(SIGINT, handle_signal);
 	/* intializing enviroment variables */
 	environ = create_env();
 
