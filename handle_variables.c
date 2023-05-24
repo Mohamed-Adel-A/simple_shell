@@ -33,13 +33,14 @@ int check_variable(int token_idx, shell_data_t *sh_data)
 	char *var_str, number[20], *full_str, *var_name = NULL, *str;
 	
 	str = sh_data->tokens[token_idx];
-	var_pos = _strchar(str, '$');
-	if (var_pos == -1)
-		return (0);
-	i = var_pos + 1;
+	
 
 	while (str[i] != '\0')
 	{
+		var_pos = _strchar(str, '$');
+		if (var_pos == -1)
+			return (0);
+		i = var_pos + 1;
 		if(str[i] == '$')
 		{
 			var_str = _itoa(getpid(), number);
