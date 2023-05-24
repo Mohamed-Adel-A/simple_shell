@@ -51,8 +51,6 @@ void *_realloc(void *ptr, size_t size, size_t cpy_size)
 	}
 
 	new_ptr = malloc(size);
-	printf("size = %lu\n", size);
-	printf("address = %p\n", new_ptr);
 	if (new_ptr == NULL)
 		return (NULL);
 
