@@ -31,6 +31,7 @@ void free_all(shell_data_t *sh_data)
 	free(sh_data->line);
 	free(sh_data->tokens);
 	free(sh_data->cmd_path);
+	free_variables(sh_data);
 	free_env();
 }
 
@@ -124,6 +125,23 @@ void excuting_cmd(shell_data_t *sh_data, char **argv)
 
 
 /**
+ * init_data - intializing shell data
+ * @sh_data: shell data
+ *
+ * Return: void
+ */
+void init_data(shell_data_t *sh_data)
+{
+	sh_data->line = NULL;
+	sh_data->tokens = NULL;
+	sh_data->variables = NULL;
+	sh_data->cmd_path = NULL;
+	sh_data->cmd_entered = NULL;
+	errno = 0;
+}
+
+
+/**
  * main - main function
  * @argc: argc
  * @argv: argv
@@ -142,12 +160,6 @@ int main(int argc, char **argv)
 
 	while (1)
 	{
-		sh_data.line = NULL;
-		sh_data.tokens = NULL;
-		sh_data.cmd_path = NULL;
-		sh_data.cmd_entered = NULL;
-		errno = 0;
-
 		prompt();
 		/* getting the line and handling it */
 		if (getting_line(&sh_data) == -1)
@@ -159,6 +171,7 @@ int main(int argc, char **argv)
 		{
 			free(sh_data.line);
 			free(sh_data.tokens);
+			free_variables(sh_data);
 			perror("variable error");
 			sh_data.wstatus = errno;
 			continue;
@@ -175,6 +188,7 @@ int main(int argc, char **argv)
 		excuting_cmd(&sh_data, argv);
 
 		free(sh_data.tokens);
+		free_variables(sh_data);
 		free(sh_data.line);
 		free(sh_data.cmd_path);
 
