@@ -66,7 +66,10 @@ int check_cmd(shell_data_t *sh_data)
 		{
 			sh_data->cmd_path = check_paths(sh_data->tokens[0]);
 			if (sh_data->cmd_path != NULL)
+			{
+				sh_data->cmd_entered = sh_data->tokens[0];
 				sh_data->tokens[0] = sh_data->cmd_path;
+			}
 			else
 			{
 				perror(sh_data->tokens[0]);
@@ -99,7 +102,7 @@ void excuting_cmd(shell_data_t *sh_data, char **argv)
 			exe_st = execve(sh_data->tokens[0], sh_data->tokens, environ);
 			if (exe_st == -1)
 			{
-				perror(argv[0]);
+				perror(sh_data->cmd_entered);
 				exit(0);
 			}
 		}
@@ -132,6 +135,10 @@ int main(int argc, char **argv)
 
 	while (1)
 	{
+		sh_data->line = NULL;
+		sh_data->tokens = NULL;
+		sh_data->cmd_path = NULL;
+		sh_data->cmd_entered = NULL;
 
 		prompt();
 		/* getting the line and handling it */
