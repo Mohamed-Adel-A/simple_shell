@@ -36,7 +36,6 @@ void *_memcpy(void *dest, const void *src, size_t n)
 void *_realloc(void *ptr, size_t size)
 {
 	void *new_ptr;
-	int cpy_size;
 
 	if (ptr == NULL && size == 0)
 		return (NULL);
@@ -52,7 +51,7 @@ void *_realloc(void *ptr, size_t size)
 	}
 
 	new_ptr = malloc(size);
-	printf("size = %i\n", size);
+	printf("size = %lu\n", size);
 	if (new_ptr == NULL)
 		return (NULL);
 
