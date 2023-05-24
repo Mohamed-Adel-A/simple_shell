@@ -35,16 +35,15 @@ int check_variable(int token_idx, shell_data_t *sh_data)
 	str = sh_data->tokens[token_idx];
 	while (str[i] != '\0')
 	{
-		printf("str : %s\n", str);
+		printf("before str : %s\n", str);
 		var_pos = _strchar(str + i, '$');
 		if (var_pos == -1)
 		{
-			printf("here\n");
+			printf("there is not\n");
 			return (0);
 		}
 		i = var_pos + i + 1;
-		printf("there i = %i\n", i);
-		printf("s[i] : %c \n",str[i]);
+		printf(" here s[%i] : %c \n", i, str[i]);
 		if(str[i] == '$')
 		{
 			var_str = _itoa(getpid(), number);
@@ -96,7 +95,8 @@ int check_variable(int token_idx, shell_data_t *sh_data)
 		str = sh_data->tokens[token_idx];
 		free(var_name);
 		var_name = NULL;
-		printf("s[i] : %c ",str[i]);
+		printf("After str : %s\n", str);
+		printf("s[i] : %c \n =======================\n",str[i]);
 	}
 	return (0);
 }
