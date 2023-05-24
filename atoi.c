@@ -1,5 +1,39 @@
 #include "shell.h"
 
+/************************************************/
+int _isalpha(char c);
+int _isdigit(char c);
+int _isnumber(const char *str);
+int _atoi(const char *str);
+char *_itoa(int int_value, char *str);
+/************************************************/
+
+/**
+ * _isalpha - check if c is an alphabet
+ * @c: character to be checked
+ *
+ * Return: 1 if it is, 0 otherwise
+ */
+int _isalpha(char c)
+{
+	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
+		return (1);
+	return (0);
+}
+
+/**
+ * _isdigit - check if c is a digit
+ * @c: character to be checked
+ *
+ * Return: 1 if it is, 0 otherwise
+ */
+int _isdigit(char c)
+{
+	if ((c >= '0' && c <= '9'))
+		return (1);
+	return (0);
+}
+
 /**
  * _isnumber - check if string is number
  * @str: the string to be checked
@@ -103,4 +137,3 @@ char *_itoa(int int_value, char *str)
 
 	return (str);
 }
-
