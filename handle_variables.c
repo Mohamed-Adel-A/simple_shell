@@ -95,7 +95,7 @@ int check_variable(int token_idx, shell_data_t *sh_data)
 	full_str[var_pos + var_pos + var_len] = '\0';
 	printf("--%s\n", full_str);
 	printf("str%s\n", str + i);
-	strcpy(full_str + var_pos + var_len, str + i);
+	/*strcpy(full_str + var_pos + var_len, str + i);*/
 
 	sh_data->tokens[token_idx] = full_str;
 	free(var_name);
