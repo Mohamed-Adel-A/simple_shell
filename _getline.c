@@ -106,7 +106,7 @@ int getting_line(shell_data_t *sh_data)
 	size_t line_len = 0;
 	char *line = NULL;
 
-	getline_ret = _getline(&line, &line_len, stdin);
+	getline_ret = getline(&line, &line_len, stdin);
 	if (getline_ret == -1)
 	{
 		free_all(sh_data);
