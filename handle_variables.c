@@ -147,9 +147,10 @@ int handle_variables(shell_data_t *sh_data)
 	token = sh_data->tokens[i];
 	while (token != NULL)
 	{
-		printf("t: %s", token);
-		if(_strchar(token, '$') != 0)
+		printf("out: %s", token);
+		if(_strchar(token, '$') != -1)
 		{
+			printf("in: %s\n", token);
 			check_ret = check_variable(i, sh_data);
 			if (check_ret == -1)
 				return (-1);
