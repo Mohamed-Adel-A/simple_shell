@@ -35,20 +35,16 @@ int check_variable(int token_idx, shell_data_t *sh_data)
 	str = sh_data->tokens[token_idx];
 	while (str[i] != '\0')
 	{
-		printf("before str : %s\n", str);
 		var_pos = _strchar(str + i, '$') + i;
 		if (var_pos == -1)
 		{
-			printf("there is not\n");
 			return (0);
 		}
 		i = var_pos + 1;
-		printf(" here s[%i] : %c \n", i, str[i]);
 		if(str[i] == '$')
 		{
 			var_str = _itoa(getpid(), number);
 			i++;
-			printf("$$ = %s, : i = %i\n", number, i);
 
 		}
 		else if (str[i] == '?')
@@ -96,48 +92,12 @@ int check_variable(int token_idx, shell_data_t *sh_data)
 		str = sh_data->tokens[token_idx];
 		free(var_name);
 		var_name = NULL;
-		printf("After str : %s\n", str);
-		printf("s[i] : %c \n =======================\n",str[i]);
 	}
 	return (0);
 }
 
 
 
-/*
-int check_variable(char *str)
-{
-	int i = 0, var_pos, var_len, str_len, full_len;
-	char *var_str, number[20], *full_str;
-
-	if((var_pos = _strchar(str, '$')) != -1)
-	{
-	    i = var_pos + 1;
-		if(str[i] == '$')
-		{
-			var_str = _itoa(getpid(), number);
-			var_len = strlen(var_str);
-			printf("%s\n", var_str);
-			}
-		else if (str[i] == '?')
-		{
-		}
-		str_len = strlen(str) - (i - var_pos + 1);
-		full_len = str_len + var_len;
-		full_str = malloc(full_len + 1);
-		
-		memcpy(full_str, str, var_pos);
-		memcpy(full_str + var_pos, var_str, var_len);
-		strcpy(full_str + var_pos + var_len, str + i + 1);
-		
-		printf("varpos = %i, i = %i\n", var_pos, i);
-		printf("varpos = %i, var_len = %i\n", var_pos, var_len);
-		printf("str_len = %i, full_len = %i\n", str_len, full_len);
-		printf("%s\n", full_str);
-	}
-	return (0);
-}
-*/
 
 int handle_variables(shell_data_t *sh_data)
 {
@@ -150,10 +110,8 @@ int handle_variables(shell_data_t *sh_data)
 	token = sh_data->tokens[i];
 	while (token != NULL)
 	{
-		printf("out: %s\n", token);
 		if(_strchar(token, '$') != -1)
 		{
-			printf("in: %s\n", token);
 			check_ret = check_variable(i, sh_data);
 			if (check_ret == -1)
 				return (-1);
