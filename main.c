@@ -104,7 +104,8 @@ void excuting_cmd(shell_data_t *sh_data, char **argv)
 			exe_st = execve(sh_data->tokens[0], sh_data->tokens, environ);
 			if (exe_st == -1)
 			{
-				perror(sh_data->cmd_entered);
+				/*perror(sh_data->cmd_entered);*/
+				perror(argv[0]);
 				exit(0);
 			}
 		}
