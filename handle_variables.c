@@ -36,13 +36,13 @@ int check_variable(int token_idx, shell_data_t *sh_data)
 	while (str[i] != '\0')
 	{
 		printf("before str : %s\n", str);
-		var_pos = _strchar(str + i, '$');
+		var_pos = _strchar(str + i, '$') + i;
 		if (var_pos == -1)
 		{
 			printf("there is not\n");
 			return (0);
 		}
-		i = var_pos + i + 1;
+		i = var_pos + 1;
 		printf(" here s[%i] : %c \n", i, str[i]);
 		if(str[i] == '$')
 		{
