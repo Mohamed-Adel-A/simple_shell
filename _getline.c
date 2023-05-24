@@ -31,10 +31,9 @@ int _getc(FILE *stream)
  */
 ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 {
-	static size_t i;
+	size_t i = 0;
 	char *lline = *lineptr, *new_line, c;
 
-	i = 0;
 	if (lline == NULL)
 	{
 		lline = malloc(120 * sizeof(char));
@@ -44,13 +43,6 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 	}
 	while ((c = _getc(stream)) != EOF)
 	{
-		fflush(stdin);
-		if (c == 27)
-		{
-			_getc(stream);
-			_getc(stream);
-			/*continue;*/
-		}
 		if (i >= *n - 1)
 		{
 			if (*n < 120)
