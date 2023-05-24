@@ -27,7 +27,7 @@ void free_variables(shell_data_t *sh_data)
 	{
 		for (i = 0 ; sh_data->variables[i] != NULL ; i++)
 		{
-			free(h_data->variables[i]);
+			free(sh_data->variables[i]);
 		}
 		free(sh_data->variables);
 	}
@@ -46,11 +46,11 @@ int add_variable(char *var, shell_data_t *sh_data)
 	int i = 0;
 	char **old_vars, **new_vars;
 
-	old_vars == sh_data->variables;
+	old_vars = sh_data->variables;
 	if(old_vars == NULL)
 	{
 		new_vars = malloc(sizeof(char *) * 2);
-		if (new_vars= NULL)
+		if (new_vars == NULL)
 			return (-1);
 		sh_data->variables = new_vars;
 	}
