@@ -144,7 +144,8 @@ int _setenv(const char *name, const char *value, int overwrite)
 		}
 	}
 
-	new_environ = (char **) _realloc(environ, ((i + 2) * sizeof(char *)), ((i) * sizeof(char *)));
+	new_environ = (char **) _realloc(environ, ((i + 2) * sizeof(char *)),
+					 ((i) * sizeof(char *)));
 	if (new_environ == NULL)
 	{
 		errno = ENOMEM;
