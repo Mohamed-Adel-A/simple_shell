@@ -113,7 +113,6 @@ void excuting_cmd(shell_data_t *sh_data, char **argv)
 		else
 		{
 			waitpid(cpid, &(sh_data->wstatus), WUNTRACED);
-			printf("status: %i\n", sh_data->wstatus);
 		}
 	}
 	else
@@ -138,6 +137,7 @@ int main(int argc, char **argv)
 	signal(SIGINT, handle_signal);
 	/* intializing enviroment variables */
 	environ = create_env();
+	sh_data.wstatus = 0;
 
 	while (1)
 	{
@@ -145,23 +145,31 @@ int main(int argc, char **argv)
 		sh_data.tokens = NULL;
 		sh_data.cmd_path = NULL;
 		sh_data.cmd_entered = NULL;
+		errno = 0;
 
 		prompt();
 		/* getting the line and handling it */
 		if (getting_line(&sh_data) == -1)
+		{
+			sh_data->wstatus = errno;
 			continue;
+		}
 		if (handle_variables(&sh_data) == -1)
 		{
 			free(sh_data.line);
 			free(sh_data.tokens);
 			perror("variable error");
+			sh_data->wstatus = errno;
 			continue;
 		}
 			
 
 		/* check cmd and builtins and then PATH*/
 		if (check_cmd(&sh_data, argv) == -1)
+		{
+			sh_data->wstatus = errno;
 			continue;
+		}
 
 		/*execute*/
 		excuting_cmd(&sh_data, argv);
