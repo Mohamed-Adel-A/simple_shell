@@ -50,7 +50,7 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 		{
 			_getc(stream);
 			_getc(stream);
-			continue;
+			/*continue;*/
 		}
 		printf("%i\n",c);
 		if (i >= *n - 1)
