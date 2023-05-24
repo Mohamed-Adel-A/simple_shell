@@ -37,7 +37,7 @@ int check_variable(int token_idx, shell_data_t *sh_data)
 
 	while (str[i] != '\0')
 	{
-		printf("str : %s", str + i);
+		printf("str : %s", str);
 		var_pos = _strchar(str + i, '$');
 		if (var_pos == -1)
 			return (0);
