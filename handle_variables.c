@@ -36,7 +36,7 @@ int check_variable(int token_idx, shell_data_t *sh_data)
 	while (str[i] != '\0')
 	{
 		printf("str : %s\n", str);
-		var_pos = _strchar(str + i, '$');
+		var_pos = _strchar(str, '$');
 		if (var_pos == -1)
 			return (0);
 		i = var_pos + 1;
@@ -44,7 +44,7 @@ int check_variable(int token_idx, shell_data_t *sh_data)
 		{
 			var_str = _itoa(getpid(), number);
 			i++;
-			/*printf("$$ = %s, : i = %i\n", number, i);*/
+			printf("$$ = %s, : i = %i\n", number, i);
 
 		}
 		else if (str[i] == '?')
