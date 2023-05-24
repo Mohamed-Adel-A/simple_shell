@@ -45,10 +45,10 @@ int check_variable(int token_idx, shell_data_t *sh_data)
 		{
 			var_str = _itoa(getpid(), number);
 			i++;
-			printf("$$ = %s\n", number);
+			printf("$$ = %s, : i = %i\n", number, i);
 
 		}
-		else if (str[1] == '?')
+		else if (str[i] == '?')
 		{
 			var_str = _itoa(sh_data->wstatus, number);
 			i++;
