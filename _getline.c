@@ -70,7 +70,7 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 		if (c == '\n')
 			break;
 	}
-	if (c == EOF && i == 0)
+	if (c == EOF && i == 0)/*here*/
 	{
 		free(lline);
 		return (-1);
