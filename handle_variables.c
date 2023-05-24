@@ -19,7 +19,7 @@ void free_variables(shell_data_t *sh_data)
 {
 	int i;
 
-	if(sh_data->variables == NULL)
+	if (sh_data->variables == NULL)
 	{
 		return;
 	}
@@ -47,7 +47,7 @@ int add_variable(char *var, shell_data_t *sh_data)
 	char **old_vars, **new_vars;
 
 	old_vars = sh_data->variables;
-	if(old_vars == NULL)
+	if (old_vars == NULL)
 	{
 		new_vars = malloc(sizeof(char *) * 2);
 		if (new_vars == NULL)
@@ -60,7 +60,7 @@ int add_variable(char *var, shell_data_t *sh_data)
 		{
 		}
 
-		new_vars = _realloc(old_vars, sizeof(char *) * (i + 3),  sizeof(char *) * (i));
+		new_vars = _realloc(old_vars, sizeof(char *) * (i + 3), sizeof(char *) * i);
 		if (new_vars == NULL)
 		{
 			return (-1);
@@ -77,7 +77,7 @@ int add_variable(char *var, shell_data_t *sh_data)
 
 
 /**
- * check_variable - check if there is variable and replace it :\
+ * check_variable - check if there is variable and replace it
  * @token_idx: index of the token that have $ in it
  * @sh_data: shell data
  *
@@ -158,7 +158,7 @@ int check_variable(int token_idx, shell_data_t *sh_data)
 
 
 /**
- * handle_variables - function that handel variables :\
+ * handle_variables - function that handel variables
  * @sh_data: shell data
  *
  * Return: 0 in success, -1 in failure
