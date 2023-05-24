@@ -1,6 +1,69 @@
 #include "shell.h"
 
+/**
+ * free_variables - free varibles from sh_data->variables
+ * @sh_data: shell data
+ *
+ * Return: void
+ */
+void free_variables(shell_data_t *sh_data)
+{
+	int i;
 
+	if(sh_data->variables == NULL)
+	{
+		return;
+	}
+	else
+	{
+		for (i = 0 ; sh_data->variables[i] != NULL ; i++)
+		{
+			free(h_data->variables[i]);
+		}
+		free(sh_data->variables);
+	}
+}
+
+
+/**
+ * add_variable - add variable to variables list to be freed later
+ * @var: pointer to variable
+ * @sh_data: shell data
+ *
+ * Return: undesided yet
+ */
+int add_variable(char *var, shell_data_t *sh_data)
+{
+	int i = 0;
+	char **old_vars, **new_vars;
+
+	old_vars == sh_data->variables;
+	if(old_vars == NULL)
+	{
+		new_vars = malloc(sizeof(char *) * 2);
+		if (new_vars= NULL)
+			return (-1);
+		sh_data->variables = new_vars;
+	}
+	else
+	{
+		for (i = 0 ; old_vars[i] != NULL ; i++)
+		{
+		}
+
+		new_vars = _realloc(old_vars, sizeof(char *) * (i + 2));
+		if (new_vars == NULL)
+		{
+			return (-1);
+		}
+	}
+
+	new_vars[i] = var;
+	new_vars[i + 1] = NULL;
+	sh_data->variables = new_vars;
+
+	return (0);
+}
 
 
 
