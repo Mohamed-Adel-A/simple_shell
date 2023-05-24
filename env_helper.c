@@ -143,7 +143,6 @@ int _setenv(const char *name, const char *value, int overwrite)
 			return (0);
 		}
 	}
-
 	new_environ = (char **) _realloc(environ, ((i + 2) * sizeof(char *)),
 					 ((i) * sizeof(char *)));
 	if (new_environ == NULL)
