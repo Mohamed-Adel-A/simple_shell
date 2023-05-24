@@ -89,7 +89,7 @@ char *_strcat(char *dest, const char *src);
 
 /* str2_helper */
 int _strchar(const char *str, char c);
-char *_strcpy(char *dest, const char *src, int n);
+char *_strncpy(char *dest, const char *src, int n);
 
 
 /* mem_helper.c */
