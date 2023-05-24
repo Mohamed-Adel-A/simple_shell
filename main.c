@@ -160,7 +160,7 @@ int main(int argc, char **argv)
 	while (1)
 	{
 		prompt();
-		init_data(sh_data);
+		init_data(&sh_data);
 		/* getting the line and handling it */
 		if (getting_line(&sh_data) == -1)
 		{
