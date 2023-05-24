@@ -149,6 +149,14 @@ int main(int argc, char **argv)
 		/* getting the line and handling it */
 		if (getting_line(&sh_data) == -1)
 			continue;
+		if (handle_variables(&sh_data) == -1)
+		{
+			free(sh_data->line);
+			free(sh_data->tokens);
+			perror("variable error");
+			continue;
+		}
+			
 
 		/* check cmd and builtins and then PATH*/
 		if (check_cmd(&sh_data, argv) == -1)
