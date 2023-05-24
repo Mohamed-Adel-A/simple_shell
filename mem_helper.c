@@ -33,7 +33,7 @@ void *_memcpy(void *dest, const void *src, size_t n)
  *
  * Return: pointer to new memory, or NULL on error
  */
-void *_realloc(void *ptr, size_t size)
+void *_realloc(void *ptr, size_t size, size_t cpy_size)
 {
 	void *new_ptr;
 
@@ -56,11 +56,10 @@ void *_realloc(void *ptr, size_t size)
 	if (new_ptr == NULL)
 		return (NULL);
 
-	/*cpy_size = sizeof(ptr);
 	if (cpy_size > size)
-		cpy_size = size;*/
+		cpy_size = size;
 
-	_memcpy(new_ptr, ptr, size);
+	_memcpy(new_ptr, ptr, cpy_size);
 	free(ptr);
 
 	return (new_ptr);
