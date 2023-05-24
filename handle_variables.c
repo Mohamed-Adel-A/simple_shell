@@ -51,7 +51,7 @@ int check_variable(int token_idx, shell_data_t *sh_data)
 	{
 		if (_isalpha(str[i]) || str[i] == '_')
 		{
-			while (_isalpha(str[i]) || _isdigit(str[i]) || str[i] == '_' )
+			while (str[i] != '\0' && (_isalpha(str[i]) || _isdigit(str[i]) || str[i] == '_' ))
 			{
 				i++;
 			}
