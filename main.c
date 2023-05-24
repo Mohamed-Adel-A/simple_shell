@@ -20,20 +20,7 @@ void prompt(void)
 }
 
 
-/**
- * free_all - free all variables
- * @sh_data: shell data
- *
- * Return: void
- */
-void free_all(shell_data_t *sh_data)
-{
-	free(sh_data->line);
-	free(sh_data->tokens);
-	free(sh_data->cmd_path);
-	free_variables(sh_data);
-	free_env();
-}
+
 
 
 
@@ -155,14 +142,12 @@ int main(int argc, char **argv)
 	(void)argc;
 
 	signal(SIGINT, handle_signal);
-	/* intializing enviroment variables */
 	environ = create_env();
 	sh_data.wstatus = 0;
 	while (1)
 	{
 		prompt();
 		init_data(&sh_data);
-		/* getting the line and handling it */
 		if (getting_line(&sh_data) == -1)
 		{
 			sh_data.wstatus = errno;
@@ -178,27 +163,20 @@ int main(int argc, char **argv)
 			continue;
 		}
 
-		/* check cmd and builtins and then PATH*/
 		if (check_cmd(&sh_data, argv) == -1)
 		{
 			sh_data.wstatus = errno;
 			continue;
 		}
 
-		/*execute*/
 		excuting_cmd(&sh_data, argv);
-
 		free(sh_data.tokens);
 		free_variables(&sh_data);
 		free(sh_data.line);
 		free(sh_data.cmd_path);
-
 		/*if (!isatty(STDIN_FILENO))
-			break;
-		*/
+		*	break;*/
 	}
-
-	printf("erron = %i\n", errno);
 	free_env();
 	return (errno);
 }
