@@ -19,7 +19,7 @@ int builtin_exit(shell_data_t *sh_data)
 	char *exit_st_str = args[1];
 	int exit_st_int = 0;
 
-	if (exit_st_str != NULL)
+	if (exit_st_str == NULL)
 	{
 		free_all(sh_data);
 		exit(0);
