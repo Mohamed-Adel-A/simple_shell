@@ -49,7 +49,7 @@ int add_variable(char *var, shell_data_t *sh_data)
 	old_vars = sh_data->variables;
 	if(old_vars == NULL)
 	{
-		new_vars = malloc(sizeof(char *) * 3);
+		new_vars = malloc(sizeof(char *) * 2);
 		if (new_vars == NULL)
 			return (-1);
 		sh_data->variables = new_vars;
@@ -60,7 +60,7 @@ int add_variable(char *var, shell_data_t *sh_data)
 		{
 		}
 
-		new_vars = _realloc(old_vars, sizeof(char *) * (i + 2));
+		new_vars = _realloc(old_vars, sizeof(char *) * (i + 3));
 		if (new_vars == NULL)
 		{
 			return (-1);
