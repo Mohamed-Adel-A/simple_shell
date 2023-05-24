@@ -51,6 +51,8 @@ typedef struct buitins
 void prompt(void);
 void free_all(shell_data_t *sh_data);
 
+/* handle_variables.c */
+int handle_variables(shell_data_t *sh_data);
 
 /* utilities */
 void handle_signal(int signal_no);
