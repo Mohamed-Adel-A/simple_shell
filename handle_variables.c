@@ -27,11 +27,12 @@ int _isdigit(char c)
 }
 
 
-int check_variable(char *str, shell_data_t *sh_data)
+int check_variable(int token_idx, shell_data_t *sh_data)
 {
 	int i = 0, var_pos, var_len, str_len, full_len, var_name_len;
-	char *var_str, number[20], *full_string, *var_name;
-
+	char *var_str, number[20], *full_string, *var_name, *str;
+	
+	str = sh_data->tokens[token_idx];
 	var_pos = _strchar(str, '$');
 	if (var_pos == -1)
 		return (0);
@@ -70,6 +71,7 @@ int check_variable(char *str, shell_data_t *sh_data)
 			return (0);
 		}
 	}
+		
 	
 	var_len = strlen(var_str);
 	str_len = strlen(str) - (i - var_pos + 1);
@@ -79,7 +81,7 @@ int check_variable(char *str, shell_data_t *sh_data)
 	memcpy(full_str, str, var_pos);
 	memcpy(full_str + var_pos, var_str, var_len);
 	strcpy(full_str + var_pos + var_len, str + i + 1);
-	
+
 	free(var_name);
 	return (0);
 }
