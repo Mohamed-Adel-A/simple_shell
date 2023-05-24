@@ -30,7 +30,7 @@ int _isdigit(char c)
 int check_variable(int token_idx, shell_data_t *sh_data)
 {
 	int i = 0, var_pos, var_len, str_len, full_len, var_name_len;
-	char *var_str, number[20], *full_string, *var_name, *str;
+	char *var_str, number[20], *full_str, *var_name, *str;
 	
 	str = sh_data->tokens[token_idx];
 	var_pos = _strchar(str, '$');
@@ -125,6 +125,7 @@ int check_variable(char *str)
 int handle_variables(shell_data_t *sh_data)
 {
 	int i = 0, check_ret;
+	char *token;
 
 	if (sh_data->tokens == NULL)
 		return (-1);
