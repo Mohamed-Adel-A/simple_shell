@@ -42,8 +42,8 @@ int check_variable(int token_idx, shell_data_t *sh_data)
 			printf("here\n");
 			return (0);
 		}
-		printf("there\n");
 		i = var_pos + 1;
+		printf("there i = %i\n", i);
 		if(str[i] == '$')
 		{
 			var_str = _itoa(getpid(), number);
