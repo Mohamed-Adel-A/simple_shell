@@ -112,7 +112,8 @@ void excuting_cmd(shell_data_t *sh_data, char **argv)
 		}
 		else
 		{
-			wait(&(sh_data->wstatus));
+			waitpid(cpid, &(sh_data->wstatus), WUNTRACED);
+			printf("status: %i\n", sh_data->wstatus)
 		}
 	}
 	else
