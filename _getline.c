@@ -34,7 +34,7 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 	static size_t i;
 	char *lline = *lineptr, *new_line, c;
 
-	 i = 0;
+	i = 0;
 	if (lline == NULL)
 	{
 		lline = malloc(120 * sizeof(char));
@@ -70,7 +70,7 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 		if (c == '\n')
 			break;
 	}
-	if (c == EOF)
+	if (c == EOF && i == 0)
 	{
 		free(lline);
 		return (-1);
