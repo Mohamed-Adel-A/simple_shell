@@ -68,10 +68,10 @@ int check_cmd(shell_data_t *sh_data)
 		else
 		{
 			sh_data->cmd_path = check_paths(sh_data->tokens[0]);
-			/*if (sh_data->cmd_path != NULL)
+			if (sh_data->cmd_path != NULL)
 			{
 				sh_data->tokens[0] = sh_data->cmd_path;
-			}*/
+			}
 			if (sh_data->cmd_path == NULL)
 			{
 				perror(sh_data->tokens[0]);
