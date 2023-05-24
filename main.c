@@ -47,6 +47,7 @@ int check_cmd(shell_data_t *sh_data)
 	int (*builtin_func)(shell_data_t *);
 
 	sh_data->cmd_entered = sh_data->tokens[0];
+	printf("1- %s\n",sh_data->cmd_entered);
 	if (_strncmp(sh_data->tokens[0], "/", 1) != 0 &&
 	    _strncmp(sh_data->tokens[0], "./", 2) != 0 &&
 	    _strncmp(sh_data->tokens[0], "../", 3) != 0)
@@ -77,6 +78,7 @@ int check_cmd(shell_data_t *sh_data)
 			}
 		}
 	}
+	printf("2- %s\n",sh_data->cmd_entered);
 	return (0);
 }
 
