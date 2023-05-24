@@ -68,6 +68,8 @@ int builtin_exit(shell_data_t *sh_data);
 int builtin_cd(shell_data_t *sh_data);
 
 /* atoi.c */
+int _isalpha(char c);
+int _isdigit(char c);
 int _isnumber(const char *str);
 int _atoi(const char *str);
 char *_itoa(int int_value, char *str);
