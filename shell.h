@@ -101,7 +101,7 @@ char *_strncpy(char *dest, const char *src, int n);
 
 /* mem_helper.c */
 void *_memcpy(void *dest, const void *src, size_t n);
-void *_realloc(void *ptr, size_t size);
+void *_realloc(void *ptr, size_t size, size_t cpy_size);
 
 /* tokenizing.c */
 char *_strtok(char *s, char *delim);
