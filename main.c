@@ -12,7 +12,7 @@ void prompt(void)
 
 	if (isatty(STDIN_FILENO))
 	{
-		write_c = _puts(prompt);
+		write_c = write(STDOUT_FILENO, prompt, _strlen(prompt));
 
 		if (write_c == -1)
 			exit(0);
