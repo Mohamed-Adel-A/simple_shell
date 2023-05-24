@@ -18,8 +18,13 @@ int builtin_exit(shell_data_t *sh_data)
 	char **args = sh_data->tokens;
 	char *exit_st_str = args[1];
 	int exit_st_int = 0;
-
+	
 	if (exit_st_str != NULL)
+	{
+		free_all(sh_data);
+		exit(errno);
+	}
+	else (exit_st_str != NULL)
 	{
 		if (args[2] != NULL)
 		{
@@ -44,10 +49,10 @@ int builtin_exit(shell_data_t *sh_data)
 		{
 			exit_st_int = exit_st_int % 256;
 		}
-	}
 
-	free_all(sh_data);
-	exit(exit_st_int);
+		free_all(sh_data);
+		exit(exit_st_int);
+	}	
 }
 
 
