@@ -41,11 +41,13 @@ int check_variable(int token_idx, shell_data_t *sh_data)
 	if(str[i] == '$')
 	{
 		var_str = _itoa(getpid(), number);
+		i++;
 			
 	}
 	else if (str[1] == '?')
 	{
 		var_str = _itoa(sh_data->wstatus, number);
+		i++;
 	}
 	else
 	{
@@ -55,11 +57,11 @@ int check_variable(int token_idx, shell_data_t *sh_data)
 			{
 				i++;
 			}
-			var_name_len = (i - var_pos + 1);
+			var_name_len = (i - var_pos - 1);
 			var_name = malloc(sizeof(char) * (var_name_len + 1));
 			if (var_name == NULL)
 				return (-1);
-			var_name = _strncpy(var_name, str + var_pos, var_name_len);
+			var_name = _strncpy(var_name, str + var_pos + 1, var_name_len);
 			var_str = _getenv(var_name);
 			if (var_str == NULL)
 			{
@@ -74,8 +76,8 @@ int check_variable(int token_idx, shell_data_t *sh_data)
 		
 	
 	var_len = strlen(var_str);
-	str_len = strlen(str) - (i - var_pos + 1);
-	full_len = str_len + var_len;
+	str_len = strlen(str) - (i - var_pos);
+	full_len = str_len + var_len + 1;
 	full_str = malloc(full_len + 1);
 
 	memcpy(full_str, str, var_pos);
