@@ -39,6 +39,7 @@ void free_all(shell_data_t *sh_data)
 /**
  * check_cmd - check cmd for builtin and path
  * @sh_data: shell data
+ * @argv: argv
  *
  * Return: 0 in success, -1 in failure
  */
@@ -162,7 +163,6 @@ int main(int argc, char **argv)
 			sh_data.wstatus = errno;
 			continue;
 		}
-			
 
 		/* check cmd and builtins and then PATH*/
 		if (check_cmd(&sh_data, argv) == -1)
