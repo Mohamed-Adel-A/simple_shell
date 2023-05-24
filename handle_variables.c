@@ -1,32 +1,23 @@
 #include "shell.h"
 
-/**
- * _isalpha - check if c is an alphabet
- * @c: character to be checked
- *
- * Return: 1 if it is, 0 otherwise
- */
-int _isalpha(char c)
-{
-	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
-		return (1);
-	return (0);
-}
 
-/**
- * _isdigit - check if c is a digit
- * @c: character to be checked
- *
- * Return: 1 if it is, 0 otherwise
- */
-int _isdigit(char c)
+
+
+
+int vriable_home_exit()
 {
-	if ((c >= '0' && c <= '9'))
-		return (1);
-	return (0);
+	
 }
 
 
+
+/**
+ * check_variable - check if there is variable and replace it :\
+ * @token_idx: index of the token that have $ in it
+ * @sh_data: shell data
+ *
+ * Return: 0 in success, -1 in failure
+ */
 int check_variable(int token_idx, shell_data_t *sh_data)
 {
 	int i = 0, var_pos, var_len, str_len, full_len, var_name_len;
@@ -98,7 +89,12 @@ int check_variable(int token_idx, shell_data_t *sh_data)
 
 
 
-
+/**
+ * handle_variables - function that handel variables :\
+ * @sh_data: shell data
+ *
+ * Return: 0 in success, -1 in failure
+ */
 int handle_variables(shell_data_t *sh_data)
 {
 	int i = 0, check_ret;
