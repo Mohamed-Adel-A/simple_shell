@@ -174,8 +174,6 @@ int main(int argc, char **argv)
 		free_variables(&sh_data);
 		free(sh_data.line);
 		free(sh_data.cmd_path);
-		/*if (!isatty(STDIN_FILENO))
-		*	break;*/
 	}
 	free_env();
 	return (errno);
