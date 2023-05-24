@@ -46,6 +46,7 @@ int check_cmd(shell_data_t *sh_data)
 {
 	int (*builtin_func)(shell_data_t *);
 
+	sh_data->cmd_entered = sh_data->tokens[0];
 	if (_strncmp(sh_data->tokens[0], "/", 1) != 0 &&
 	    _strncmp(sh_data->tokens[0], "./", 2) != 0 &&
 	    _strncmp(sh_data->tokens[0], "../", 3) != 0)
@@ -67,7 +68,6 @@ int check_cmd(shell_data_t *sh_data)
 			sh_data->cmd_path = check_paths(sh_data->tokens[0]);
 			if (sh_data->cmd_path != NULL)
 			{
-				sh_data->cmd_entered = sh_data->tokens[0];
 				sh_data->tokens[0] = sh_data->cmd_path;
 			}
 			else
