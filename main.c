@@ -135,10 +135,10 @@ int main(int argc, char **argv)
 
 	while (1)
 	{
-		sh_data->line = NULL;
-		sh_data->tokens = NULL;
-		sh_data->cmd_path = NULL;
-		sh_data->cmd_entered = NULL;
+		sh_data.line = NULL;
+		sh_data.tokens = NULL;
+		sh_data.cmd_path = NULL;
+		sh_data.cmd_entered = NULL;
 
 		prompt();
 		/* getting the line and handling it */
