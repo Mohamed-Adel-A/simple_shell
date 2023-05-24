@@ -20,7 +20,7 @@ extern char **environ;
  * @wstatus: wait status
  * @cmd_path: string holds path and cmd
  * @cmd_index: enteries indexing
- * @varibles: shell replaced variables
+ * @variables: shell replaced variables
  * @cmd_entered: entered cmd
  */
 typedef struct shell_data
@@ -30,7 +30,7 @@ typedef struct shell_data
 	int wstatus;
 	char *cmd_entered;
 	char *cmd_path;
-	char **varibles;
+	char **variables;
 	unsigned int cmd_index;
 } shell_data_t;
 
