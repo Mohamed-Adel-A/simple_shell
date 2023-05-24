@@ -82,25 +82,25 @@ char **tokenizing(char *line, char *delim)
 	if (line == NULL)
 		return (NULL);
 
-	line_cpy = strdup(line);
+	line_cpy = _strdup(line);
 	/*strcpy(line_c, line);*/
-	token = strtok(line, delim);
+	token = _strtok(line, delim);
 	while (token != NULL)
 	{
-		token = strtok(NULL, delim);
+		token = _strtok(NULL, delim);
 		tokens_count++;
 	}
 
 	tokens = malloc((tokens_count + 1) * sizeof(char *));
 	if (tokens == NULL)
 		return (NULL);
-	token = strtok(line_cpy, delim);
+	token = _strtok(line_cpy, delim);
 	tokens_count = 0;
 	while (token)
 	{
 		token_idx = (token - line_cpy);
 		tokens[tokens_count] = line + token_idx;
-		token = strtok(NULL, delim);
+		token = _strtok(NULL, delim);
 		tokens_count++;
 	}
 
