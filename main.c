@@ -193,8 +193,9 @@ int main(int argc, char **argv)
 		free(sh_data.line);
 		free(sh_data.cmd_path);
 
-		if (!isatty(STDIN_FILENO))
+		/*if (!isatty(STDIN_FILENO))
 			break;
+		*/
 	}
 
 	printf("erron = %i\n", errno);
