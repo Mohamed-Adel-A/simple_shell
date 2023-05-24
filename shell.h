@@ -46,6 +46,7 @@ typedef struct buitins
 
 
 /* main.c */
+void prompt(void);
 void free_all(shell_data_t *sh_data);
 
 
