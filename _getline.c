@@ -72,6 +72,8 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 		free(lline);
 		return (-1);
 	}
+	if (c == EOF)
+		i++;
 	lline[i] = '\0';
 	*lineptr = lline;
 	if (c!= 0)
