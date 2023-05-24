@@ -43,6 +43,7 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 	}
 	while ((c = _getc(stream)) != EOF)
 	{
+		fflush(stdin);
 		printf("%i\n",c);
 
 		if (i >= *n - 1)
