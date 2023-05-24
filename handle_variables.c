@@ -95,6 +95,7 @@ int check_variable(int token_idx, shell_data_t *sh_data)
 		str = sh_data->tokens[token_idx];
 		free(var_name);
 		var_name = NULL;
+		printf("s[i] : %s ",s[i])
 	}
 	return (0);
 }
@@ -152,8 +153,8 @@ int handle_variables(shell_data_t *sh_data)
 			if (check_ret == -1)
 				return (-1);
 		}
-		token = sh_data->tokens[i];
 		i++;
+		token = sh_data->tokens[i];
 	}
 	return (0);
 }
