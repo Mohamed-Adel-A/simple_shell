@@ -35,8 +35,8 @@ int check_variable(int token_idx, shell_data_t *sh_data)
 	str = sh_data->tokens[token_idx];
 	while (str[i] != '\0')
 	{
-		printf("str : %s\n", str);
-		var_pos = _strchar(str, '$');
+		printf("str : %s\n", str + i);
+		var_pos = _strchar(str + i, '$');
 		if (var_pos == -1)
 		{
 			printf("here\n");
@@ -147,7 +147,7 @@ int handle_variables(shell_data_t *sh_data)
 	token = sh_data->tokens[i];
 	while (token != NULL)
 	{
-		printf("out: %s", token);
+		printf("out: %s\n", token);
 		if(_strchar(token, '$') != -1)
 		{
 			printf("in: %s\n", token);
