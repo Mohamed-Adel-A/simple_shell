@@ -43,21 +43,7 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 	}
 	while ((c = _getc(stream)) != EOF)
 	{
-		if (c == 27) 
-		{ 
-		    getchar();
-			getchar();
-		    c = getchar();
-			if (c == 'A') { 
-                write(STDOUT_FILENO, "\nUp arrow pressed\n", 18);
-            } else if (c == 'B') { 
-                write(STDOUT_FILENO, "\nDown arrow pressed\n", 20);
-            } else if (c == 'C') { 
-                write(STDOUT_FILENO, "\nRight arrow pressed\n", 21);
-            } else if (c == 'D') { 
-                write(STDOUT_FILENO, "\nLeft arrow pressed\n", 19);
-            }
-		}
+		printf("%i\n",c);
 
 		if (i >= *n - 1)
 		{
