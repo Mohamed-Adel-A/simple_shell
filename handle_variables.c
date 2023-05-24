@@ -42,7 +42,7 @@ int check_variable(int token_idx, shell_data_t *sh_data)
 			printf("here\n");
 			return (0);
 		}
-		printf("here\n");
+		printf("there\n");
 		i = var_pos + 1;
 		if(str[i] == '$')
 		{
