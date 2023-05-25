@@ -71,6 +71,7 @@ int handle_comments(char *line);
 int (*check_builtin(char *cmd))(shell_data_t *sh_data);
 
 /* builtin_exit */
+void free_loop(shell_data_t *sh_data)
 void free_all(shell_data_t *sh_data);
 int builtin_exit(shell_data_t *sh_data);
 int builtin_cd(shell_data_t *sh_data);
