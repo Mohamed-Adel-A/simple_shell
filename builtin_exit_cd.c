@@ -8,21 +8,6 @@ int change_dir(char *olddir, char *newdir);
 /******************************************************/
 
 
-/**
- * free_loop - free all variables
- * @sh_data: shell data
- *
- * Return: void
- */
-void free_loop(shell_data_t *sh_data)
-{
-	free(sh_data->line);
-	free(sh_data->alltokens);
-	free(sh_data->tokens);
-	free(sh_data->cmd_path);
-	free_variables(sh_data);
-}
-
 
 
 /**
