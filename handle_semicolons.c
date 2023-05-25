@@ -12,14 +12,12 @@ int handle_semicolons(shell_data_t *sh_data)
 	}
 	for (i = index; tokens[i] != NULL; i++)
 	{
-		printf(" =%s",tokens[i]);
 		if(_strncmp(tokens[i], ";", 2) == 0)
 		{
 			break;
 		}
 	}
 	colon_pos = i;
-	printf("\n colon_pos = %i\n", colon_pos);
 	if (i == sh_data->next_tokens_index && tokens[i] != NULL)
 	{
 		sh_data->next_tokens_index++;
@@ -27,7 +25,6 @@ int handle_semicolons(shell_data_t *sh_data)
 	}
 	
 	tokens_size = i - sh_data->next_tokens_index;
-	printf("tokens size = %i\n", tokens_size);
 	current_tokens = malloc(sizeof(char *) * (tokens_size + 1));
 	if (current_tokens == NULL)
 		return (-1);
@@ -35,14 +32,12 @@ int handle_semicolons(shell_data_t *sh_data)
 	for (i = 0; i < tokens_size; i++)
 	{
 		current_tokens[i] = tokens[index + i];
-		printf(" >%s ",current_tokens[i]);
 	}
 		current_tokens[i] = NULL;
 
 	if (sh_data->tokens != NULL)
 		free(sh_data->tokens);
 	sh_data->tokens = current_tokens;
-	printf("\n tokens[colon_pos] = %s\n",tokens[colon_pos]);
 
 	if (tokens[colon_pos] == NULL)	
 	{
@@ -50,7 +45,6 @@ int handle_semicolons(shell_data_t *sh_data)
 	}
 	else
 		sh_data->next_tokens_index = colon_pos + 1;
-	printf("index = %i\n", sh_data->next_tokens_index);
 	return (0);
 }
 
