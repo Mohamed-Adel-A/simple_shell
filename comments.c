@@ -16,8 +16,8 @@ int handle_comments(char *line)
 	for (i = 0 ; line[i] != '#' && line[i] != '\0' ; i++)
 	{
 	}
-	if (i == 0 && line[i] = '#')
-		line[i] = '\0';;
+	if (i == 0 && line[i] == '#')
+		line[i] = '\0';
 	else if (line[i] == '#' && line[i - 1] == ' ')
 	{
 		line[i - 1] = '\0';
