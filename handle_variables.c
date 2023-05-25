@@ -142,10 +142,7 @@ int check_variable(int token_idx, shell_data_t *sh_data)
 		printf("var_len= %i ; str_len= %i ;  full_len= %i \n", var_len, str_len, full_len);
 
 		full_str = malloc(full_len + 1);
-		if (str[i] == '\0')
-		{
-			printf("-----end-----\n");
-		}
+		
 		
 		printf("s[%i] = %c --\n", i, str[i]);
 
@@ -157,7 +154,9 @@ int check_variable(int token_idx, shell_data_t *sh_data)
 		free(sh_data->alltokens[token_idx]);
 		sh_data->alltokens[token_idx] = full_str;
 		str = sh_data->alltokens[token_idx];
-		/*add_variable(full_str, sh_data);*/
+		add_variable(full_str, sh_data);
+		if (str[i] == '\0')
+			break;
 	}
 	return (0);
 }
