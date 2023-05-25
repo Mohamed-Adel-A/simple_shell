@@ -146,7 +146,7 @@ int getting_line(shell_data_t *sh_data)
 	{
 		free_all(sh_data);
 		/* _puts("\n");*/
-		printf("exiting : %i\n", errno);
+		printf("exiting : %i\n", sh_data->wstatus);
 		exit(0);
 	}
 	else if (check_empty_line(line))
