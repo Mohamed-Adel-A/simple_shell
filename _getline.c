@@ -109,11 +109,14 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
  * check_empty_line - check if line is empty
  * @line: entered line
  *
- * Return: 1 in success, 0 in failure
+ * Return: 1 if empty, 0 if not
  */
 int check_empty_line(const char *line)
 {
 	int i = 0;
+
+	if (line == NULL)
+		return (1);
 
 	while (line[i] != '\0')
 	{
