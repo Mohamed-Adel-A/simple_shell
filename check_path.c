@@ -1,5 +1,11 @@
 #include "shell.h"
 
+/*******************************************/
+char *check_paths(char *cmd);
+void free_used_paths(char **path_array);
+/*******************************************/
+
+
 /**
  * check_paths - search for cmd in paths in PATH
  * @cmd: the program name
@@ -34,7 +40,27 @@ char *check_paths(char *cmd)
 	}
 
 	free(all_paths);
-	free(paths_array);
+	free_used_paths(path_array);
 
 	return (single_path);
+}
+
+
+/**
+ * free_used_paths - free paths used in check paths
+ * @path_array: tokenized pathed to be freed
+ *
+ * Return: void
+ */
+void free_used_paths(char **path_array)
+{
+	int i;
+
+	if (path_array == NULL)
+		return;
+
+	for (i = 0 ; path_array[i] != NULL ; i++)
+		free(path_array[i]);
+
+	free(path_array);
 }
