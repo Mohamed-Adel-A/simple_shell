@@ -172,7 +172,6 @@ int main(int argc, char **argv)
 
 		excuting_cmd(&sh_data, argv);
 		free_loop(&sh_data);
-		
 	}
 	free_env();
 	return (errno);
