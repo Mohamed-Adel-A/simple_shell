@@ -16,6 +16,7 @@ extern char **environ;
 /**
  * struct shell_data - struct shell data
  * @line: entered line
+ * @alltokens: all tokens
  * @tokens: line after tokenizing
  * @wstatus: wait status
  * @cmd_path: string holds path and cmd
@@ -27,6 +28,7 @@ extern char **environ;
 typedef struct shell_data
 {
 	char *line;
+	char **alltokens;
 	char **tokens;
 	int wstatus;
 	char *cmd_entered;
