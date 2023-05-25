@@ -57,6 +57,11 @@ int check_cmd(shell_data_t *sh_data, char **argv);
 void excuting_cmd(shell_data_t *sh_data, char **argv);
 void init_data(shell_data_t *sh_data);
 
+/* free */
+void free_loop(shell_data_t *sh_data);
+void free_tokens(sh_data_t sh_data);
+void free_all(shell_data_t *sh_data);
+
 /* handle tokens */
 int handle_semicolons(shell_data_t *sh_data);
 int loop(shell_data_t *sh_data, char **argv);
@@ -77,8 +82,6 @@ int handle_comments(char *line);
 int (*check_builtin(char *cmd))(shell_data_t *sh_data);
 
 /* builtin_exit */
-void free_loop(shell_data_t *sh_data);
-void free_all(shell_data_t *sh_data);
 int builtin_exit(shell_data_t *sh_data);
 int builtin_cd(shell_data_t *sh_data);
 
