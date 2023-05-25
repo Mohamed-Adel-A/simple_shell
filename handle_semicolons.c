@@ -3,14 +3,14 @@
 int handle_semicolons(shell_data_t *sh_data)
 {
 	char **tokens = sh_data->alltokens, **current_tokens;
-	int i, colon_pos = -1, tokens_size;
+	int i, colon_pos = -1, tokens_size, index;
 
-	i = sh_data->next_tokens_index;
+	index = sh_data->next_tokens_index;
 	if(i == -1)
 	{
 		return (1);
 	}
-	for (; tokens[i] != NULL; i++)
+	for (i = index; tokens[i] != NULL; i++)
 	{
 		printf(" =%s",tokens[i]);
 		if(_strncmp(tokens[i], ";", 2) == 0)
@@ -34,7 +34,7 @@ int handle_semicolons(shell_data_t *sh_data)
 
 	for (i = 0; i < tokens_size; i++)
 	{
-		current_tokens[i] = tokens[i];
+		current_tokens[i] = tokens[index + i];
 		printf(" >%s ",current_tokens[i]);
 	}
 		current_tokens[i] = NULL;
