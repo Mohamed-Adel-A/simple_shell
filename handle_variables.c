@@ -157,7 +157,7 @@ int check_variable(int token_idx, shell_data_t *sh_data)
 		str = sh_data->alltokens[token_idx];
 		/*add_variable(full_str, sh_data);*/
 		i = var_pos + var_len;
-		printf("s[%i]= %c", i , str[i]);
+		printf("s[%i]= %c\n", i , str[i]);
 	}
 	return (0);
 }
