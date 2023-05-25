@@ -19,6 +19,7 @@ void free_loop(shell_data_t *sh_data)
 	free(sh_data->line);
 	free_tokens(sh_data);
 	free(sh_data->tokens);
+	free(sh_data->cmd_path);
 	free_variables(sh_data);
 }
 
