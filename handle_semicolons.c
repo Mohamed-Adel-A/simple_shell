@@ -59,9 +59,6 @@ int handle_semicolons(shell_data_t *sh_data)
 
 int loop(shell_data_t *sh_data, char **argv)
 {
-	int tok_ret = 0;
-
-	
 	prompt();
 	init_data(sh_data);
 	if (getting_line(sh_data) == -1)
@@ -77,9 +74,8 @@ int loop(shell_data_t *sh_data, char **argv)
 		return (1);
 	}
 
-	while(tok_ret == 0)
+	while(handle_semicolons(sh_data) == 0)
 	{
-		tok_ret = handle_semicolons(sh_data);
 		
 		if (check_cmd(sh_data, argv) == -1)
 		{
