@@ -73,7 +73,7 @@ char *_strtok(char *s, char *delim)
  */
 char **tokenizing(char *line, char *delim)
 {
-	char *token, *line_cpy, allocated_token;
+	char *token, *line_cpy, *allocated_token;
 	/*char *delim = " \n";*/
 	char **tokens;
 	int tokens_count = 0;
