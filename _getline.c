@@ -22,6 +22,33 @@ int _getc(FILE *stream)
 }
 
 /**
+ * reallocate_line - reallocate line to new size
+ * @line: the line
+ * @n: size
+ * @i: index
+ *
+ * Return: 0 success, -1 failure
+ */
+int reallocate_line(char *line, size_t *n, size_t i)
+{
+	char *new_line;
+
+	if (*n < 120)
+		*n = 120;
+	else
+		*n += 120;
+	new_line = _realloc(line, *n, i - 1);
+	if (new_line == NULL)
+	{
+		free(line);
+		return (-1);
+	}
+	line = new_line;
+	return (0);
+}
+
+
+/**
  * _getline - get line from stream
  * @lineptr: pointer to string
  * @n: line size
@@ -50,17 +77,8 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 	{
 		if (i >= *n - 1)
 		{
-			if (*n < 120)
-				*n = 120;
-			else
-				*n += 120;
-			new_line = _realloc(lline, *n, i - 1);
-			if (new_line == NULL)
-			{
-				free(lline);
-				return (-1);
-			}
-			lline = new_line;
+			if (reallocate_line(lline, n, i) == -1)
+				return (-1)			
 		}
 		lline[i] = c;
 		i++;
