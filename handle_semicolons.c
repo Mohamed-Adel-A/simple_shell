@@ -48,21 +48,6 @@ int handle_semicolons(shell_data_t *sh_data)
 	return (0);
 }
 
-/**
- * free_loop - free all variables
- * @sh_data: shell data
- *
- * Return: void
- */
-void free_loop(shell_data_t *sh_data)
-{
-	free(sh_data->line);
-	free(sh_data->alltokens);
-	free(sh_data->tokens);
-	free_variables(sh_data);
-}
-
-
 int loop(shell_data_t *sh_data, char **argv)
 {
 	prompt();
