@@ -122,9 +122,11 @@ void init_data(shell_data_t *sh_data)
 {
 	sh_data->line = NULL;
 	sh_data->tokens = NULL;
+	sh_data->alltokens = NULL;
 	sh_data->variables = NULL;
 	sh_data->cmd_path = NULL;
 	sh_data->cmd_entered = NULL;
+	sh_data->next_tokens_index = 0;
 	errno = 0;
 }
 
@@ -155,9 +157,7 @@ int main(int argc, char **argv)
 		}
 		if (handle_variables(&sh_data) == -1)
 		{
-			free(sh_data.line);
-			free(sh_data.tokens);
-			free_variables(&sh_data);
+			free_loop(&sh_data);
 			perror("variable error");
 			sh_data.wstatus = errno;
 			continue;
@@ -170,10 +170,7 @@ int main(int argc, char **argv)
 		}
 
 		excuting_cmd(&sh_data, argv);
-		free(sh_data.tokens);
-		free_variables(&sh_data);
-		free(sh_data.line);
-		free(sh_data.cmd_path);
+		free_loop(&sh_data)
 	}
 	free_env();
 	return (errno);
