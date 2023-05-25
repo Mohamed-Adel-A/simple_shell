@@ -38,7 +38,7 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 		fflush(stream);
 	else
 		return (-1);
-	i = 0;		
+	i = 0;
 	if (lline == NULL)
 	{
 		lline = malloc(120 * sizeof(char));
@@ -76,7 +76,7 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 		i++;
 	lline[i] = '\0';
 	*lineptr = lline;
-	if (c!= 0)
+	if (c != 0)
 	{
 		i = 0;
 	}
