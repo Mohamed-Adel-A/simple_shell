@@ -98,14 +98,13 @@ char **tokenizing(char *line, char *delim)
 	tokens_count = 0;
 	while (token)
 	{
-		printf("t= %s\n", token);
 		allocated_token = _strdup(token);
-		printf("a= %s\n", allocated_token);
 		/*token_idx = (token - line_cpy);*/
 		tokens[tokens_count] = allocated_token;
+		printf("%i : %s : %p\n", tokens_count, tokens[tokens_count], tokens[tokens_count]);
 		token = _strtok(NULL, delim);
 		tokens_count++;
-		printf("%i : %s : %p\n", tokens_count, tokens[tokens_count], tokens[tokens_count]);
+		
 	}
 
 	tokens[tokens_count] = NULL;
