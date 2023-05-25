@@ -79,16 +79,13 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 				*n = 120;
 			else
 				*n += 120;
-			new_line = _realloc(lline, *n, i - 1);
+			new_line = _realloc(lline, *n, i);
 			if (new_line == NULL)
 			{
 				free(lline);
 				return (-1);
 			}
 			lline = new_line;
-			lline[i] = '\0';
-			printf("line : %s\n =================== \n", lline);
-			printf("n = %li ; ", *n);
 		}
 		lline[i] = c;
 		i++;
@@ -100,8 +97,6 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 		free(lline);
 		return (-1);
 	}
-	printf("i = %li\n", i);
-	printf("%s", lline);
 	lline[i] = '\0';
 	*lineptr = lline;
 	return (i);
@@ -146,7 +141,6 @@ int getting_line(shell_data_t *sh_data)
 	char *line = NULL;
 
 	getline_ret = _getline(&line, &line_len, stdin);
-	printf("%s\n", line);
 	if (getline_ret == -1)
 	{
 		free_all(sh_data);
