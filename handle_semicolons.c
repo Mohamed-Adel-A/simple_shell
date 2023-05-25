@@ -27,7 +27,7 @@ int handle_semicolons(shell_data_t *sh_data)
 	}
 	
 	tokens_size = i - sh_data->next_tokens_index;
-	printf("tokens size = %i", tokens_size);
+	printf("tokens size = %i\n", tokens_size);
 	current_tokens = malloc(sizeof(char *) * (tokens_size + 1));
 	if (current_tokens == NULL)
 		return (-1);
