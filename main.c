@@ -141,6 +141,7 @@ void init_data(shell_data_t *sh_data)
 int main(int argc, char **argv)
 {
 	shell_data_t sh_data;
+	int loop_ret;
 
 	(void)argc;
 
@@ -149,6 +150,10 @@ int main(int argc, char **argv)
 	sh_data.wstatus = 0;
 	while (1)
 	{
+		loop_ret =loop(&sh_data, argv);
+		if (loop_ret == 1)
+			continue;
+		/*
 		prompt();
 		init_data(&sh_data);
 		if (getting_line(&sh_data) == -1)
@@ -172,6 +177,7 @@ int main(int argc, char **argv)
 
 		excuting_cmd(&sh_data, argv);
 		free_loop(&sh_data);
+		*/
 	}
 	free_env();
 	return (errno);
