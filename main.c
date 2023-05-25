@@ -141,8 +141,9 @@ void init_data(shell_data_t *sh_data)
 int main(int argc, char **argv)
 {
 	shell_data_t sh_data;
-	(void)argc;
 	int loop_ret;
+
+	(void)argc;
 
 	signal(SIGINT, handle_signal);
 	environ = create_env();
