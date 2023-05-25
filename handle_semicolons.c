@@ -2,7 +2,7 @@
 
 int handle_semicolons(shell_data_t *sh_data)
 {
-	char **tokens = sh_data->alltokens, *current_tokens;
+	char **tokens = sh_data->alltokens, **current_tokens;
 	int i, colon_pos = -1, tokens_size;
 
 	i = sh_data->next_tokens_index;
