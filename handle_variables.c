@@ -142,7 +142,7 @@ int check_variable(int token_idx, shell_data_t *sh_data)
 		printf("var_len= %i ; str_len= %i ;  full_len= %i \n", var_len, str_len, full_len);
 
 		full_str = malloc(full_len + 1);
-		
+		printf("c = %c --\n", str[i]);
 
 		memcpy(full_str, str, var_pos);
 		memcpy(full_str + var_pos, var_str, var_len);
