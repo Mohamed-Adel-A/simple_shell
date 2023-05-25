@@ -155,8 +155,8 @@ int check_variable(int token_idx, shell_data_t *sh_data)
 		sh_data->alltokens[token_idx] = full_str;
 		str = sh_data->alltokens[token_idx];
 		add_variable(full_str, sh_data);
-		if (str[i] == '\0')
-			break;
+		i = var_pos + str_len - 2;
+		printf("s[%i]= %c", i , str[i]);
 	}
 	return (0);
 }
