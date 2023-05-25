@@ -37,8 +37,10 @@ void free_tokens(shell_data_t *sh_data)
 	if (sh_data->alltokens == NULL)
 		return;
 
+	printf("============ free ==============\n");
 	for (i = 0 ; sh_data->alltokens[i] != NULL ; i++)
 	{
+		printf("%i : %s : %p\n", i, sh_data->alltokens[i], sh_data->alltokens[i]);
 		free(sh_data->alltokens[i]);
 	}
 
