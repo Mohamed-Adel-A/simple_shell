@@ -48,9 +48,6 @@ int check_cmd(shell_data_t *sh_data, char **argv)
 			{
 				perror(sh_data->tokens[0]);
 			}
-			free(sh_data->tokens);
-			free(sh_data->line);
-			free(sh_data->cmd_path);
 			return (-1);
 		}
 		else
