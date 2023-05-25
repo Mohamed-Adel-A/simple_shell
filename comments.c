@@ -18,9 +18,7 @@ int handle_comments(char *line)
 	}
 	if (i == 0 && line[i] == '#')
 	{
-		printf("i= %i ; s[i]= %c\n", i, line[i]);
 		line[i] = '\0';
-		printf("i= %i ; s[i]= %c\n", i, line[i]);
 	}
 	else if (line[i] == '#' && line[i - 1] == ' ')
 	{
