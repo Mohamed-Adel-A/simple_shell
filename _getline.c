@@ -150,13 +150,15 @@ int getting_line(shell_data_t *sh_data)
 		/*printf("exiting : %i\n", sh_data->wstatus);*/
 		exit(0);
 	}
-	else if (check_empty_line(line))
+
+	handle_comments(line);
+
+	if (check_empty_line(line))
 	{
 		free(line);
 		return (-1);
 	}
 
-	handle_comments(line);
 	sh_data->line = line;
 	sh_data->alltokens = tokenizing(line, " \n");
 	return (0);
