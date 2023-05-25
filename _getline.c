@@ -118,7 +118,7 @@ int check_empty_line(char *line)
 	if (line == NULL)
 		return (1);
 
-	for (i = 0; line[i] != '\0', i++)
+	for (i = 0; line[i] != '\0'; i++)
 	{
 		if (line[i] != ' ' && line[i] != '\t' && line[i] != '\n')
 			return (0);
