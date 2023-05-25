@@ -61,33 +61,35 @@ int loop(shell_data_t *sh_data, char **argv)
 {
 	int tok_ret = 0;
 
+	
+	prompt();
+	init_data(sh_data);
+	if (getting_line(sh_data) == -1)
+	{
+		sh_data->wstatus = errno;
+		return (1);
+	}
+	if (handle_variables(sh_data) == -1)
+	{
+		free_loop(sh_data);
+		perror("variable error");
+		sh_data->wstatus = errno;
+		return (1);
+	}
+
 	while(tok_ret == 0)
 	{
-		prompt();
-		init_data(sh_data);
-		if (getting_line(sh_data) == -1)
-		{
-			sh_data->wstatus = errno;
-			return (1);
-		}
-		if (handle_variables(sh_data) == -1)
-		{
-			free_loop(sh_data);
-			perror("variable error");
-			sh_data->wstatus = errno;
-			return (1);
-		}
-
 		tok_ret = handle_semicolons(sh_data);
 		
 		if (check_cmd(sh_data, argv) == -1)
 		{
 			sh_data->wstatus = errno;
-			return (1);
+			continue;
 		}
 
 		excuting_cmd(sh_data, argv);
-		free_loop(sh_data);
 	}
+
+	free_loop(sh_data);
 	return (0);
 }
