@@ -139,9 +139,10 @@ int check_variable(int token_idx, shell_data_t *sh_data)
 		var_len = strlen(var_str);
 		str_len = strlen(str) - (i - var_pos);
 		full_len = str_len + var_len + 1;
+		printf("var_pos= %i\n", var_pos);
 		printf("var_len= %i ; str_len= %i ;  full_len= %i \n", var_len, str_len, full_len);
 
-		full_str = malloc(full_len + 1);
+		full_str = malloc(full_len);
 		
 		
 		printf("s[%i] = %c --\n", i, str[i]);
@@ -154,8 +155,8 @@ int check_variable(int token_idx, shell_data_t *sh_data)
 		free(sh_data->alltokens[token_idx]);
 		sh_data->alltokens[token_idx] = full_str;
 		str = sh_data->alltokens[token_idx];
-		add_variable(full_str, sh_data);
-		i = var_pos + str_len - 2;
+		/*add_variable(full_str, sh_data);*/
+		i = var_pos + var_len;
 		printf("s[%i]= %c", i , str[i]);
 	}
 	return (0);
