@@ -88,7 +88,7 @@ int check_variable(int token_idx, shell_data_t *sh_data)
 	int i = 0, var_pos, var_len, str_len, full_len, var_name_len;
 	char *var_str, number[20], *full_str, *var_name = NULL, *str;
 
-	str = sh_data->tokens[token_idx];
+	str = sh_data->alltokens[token_idx];
 	i = 0;
 	while (str[i] != '\0')
 	{
@@ -146,8 +146,8 @@ int check_variable(int token_idx, shell_data_t *sh_data)
 		memcpy(full_str + var_pos, var_str, var_len);
 		strcpy(full_str + var_pos + var_len, str + i);
 
-		sh_data->tokens[token_idx] = full_str;
-		str = sh_data->tokens[token_idx];
+		sh_data->alltokens[token_idx] = full_str;
+		str = sh_data->alltokens[token_idx];
 		add_variable(full_str, sh_data);
 	}
 	return (0);
@@ -166,10 +166,10 @@ int handle_variables(shell_data_t *sh_data)
 	int i = 0, check_ret;
 	char *token;
 
-	if (sh_data->tokens == NULL)
+	if (sh_data->alltokens == NULL)
 		return (-1);
 
-	token = sh_data->tokens[i];
+	token = sh_data->alltokens[i];
 	while (token != NULL)
 	{
 		if (_strchar(token, '$') != -1)
@@ -179,7 +179,7 @@ int handle_variables(shell_data_t *sh_data)
 				return (-1);
 		}
 		i++;
-		token = sh_data->tokens[i];
+		token = sh_data->alltokens[i];
 	}
 	return (0);
 }
