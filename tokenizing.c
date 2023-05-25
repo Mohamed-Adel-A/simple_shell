@@ -103,7 +103,7 @@ char **tokenizing(char *line, char *delim)
 		tokens[tokens_count] = allocated_token;
 		token = _strtok(NULL, delim);
 		tokens_count++;
-		printf("%i : %s\n", tokens_count, tokens[tokens_count]);
+		printf("%i : %s : %p\n", tokens_count, tokens[tokens_count], tokens[tokens_count]);
 	}
 
 	tokens[tokens_count] = NULL;
