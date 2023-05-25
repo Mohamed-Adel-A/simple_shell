@@ -33,17 +33,20 @@ int reallocate_line(char *line, size_t *n, size_t i)
 {
 	char *new_line;
 
-	if (*n < 120)
-		*n = 120;
-	else
-		*n += 120;
-	new_line = _realloc(line, *n, i - 1);
-	if (new_line == NULL)
+	if (i >= *n - 1)
 	{
-		free(line);
-		return (-1);
+		if (*n < 120)
+			*n = 120;
+		else
+			*n += 120;
+		new_line = _realloc(line, *n, i - 1);
+		if (new_line == NULL)
+		{
+			free(line);
+			return (-1);
+		}
+		line = new_line;
 	}
-	line = new_line;
 	return (0);
 }
 
@@ -75,11 +78,8 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 	}
 	while ((c = _getc(stream)) != EOF)
 	{
-		if (i >= *n - 1)
-		{
-			if (reallocate_line(lline, n, i) == -1)
-				return (-1)			
-		}
+		if (reallocate_line(lline, n, i) == -1)
+			return (-1);
 		lline[i] = c;
 		i++;
 		if (c == '\n')
