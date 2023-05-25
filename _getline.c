@@ -62,7 +62,7 @@ int reallocate_line(char *line, size_t *n, size_t i)
 ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 {
 	static size_t i;
-	char *lline = *lineptr, *new_line, c;
+	char *lline = *lineptr, c;
 
 	if (i == 0)
 		fflush(stream);
