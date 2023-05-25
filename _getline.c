@@ -86,7 +86,8 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 				return (-1);
 			}
 			lline = new_line;
-			printf("n = %li", *n);
+			printf("line : %s\n =================== \n", lline);
+			printf("n = %li ; ", *n);
 		}
 		lline[i] = c;
 		i++;
