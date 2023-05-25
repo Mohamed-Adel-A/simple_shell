@@ -2,7 +2,7 @@
 
 /*******************************************************/
 void free_loop(shell_data_t *sh_data);
-void free_tokens(sh_data_t sh_data);
+void free_tokens(shell_data_t *sh_data);
 void free_all(shell_data_t *sh_data);
 /*******************************************************/
 
@@ -30,7 +30,7 @@ void free_loop(shell_data_t *sh_data)
  *
  * Return: void
  */
-void free_tokens(sh_data_t *sh_data)
+void free_tokens(shell_data_t *sh_data)
 {
 	if (sh_data->alltokens == NULL)
 		return;
