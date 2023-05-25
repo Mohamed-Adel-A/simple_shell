@@ -73,7 +73,7 @@ char *_strtok(char *s, char *delim)
  */
 char **tokenizing(char *line, char *delim)
 {
-	char *token, *line_cpy;
+	char *token, *line_cpy, allocated_token;
 	/*char *delim = " \n";*/
 	char **tokens;
 	int tokens_count = 0;
@@ -98,8 +98,10 @@ char **tokenizing(char *line, char *delim)
 	tokens_count = 0;
 	while (token)
 	{
+		allocated_token = _strdup(token);
+		
 		token_idx = (token - line_cpy);
-		tokens[tokens_count] = line + token_idx;
+		tokens[tokens_count] = allocated_token;
 		token = _strtok(NULL, delim);
 		tokens_count++;
 	}
@@ -109,3 +111,11 @@ char **tokenizing(char *line, char *delim)
 
 	return (tokens);
 }
+
+
+
+
+ 
+ 
+ 
+ 
