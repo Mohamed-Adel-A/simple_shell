@@ -154,6 +154,7 @@ int check_variable(int token_idx, shell_data_t *sh_data)
 		strcpy(full_str + var_pos + var_len, str + i);
 		printf("full: %s\n", full_str);
 
+		free(sh_data->alltokens[token_idx]);
 		sh_data->alltokens[token_idx] = full_str;
 		str = sh_data->alltokens[token_idx];
 		/*add_variable(full_str, sh_data);*/
