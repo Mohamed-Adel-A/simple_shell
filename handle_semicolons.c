@@ -13,7 +13,7 @@ int handle_semicolons(shell_data_t *sh_data)
 	for (; tokens[i] != NULL; i++)
 	{
 		printf("%s\n",tokens[i]);
-		if(_strncmp(tokens[i], ";", 2) != -1)
+		if(_strncmp(tokens[i], ";", 2) == 0)
 		{
 			break;
 		}
