@@ -59,10 +59,10 @@ int reallocate_line(char *line, size_t *n, size_t i)
  *
  * Return: size of the line or -1 in case of error
  */
-ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
+ssize_t _getline(char *lineptr, size_t *n, FILE *stream)
 {
 	size_t i = 0;
-	char *lline = *lineptr, *new_line, c;
+	char *lline = lineptr, *new_line, c;
 
 	if (lline == NULL)
 	{
@@ -144,7 +144,7 @@ int getting_line(shell_data_t *sh_data)
 	size_t line_len = 0;
 	char *line = NULL;
 
-	getline_ret = _getline(&line, &line_len, stdin);
+	getline_ret = _getline(line, &line_len, stdin);
 	printf("%s\n", line);
 	if (getline_ret == -1)
 	{
