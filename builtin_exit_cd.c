@@ -17,8 +17,8 @@ int change_dir(char *olddir, char *newdir);
 void free_loop(shell_data_t *sh_data)
 {
 	free(sh_data->line);
-	free(sh_data->tokens);
 	free(sh_data->alltokens);
+	free(sh_data->tokens);
 	free(sh_data->cmd_path);
 	free_variables(sh_data);
 }
@@ -35,6 +35,7 @@ void free_all(shell_data_t *sh_data)
 {
 	free(sh_data->line);
 	free(sh_data->tokens);
+	free(sh_data->alltokens);
 	free(sh_data->cmd_path);
 	free_variables(sh_data);
 	free_env();
