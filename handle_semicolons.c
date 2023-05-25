@@ -25,7 +25,7 @@ int handle_semicolons(shell_data_t *sh_data)
 	}
 	
 	tokens_size = i - sh_data->next_tokens_index;
-	current_tokens = mlloc(sizeof(*char) * (tokens_size));
+	current_tokens = malloc(sizeof(*char) * (tokens_size));
 	if (current_tokens == NULL)
 		return (-1);
 
