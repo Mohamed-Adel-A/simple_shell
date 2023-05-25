@@ -93,7 +93,7 @@ int check_variable(int token_idx, shell_data_t *sh_data)
 	while (str[i] != '\0')
 	{
 		var_pos = _strchar(str + i, '$') + i;
-		if (var_pos == -1)
+		if (var_pos == -1 || str[var_pos + 1] == '\0')
 		{
 			return (0);
 		}
