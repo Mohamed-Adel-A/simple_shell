@@ -101,7 +101,6 @@ char **tokenizing(char *line, char *delim)
 		allocated_token = _strdup(token);
 		/*token_idx = (token - line_cpy);*/
 		tokens[tokens_count] = allocated_token;
-		printf("%i : %s : %p\n", tokens_count, tokens[tokens_count], tokens[tokens_count]);
 		token = _strtok(NULL, delim);
 		tokens_count++;
 		
