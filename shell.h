@@ -53,7 +53,9 @@ typedef struct buitins
 
 /* main.c */
 void prompt(void);
-void free_all(shell_data_t *sh_data);
+int check_cmd(shell_data_t *sh_data, char **argv);
+void excuting_cmd(shell_data_t *sh_data, char **argv);
+void init_data(shell_data_t *sh_data);
 
 /* handle tokens */
 int handle_semicolons(shell_data_t *sh_data);
