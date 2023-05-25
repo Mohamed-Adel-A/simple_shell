@@ -55,6 +55,10 @@ typedef struct buitins
 void prompt(void);
 void free_all(shell_data_t *sh_data);
 
+/* handle tokens */
+int handle_semicolons(shell_data_t *sh_data);
+int loop(shell_data_t *sh_data, char **argv);
+
 /* handle_variables.c */
 void free_variables(shell_data_t *sh_data);
 int add_variable(char *var, shell_data_t *sh_data);
