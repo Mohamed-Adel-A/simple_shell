@@ -44,7 +44,7 @@ int handle_semicolons(shell_data_t *sh_data)
 		sh_data->next_tokens_index = -1;
 	}
 	sh_data->next_tokens_index = colon_pos + 1;
-	return (0)
+	return (0);
 }
 
 
@@ -60,7 +60,7 @@ int loop(shell_data_t *sh_data, char **argv)
 		init_data(sh_data);
 		if (getting_line(sh_data) == -1)
 		{
-			sh_data.wstatus = errno;
+			sh_data->wstatus = errno;
 			return (1);
 		}
 		if (handle_variables(sh_data) == -1)
