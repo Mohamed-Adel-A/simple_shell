@@ -2,7 +2,7 @@
 
 /*******************************************/
 char *check_paths(char *cmd);
-void free_used_paths(char **path_array);
+void free_used_paths(char **paths_array);
 /*******************************************/
 
 
@@ -40,7 +40,7 @@ char *check_paths(char *cmd)
 	}
 
 	free(all_paths);
-	free_used_paths(path_array);
+	free_used_paths(paths_array);
 
 	return (single_path);
 }
@@ -48,19 +48,19 @@ char *check_paths(char *cmd)
 
 /**
  * free_used_paths - free paths used in check paths
- * @path_array: tokenized pathed to be freed
+ * @paths_array: tokenized pathed to be freed
  *
  * Return: void
  */
-void free_used_paths(char **path_array)
+void free_used_paths(char **paths_array)
 {
 	int i;
 
-	if (path_array == NULL)
+	if (paths_array == NULL)
 		return;
 
-	for (i = 0 ; path_array[i] != NULL ; i++)
-		free(path_array[i]);
+	for (i = 0 ; paths_array[i] != NULL ; i++)
+		free(paths_array[i]);
 
-	free(path_array);
+	free(paths_array);
 }
