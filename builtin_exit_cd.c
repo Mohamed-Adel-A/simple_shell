@@ -1,30 +1,12 @@
 #include "shell.h"
 
 /******************************************************/
-void free_all(shell_data_t *sh_data);
 int builtin_exit(shell_data_t *sh_data);
 int builtin_cd(shell_data_t *sh_data);
 int change_dir(char *olddir, char *newdir);
 /******************************************************/
 
 
-
-
-/**
- * free_all - free all variables
- * @sh_data: shell data
- *
- * Return: void
- */
-void free_all(shell_data_t *sh_data)
-{
-	free(sh_data->line);
-	free(sh_data->tokens);
-	free(sh_data->alltokens);
-	free(sh_data->cmd_path);
-	free_variables(sh_data);
-	free_env();
-}
 
 /**
  * builtin_exit - builtin function associated with exit cmd
