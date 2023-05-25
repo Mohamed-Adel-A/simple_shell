@@ -82,4 +82,5 @@ int loop(shell_data_t *sh_data, char **argv)
 		excuting_cmd(sh_data, argv);
 		free_loop(sh_data);
 	}
+	return (0);
 }
