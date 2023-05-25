@@ -151,7 +151,7 @@ int main(int argc, char **argv)
 	{
 		loop_ret =loop(&sh_data, argv);
 		if (loop_ret == 1)
-			continue
+			continue;
 		/*
 		prompt();
 		init_data(&sh_data);
