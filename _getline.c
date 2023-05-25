@@ -94,7 +94,6 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 		i++;
 	lline[i] = '\0';
 	*lineptr = lline;
-	printf("%s",*lineptr);
 	if (c != 0)
 	{
 		i = 0;
