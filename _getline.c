@@ -153,6 +153,6 @@ int getting_line(shell_data_t *sh_data)
 
 	handle_comments(line);
 	sh_data->line = line;
-	sh_data->tokens = tokenizing(line, " \n");
+	sh_data->alltokens = tokenizing(line, " \n");
 	return (0);
 }
