@@ -96,7 +96,7 @@ int loop(shell_data_t *sh_data, char **argv)
 		}
 
 		excuting_cmd(sh_data, argv);
-		free(sh_data->cmd_path);
+		/*free(sh_data->cmd_path);*/
 		sh_data->cmd_path = NULL;
 	}
 
