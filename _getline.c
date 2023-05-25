@@ -123,7 +123,7 @@ int check_empty_line(char *line)
 		if (line[i] != ' ' && line[i] != '\t' && line[i] != '\n')
 			return (0);
 	}
-	pintf("empty line\n");
+	printf("empty line\n");
 	return (1);
 }
 
