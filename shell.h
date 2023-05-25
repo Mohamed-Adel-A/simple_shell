@@ -20,7 +20,7 @@ extern char **environ;
  * @tokens: line after tokenizing
  * @wstatus: wait status
  * @cmd_path: string holds path and cmd
- * @cmd_index: enteries indexing
+ * @next_tokens_index: enteries indexing
  * @variables: shell replaced variables
  * @cmd_entered: entered cmd
  * @exit_st: exit status
@@ -34,7 +34,7 @@ typedef struct shell_data
 	char *cmd_entered;
 	char *cmd_path;
 	char **variables;
-	unsigned int cmd_index;
+	int next_tokens_index;
 	int exit_st;
 } shell_data_t;
 
