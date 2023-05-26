@@ -140,3 +140,59 @@ int logical_operators_in_str(shell_data_t *sh_data,char operator)
 	sh_data->line = line;
 	return (0);
 }
+
+
+/**
+ * handle_logical_operators - break tokens series on || or &&
+ * @sh_data: shell data
+ * @op: logical operator
+ *
+ * Return: 1 there is no other tokens, 0 still there
+ *         -1 failure
+ */
+int handle_logical_operators(shell_data_t *sh_data, char *op)
+{
+	char **tokens = sh_data->alltokens, **current_tokens;
+	int i, colon_pos = -1, tokens_size, index, diff_pos;
+
+	index = sh_data->next_tokens_index;
+	if (index == -1 || tokens[index] == NULL)
+	{
+		sh_data->next_tokens_index = -1;
+		return (1);
+	}
+	for (i = index; tokens[i] != NULL; i++)
+	{
+		if (_strncmp(tokens[i], op, 3) == 0)
+		{
+			sh_data->logical_op = op[0];
+			break;
+		}
+	}
+	colon_pos = i;
+	diff_pos = i - (sh_data->next_tokens_index);
+	if (diff_pos == 0  && tokens[i] != NULL)
+	{
+		sh_data->next_tokens_index++;
+		return (0);
+	}
+	tokens_size = i - sh_data->next_tokens_index;
+	current_tokens = malloc(sizeof(char *) * (tokens_size + 1));
+	if (current_tokens == NULL)
+		return (-1);
+
+	for (i = 0; i < tokens_size; i++)
+		current_tokens[i] = tokens[index + i];
+
+	current_tokens[i] = NULL;
+
+	if (sh_data->tokens != NULL)
+		free(sh_data->tokens);
+	sh_data->tokens = current_tokens;
+
+	if (tokens[colon_pos] == NULL || tokens[colon_pos + 1] == NULL)
+		sh_data->next_tokens_index = -1;
+	else
+		sh_data->next_tokens_index = colon_pos + 1;
+	return (0);
+}
