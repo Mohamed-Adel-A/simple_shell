@@ -86,6 +86,8 @@ int builtin_cd(shell_data_t *sh_data)
 	{
 		if (_getenv("OLDPWD") == NULL)
 			return (0);
+		_puts(_getenv("OLDPWD"));
+		_puts("\n");
 		return (change_dir(_getenv("PWD"), _getenv("OLDPWD")));
 	}
 
