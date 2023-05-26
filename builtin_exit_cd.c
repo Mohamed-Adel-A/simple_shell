@@ -23,7 +23,7 @@ int builtin_exit(shell_data_t *sh_data)
 	if (exit_st_str == NULL)
 	{
 		free_all(sh_data);
-		exit(0);
+		exit(sh_data->wstatus);
 	}
 	else
 	{
