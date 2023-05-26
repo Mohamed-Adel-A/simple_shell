@@ -27,6 +27,7 @@ extern char **environ;
  * @cmd_entered: entered cmd
  * @exit_st: exit status
  * @cmd_idx: cmd index
+ * @argv: argv
  * @fd: file descriptor
  */
 typedef struct shell_data
@@ -66,7 +67,8 @@ void init_data(shell_data_t *sh_data);
 
 
 /* errors.c */
-int create_error(shell_data_t *sh_data, char *err_msg, int cmd_arg_idx, int file_err);
+int create_error(shell_data_t *sh_data, char *err_msg,
+		 int cmd_arg_idx, int file_err);
 
 /* semicolon */
 int simicolons_in_str(shell_data_t *sh_data);
