@@ -2,7 +2,7 @@
 
 /*************************************************************/
 void prompt(void);
-int check_cmd(shell_data_t *sh_data, char **argv);
+int check_cmd(shell_data_t *sh_data);
 void excuting_cmd(shell_data_t *sh_data, char **argv);
 /*************************************************************/
 
@@ -37,7 +37,7 @@ void prompt(void)
  *
  * Return: 0 in success, -1 in failure
  */
-int check_cmd(shell_data_t *sh_data, char **argv)
+int check_cmd(shell_data_t *sh_data)
 {
 	int (*builtin_func)(shell_data_t *);
 
