@@ -4,7 +4,6 @@
 void prompt(void);
 int check_cmd(shell_data_t *sh_data);
 void excuting_cmd(shell_data_t *sh_data, char **argv);
-void colse_file(shell_data_t *sh_data);
 /*************************************************************/
 
 /**
