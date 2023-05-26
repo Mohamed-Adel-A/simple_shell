@@ -176,7 +176,7 @@ int check_operatro(char *token, shell_data_t *sh_data)
 int handle_logical_operators(shell_data_t *sh_data)
 {
 	char **tokens = sh_data->alltokens, **current_tokens;
-	int i, j, colon_pos = -1, tokens_size, index, diff_pos;
+	int i, j, tokens_size, index;
 
 	index = sh_data->next_tokens_index;
 	if (index == -1 || tokens[index] == NULL)
