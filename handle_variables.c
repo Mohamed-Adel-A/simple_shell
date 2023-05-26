@@ -142,9 +142,9 @@ int check_variable(int token_idx, shell_data_t *sh_data)
 
 		full_str = malloc(full_len);
 
-		memcpy(full_str, str, var_pos);
-		memcpy(full_str + var_pos, var_str, var_len);
-		strcpy(full_str + var_pos + var_len, str + i);
+		_memcpy(full_str, str, var_pos);
+		_memcpy(full_str + var_pos, var_str, var_len);
+		_strcpy(full_str + var_pos + var_len, str + i);
 
 		free(sh_data->alltokens[token_idx]);
 		sh_data->alltokens[token_idx] = full_str;
