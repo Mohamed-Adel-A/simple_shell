@@ -94,3 +94,48 @@ int handle_semicolons(shell_data_t *sh_data)
 	return (0);
 }
 
+
+
+/**
+ * simicolons_in_str - handle semicolons in middle of string
+ * @sh_data: shell data
+ *
+ * Return: 0 success, -1 failure
+ */
+int logical_operators_in_str(shell_data_t *sh_data,char operator)
+{
+	int i, j, line_len;
+	char *line = sh_data->line, *new_line;
+
+	if (line == NULL)
+		return (-1);
+
+	line_len = _strlen(line);
+	for (i = 0 ; line[i] != '\0' ; i++)
+	{
+		if (line[i] == operator && line[i + 1] == operator)
+		{
+			if (i != 0 && line[i - 1] == ' ' && line[i + 2] == ' ')
+				continue;
+
+			new_line = malloc(sizeof(char) * (line_len + 3));
+			if (new_line == NULL)
+				return (-1);
+			for (j = 0; j < i ; j++)
+				new_line[j] = line[j];
+			new_line[j++] = ' ';
+			new_line[j++] = operator;
+			new_line[j++] = operator;
+			new_line[j++] = ' ';
+			for (; line[j - 2] != '\0'; j++)
+				new_line[j] = line[j - 2];
+			new_line[j] = '\0';
+			free(line);
+
+			line = new_line;
+			i += 2;
+		}
+	}
+	sh_data->line = line;
+	return (0);
+}
