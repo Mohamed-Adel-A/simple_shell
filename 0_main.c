@@ -159,6 +159,7 @@ int main(int argc, char **argv)
 	signal(SIGINT, handle_signal);
 	environ = create_env();
 	sh_data.wstatus = 0;
+	sh_data.cmd_idx = 0;
 	while (1)
 	{
 		loop_ret = loop(&sh_data, argv);
