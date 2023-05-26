@@ -175,8 +175,7 @@ int handle_logical_operators(shell_data_t *sh_data)
 		sh_data->logical_op = 0;
 	}
 	colon_pos = i;
-	diff_pos = i - (sh_data->next_tokens_index);
-	if (diff_pos == 0  && tokens[i] != NULL)
+	if (((i - index) == 0)  && tokens[i] != NULL)
 	{
 		sh_data->next_tokens_index++;
 		return (0);
@@ -185,16 +184,12 @@ int handle_logical_operators(shell_data_t *sh_data)
 	current_tokens = malloc(sizeof(char *) * (tokens_size + 1));
 	if (current_tokens == NULL)
 		return (-1);
-
 	for (i = 0; i < tokens_size; i++)
 		current_tokens[i] = tokens[index + i];
-
 	current_tokens[i] = NULL;
-
 	if (sh_data->tokens != NULL)
 		free(sh_data->tokens);
 	sh_data->tokens = current_tokens;
-
 	if (tokens[colon_pos] == NULL || tokens[colon_pos + 1] == NULL)
 		sh_data->next_tokens_index = -1;
 	else
