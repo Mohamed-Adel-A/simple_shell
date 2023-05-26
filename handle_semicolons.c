@@ -36,7 +36,7 @@ int simicolons_in_str(shell_data_t *sh_data)
 		}
 	}
 	sh_data->line = line;
-	retun (0);
+	return (0);
 }
 
 
