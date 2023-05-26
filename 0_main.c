@@ -136,7 +136,7 @@ int main(int argc, char **argv)
 {
 	shell_data_t sh_data;
 	int loop_ret;
-	FILE *fd;
+	int fd;
 
 	(void)argc;
 	signal(SIGINT, handle_signal);
