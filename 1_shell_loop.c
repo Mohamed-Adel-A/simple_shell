@@ -54,11 +54,11 @@ int loop(shell_data_t *sh_data, char **argv)
 	colon = _strchar(sh_data->line, ';');
 
 	or = _strchar(sh_data->line, '|');
-	if( or != -1 && s[or + 1] != '|')
+	if( or != -1 && sh_data->line[or + 1] != '|')
 		or = -1;
 
 	and = _strchar(sh_data->line, '&');
-	if( and != -1 && s[and + 1] != '&')
+	if( and != -1 && sh_data->line[and + 1] != '&')
 		and = -1;
 
 	while (ret == 0)
