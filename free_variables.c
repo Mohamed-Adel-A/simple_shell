@@ -26,7 +26,7 @@ void free_loop(shell_data_t *sh_data)
 
 
 /**
- * free_takens - free all tokens
+ * free_tokens - free all tokens
  * @sh_data: shell data
  *
  * Return: void
