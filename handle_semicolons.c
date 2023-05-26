@@ -23,6 +23,11 @@ int handle_semicolons(shell_data_t *sh_data)
 		sh_data->next_tokens_index++;
 		return (0);
 	}
+	if(tokens[i] != NULL && tokens[i + 1] == NULL)
+	{
+		sh_data->next_tokens_index = -1;
+		return (1);
+	}
 	
 	tokens_size = i - sh_data->next_tokens_index;
 	current_tokens = malloc(sizeof(char *) * (tokens_size + 1));
