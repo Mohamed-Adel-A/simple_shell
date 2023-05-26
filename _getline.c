@@ -159,6 +159,13 @@ int getting_line(shell_data_t *sh_data)
 	}
 
 	sh_data->line = line;
+
+	if (simicolons_in_str(sh_data) == -1)
+	{
+		free(line);
+		return (-1);
+	}
+
 	sh_data->alltokens = tokenizing(line, " \n");
 	return (0);
 }
