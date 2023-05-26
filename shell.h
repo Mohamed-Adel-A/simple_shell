@@ -25,6 +25,7 @@ extern char **environ;
  * @cmd_entered: entered cmd
  * @exit_st: exit status
  * @cmd_idx: cmd index
+ * @fd: file descriptor
  */
 typedef struct shell_data
 {
@@ -39,6 +40,7 @@ typedef struct shell_data
 	int exit_st;
 	unsigned int cmd_idx;
 	char **argv;
+	FILE *fd;
 } shell_data_t;
 
 /**
