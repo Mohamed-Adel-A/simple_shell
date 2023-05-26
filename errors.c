@@ -8,25 +8,36 @@
  *
  * Return: 0 success, -1 failure
  */
-int create_error(shell_data_t *sh_data, char *err_msg, int cmd_arg_idx)
+int create_error(shell_data_t *sh_data, char *err_msg, int cmd_arg_idx, int file_err)
 {
-	int cmd_idx_len, argv_len, cmd_len, err_msg_len, cmd_arg_len = 0;
+	int cmd_idx_len = 0, argv_len = 0, cmd_len = 0, err_msg_len = 0, cmd_arg_len = 0;
 	int colons_and_spaces, full_err_len;
-	char *argv, cmd_idx_str[20], *cmd, *cmd_arg = NULL, *full_err;
+	char *argv, cmd_idx_str[20], *cmd = NULL, *cmd_arg = NULL, *full_err;
+
+	if (file_err == 1)
+	{
+		/* ./hsh: 0: Can't open /tmp/hbtn_checker_tmp_27147 */
+		cmd_arg = sh_data->argv[1];
+		colons_and_spaces = 5;
+	}
+	else
+	{
+		cmd = sh_data->tokens[0];
+		cmd_len = _strlen(cmd);
+		colons_and_spaces = 7;
+	}
 
 	argv = sh_data->argv[0];
-	_itoa(sh_data->cmd_idx, cmd_idx_str);
-	cmd = sh_data->tokens[0];
-
 	argv_len = _strlen(argv);
+
+	_itoa(sh_data->cmd_idx, cmd_idx_str);
 	cmd_idx_len = _strlen(cmd_idx_str);
-	cmd_len = _strlen(cmd);
+
 	err_msg_len = _strlen(err_msg);
-	colons_and_spaces = 7;
 
 	/* not found path error */
 	/* ./hsh: 1: ls: not found */
-	
+
 	if(cmd_arg_idx > 0)
 	{
 		/* built-in cmd error */
@@ -45,8 +56,13 @@ int create_error(shell_data_t *sh_data, char *err_msg, int cmd_arg_idx)
 	_strcat(full_err, ": ");
 	_strcat(full_err, cmd_idx_str);
 	_strcat(full_err, ": ");
-	_strcat(full_err, cmd);
-	_strcat(full_err, ": ");
+
+	if (file_err != 1)
+	{
+		_strcat(full_err, cmd);
+		_strcat(full_err, ": ");
+	}
+
 	_strcat(full_err, err_msg);	
 	_strcat(full_err, cmd_arg);
 	_strcat(full_err, "\n");
