@@ -136,8 +136,8 @@ int check_variable(int token_idx, shell_data_t *sh_data)
 			}
 		}
 
-		var_len = strlen(var_str);
-		str_len = strlen(str) - (i - var_pos);
+		var_len = _strlen(var_str);
+		str_len = _strlen(str) - (i - var_pos);
 		full_len = str_len + var_len + 1;
 
 		full_str = malloc(full_len);
