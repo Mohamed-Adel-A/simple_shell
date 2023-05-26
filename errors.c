@@ -56,7 +56,7 @@ int create_error(shell_data_t *sh_data, char *err_msg,
 	if (full_err == NULL)
 		return (-1);
 
-	combine_str_error(full_err, argv, cmd_idx_str, cmd, err_msg, cmd_arg);
+	combine_str_error(full_err, argv, cmd_idx_str, cmd, err_msg, cmd_arg, file_err);
 	write(2, full_err, full_err_len);
 	free(full_err);
 	return (0);
@@ -71,11 +71,12 @@ int create_error(shell_data_t *sh_data, char *err_msg,
  * @cmd: cmd
  * @err_msg: error msg
  * @cmd_arg: cmd arg
+ * @file_err: file error
  *
  * Return: pointer ot full error
  */
 char *combine_str_error(char *full_err, char *argv, char *cmd_idx_str,
-			char *cmd, char *err_msg, char *cmd_arg)
+			char *cmd, char *err_msg, char *cmd_arg, int file_err)
 {
 	_strcpy(full_err, argv);
 	_strcat(full_err, ": ");
