@@ -30,12 +30,14 @@ int builtin_exit(shell_data_t *sh_data)
 		if (args[2] != NULL)
 		{
 			errno = EINVAL;
+			create_error(sh_data, "Illegal number: ", 2);
 			return (-1);
 		}
 
 		if (_isnumber(exit_st_str) == 0)
 		{
 			errno = EINVAL;
+			create_error(sh_data, "Illegal number: ", 1);
 			return (-1);
 		}
 
@@ -44,6 +46,7 @@ int builtin_exit(shell_data_t *sh_data)
 		if (exit_st_int < 0)
 		{
 			errno = EINVAL;
+			create_error(sh_data, "Illegal number: ", 1);
 			return (-1);
 		}
 		else if (exit_st_int > 255)
@@ -78,6 +81,7 @@ int builtin_cd(shell_data_t *sh_data)
 	if (args[2] != NULL)
 	{
 		errno = EINVAL;
+		create_error(sh_data, "Invaled argument: ", 2);
 		return (-1);
 	}
 
@@ -112,6 +116,7 @@ int change_dir(char *olddir, char *newdir)
 
 	if (chdir(newdir) == -1)
 	{
+		create_error(sh_data, "can't cd to ", 1);
 		return (-1);
 	}
 
