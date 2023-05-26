@@ -97,7 +97,7 @@ int handle_semicolons(shell_data_t *sh_data)
 
 
 /**
- * simicolons_in_str - handle semicolons in middle of string
+ * logical_operators_in_str - handle semicolons in middle of string
  * @sh_data: shell data
  * @operator: logical operators
  *
@@ -143,6 +143,30 @@ int logical_operators_in_str(shell_data_t *sh_data, char operator)
 
 
 /**
+ * check_operatro - 
+ * @token: token to be checked
+ * @sh_data: shell data
+ *
+ * Return: 1 found, 0 not found
+ */
+int check_operatro(char *token, shell_data_t *sh_data)
+{
+	if (_strncmp(token, "||", 3) == 0)
+	{
+		sh_data->logical_op = '|';
+		return (1);
+	}
+	if (_strncmp(token, "&&", 3) == 0)
+	{
+		sh_data->logical_op = '&';
+		return (1);
+	}
+	sh_data->logical_op = 0;
+	return (0);
+}
+
+
+/**
  * handle_logical_operators - break tokens series on || or &&
  * @sh_data: shell data
  *
@@ -162,31 +186,25 @@ int handle_logical_operators(shell_data_t *sh_data)
 	}
 	for (i = index; tokens[i] != NULL; i++)
 	{
-		if (_strncmp(tokens[i], "||", 3) == 0)
-		{
-			sh_data->logical_op = '|';
+		if(check_operatro(tokens[i], sh_data))
 			break;
-		}
-		if (_strncmp(tokens[i], "&&", 3) == 0)
-		{
-			sh_data->logical_op = '&';
-			break;
-		}
-		sh_data->logical_op = 0;
 	}
 	if (((i - index) == 0)  && tokens[i] != NULL)
 	{
 		sh_data->next_tokens_index++;
 		return (0);
 	}
+
 	tokens_size = i - sh_data->next_tokens_index;
 	current_tokens = malloc(sizeof(char *) * (tokens_size + 1));
 	for (j = 0; j < tokens_size; j++)
 		current_tokens[j] = tokens[index + j];
 	current_tokens[j] = NULL;
+
 	if (sh_data->tokens != NULL)
 		free(sh_data->tokens);
 	sh_data->tokens = current_tokens;
+
 	if (tokens[i] == NULL || tokens[i + 1] == NULL)
 		sh_data->next_tokens_index = -1;
 	else
