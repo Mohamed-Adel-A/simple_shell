@@ -139,6 +139,7 @@ int getting_line(shell_data_t *sh_data)
 	ssize_t getline_ret;
 	size_t line_len = 0;
 	char *line = NULL;
+	int colon, or, and;
 
 	getline_ret = _getline(&line, &line_len, sh_data->fd);
 
@@ -159,7 +160,19 @@ int getting_line(shell_data_t *sh_data)
 	}
 
 	sh_data->line = line;
+	colon = _strchar(sh_data->line, ';');
 
+	or = _strchar(sh_data->line, '|');
+	if( or != -1 && sh_data->line[or + 1] != '|')
+		or = -1;
+
+	and = _strchar(sh_data->line, '&');
+	if( and != -1 && sh_data->line[and + 1] != '&')
+		and = -1;
+
+	sh_data->colon = colon;
+	sh_data->or = or;
+	sh_data->and = and;
 	if (simicolons_in_str(sh_data) == -1 || logical_operators_in_str(sh_data, '|') == -1
 	   || logical_operators_in_str(sh_data, '&') == -1)
 	{
