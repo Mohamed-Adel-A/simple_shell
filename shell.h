@@ -10,6 +10,8 @@
 #include <dirent.h>
 #include <errno.h>
 #include <limits.h>
+#include <stddef.h>
+#include <fcntl.h>
 
 extern char **environ;
 
