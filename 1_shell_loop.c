@@ -80,7 +80,7 @@ int loop(shell_data_t *sh_data, char **argv)
 		free(sh_data->cmd_path);
 		sh_data->cmd_path = NULL;
 
-		if(sh_data->logical_op == '|' && sh_data->wstatus == 0)
+		if ((sh_data->logical_op == '|' && sh_data->wstatus == 0)
 			|| (sh_data->logical_op == '&' && sh_data->wstatus != 0))
 			break;
 	}
