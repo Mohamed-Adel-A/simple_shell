@@ -72,6 +72,7 @@ int loop(shell_data_t *sh_data, char **argv)
 			copy_tokens(sh_data);
 		}
 
+		printf("ret = %i\n", ret);
 		if (check_cmd(sh_data) == -1)
 		{
 			/*sh_data->wstatus = -1;*/
