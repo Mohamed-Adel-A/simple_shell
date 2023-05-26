@@ -6,7 +6,7 @@ int handle_semicolons(shell_data_t *sh_data)
 	int i, colon_pos = -1, tokens_size, index, diff_pos;
 
 	index = sh_data->next_tokens_index;
-	if (index == -1 || tokens[i] == NULL)
+	if (index == -1 || tokens[index] == NULL)
 	{
 		sh_data->next_tokens_index = -1;
 		return (1);
