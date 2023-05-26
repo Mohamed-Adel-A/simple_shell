@@ -68,14 +68,15 @@ int loop(shell_data_t *sh_data, char **argv)
 			ret =handle_logical_operators(sh_data, "&&");
 		else
 		{
-			ret = 1;
+			ret = 2;
 			copy_tokens(sh_data);
 		}
+		if (ret == 1 || ret == -1)
+			break;
 
 		printf("ret = %i\n", ret);
 		if (check_cmd(sh_data) == -1)
 		{
-			/*sh_data->wstatus = -1;*/
 			continue;
 		}
 
