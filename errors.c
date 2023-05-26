@@ -6,7 +6,7 @@ int create_error(shell_data_t *sh_data, char *err_msg,
 		 int cmd_arg_idx, int file_err);
 
 char *combine_str_error(char *full_err, char *argv, char *cmd_idx_str,
-			char *cmd, char *err_msg, char *cmd_arg, int file_err)
+			char *cmd, char *err_msg, char *cmd_arg, int file_err);
 /*************************************************************************/
 
 /**
