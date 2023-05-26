@@ -103,7 +103,7 @@ int handle_semicolons(shell_data_t *sh_data)
  *
  * Return: 0 success, -1 failure
  */
-int logical_operators_in_str(shell_data_t *sh_data,char operator)
+int logical_operators_in_str(shell_data_t *sh_data, char operator)
 {
 	int i, j, line_len;
 	char *line = sh_data->line, *new_line;
