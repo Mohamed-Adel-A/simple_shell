@@ -57,7 +57,6 @@ int loop(shell_data_t *sh_data, char **argv)
 	or = sh_data->or;
 	and = sh_data->and;
 
-	printf(";= %i ; |= %i ; &= %i\n", colon, or, and);
 	while (ret == 0)
 	{
 		if (colon != -1)
@@ -74,7 +73,6 @@ int loop(shell_data_t *sh_data, char **argv)
 		if (ret == 1 || ret == -1)
 			break;
 
-		printf("ret = %i\n", ret);
 		if (check_cmd(sh_data) == -1)
 		{
 			continue;
