@@ -10,7 +10,7 @@ int simicolons_in_str(shell_data_t *sh_data)
 	int i, j, line_len;
 	char *line = sh_data->line, *new_line;
 
-	if (line = NULL)
+	if (line == NULL)
 		return (-1);
 
 	line_len = _strlen(line);
