@@ -67,6 +67,8 @@ int create_error(shell_data_t *sh_data, char *err_msg, int cmd_arg_idx, int file
 	_strcat(full_err, err_msg);	
 	_strcat(full_err, cmd_arg);
 	_strcat(full_err, "\n");
+	printf("%i : %i\n", full_err, _strlen(full_err));
+	printf("%s", full_err);
 	write(2, full_err, full_err_len);
 
 	free(full_err);
