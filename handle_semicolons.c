@@ -143,7 +143,7 @@ int logical_operators_in_str(shell_data_t *sh_data, char operator)
 
 
 /**
- * check_operatro - 
+ * check_operatro - check if the token is operator
  * @token: token to be checked
  * @sh_data: shell data
  *
@@ -186,7 +186,7 @@ int handle_logical_operators(shell_data_t *sh_data)
 	}
 	for (i = index; tokens[i] != NULL; i++)
 	{
-		if(check_operatro(tokens[i], sh_data))
+		if (check_operatro(tokens[i], sh_data))
 			break;
 	}
 	if (((i - index) == 0)  && tokens[i] != NULL)
