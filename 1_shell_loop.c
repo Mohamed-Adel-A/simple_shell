@@ -3,6 +3,7 @@
 /*************************************************/
 void init_data(shell_data_t *sh_data);
 int loop(shell_data_t *sh_data, char **argv);
+void copy_tokens(shell_data_t *sh_data);
 /*************************************************/
 
 /**
@@ -72,7 +73,7 @@ int loop(shell_data_t *sh_data, char **argv)
 		else
 		{
 			ret = 1;
-			sh_data->tokens = sh_data->alltokens;
+			copy_tokens(sh_data);
 		}
 
 		if (check_cmd(sh_data) == -1)
@@ -88,4 +89,42 @@ int loop(shell_data_t *sh_data, char **argv)
 
 	free_loop(sh_data);
 	return (0);
+}
+
+
+/**
+ * copy_tokens - copy tokens from alltokens to tokens
+ * sh_data: shell data
+ *
+ * Return: void
+ */
+void copy_tokens(shell_data_t *sh_data)
+{
+	int size;
+	char **tokens = NULL, **alltokens = sh_data->alltokens;
+
+	if (alltokens == NULL)
+	{
+		sh_data->tokens = NULL;
+		return;
+	}
+
+	for (i = 0 ; alltokens[i] != NULL ; i++)
+	{
+	}
+	
+	tokens = malloc(sizeof(char *) * (i + 1));
+	if (tokesn == NULL)
+	{
+		sh_data->tokens = NULL;
+		return;
+	}
+
+	for (i = 0 ; alltokens[i] != NULL ; i++)
+	{
+		tokens[i] = alltokens[i];
+	}
+	tokens[i] = NULL;
+
+	sh_data->tokens = tokens;
 }
