@@ -1,5 +1,10 @@
 #include "shell.h"
-
+/**
+ * simicolons_in_str - handle semicolons in middle of string
+ * @sh_data: shell data
+ *
+ * Return: 0 success, -1 failure
+ */
 int simicolons_in_str(shell_data_t *sh_data)
 {
 	int i, j, line_len;
@@ -21,12 +26,17 @@ int simicolons_in_str(shell_data_t *sh_data)
 			new_line[j++] = ' ';
 			new_line[j++] = ';';
 			new_line[j++] = ' ';
-			for (; line[j] != '\0'; j++)
+			for (; line[j - 2] != '\0'; j++)
 				new_line[j] = line[j - 2];
+			new_line[j] = '\0';
 			free(line);
+
 			line = new_line;
+			i += 2;
 		}
 	}
+	sh_data->line = line;
+	retun (0);
 }
 
 
