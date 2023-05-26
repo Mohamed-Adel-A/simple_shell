@@ -43,7 +43,6 @@ int create_error(shell_data_t *sh_data, char *err_msg,
 	_itoa(sh_data->cmd_idx, cmd_idx_str);
 	cmd_idx_len = _strlen(cmd_idx_str);
 	err_msg_len = _strlen(err_msg);
-
 	if (cmd_arg_idx > 0)
 	{
 		cmd_arg = sh_data->tokens[cmd_arg_idx];
@@ -56,7 +55,8 @@ int create_error(shell_data_t *sh_data, char *err_msg,
 	if (full_err == NULL)
 		return (-1);
 
-	combine_str_error(full_err, argv, cmd_idx_str, cmd, err_msg, cmd_arg, file_err);
+	combine_str_error(full_err, argv, cmd_idx_str, cmd,
+			  err_msg, cmd_arg, file_err);
 	write(2, full_err, full_err_len);
 	free(full_err);
 	return (0);
