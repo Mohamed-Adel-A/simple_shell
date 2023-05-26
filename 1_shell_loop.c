@@ -52,7 +52,7 @@ int loop(shell_data_t *sh_data, char **argv)
 		return (1);
 	}
 	
-	printf("s= %s\n", sh_data->line);
+
 	colon = sh_data->colon;
 	or = sh_data->or;
 	and = sh_data->and;
