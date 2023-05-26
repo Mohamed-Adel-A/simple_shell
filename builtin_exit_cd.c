@@ -75,7 +75,7 @@ int builtin_cd(shell_data_t *sh_data)
 	{
 		if (_getenv("HOME") == NULL)
 			return (0);
-		return (change_dir(_getenv("PWD"), _getenv("HOME")));
+		return (change_dir(_getenv("PWD"), _getenv("HOME"), sh_data));
 	}
 
 	if (args[2] != NULL)
@@ -96,21 +96,22 @@ int builtin_cd(shell_data_t *sh_data)
 		}
 		_puts(_getenv("OLDPWD"));
 		_puts("\n");
-		return (change_dir(_getenv("PWD"), _getenv("OLDPWD")));
+		return (change_dir(_getenv("PWD"), _getenv("OLDPWD"), sh_data));
 	}
 
 	/* cd [dir] */
-	return (change_dir(_getenv("PWD"), args[1]));
+	return (change_dir(_getenv("PWD"), args[1], sh_data));
 }
 
 /**
  * change_dir - change current working dir and env variables
  * @olddir: current directory before change
  * @newdir: new directory to change wd to
+ * @sh_data: shell data
  *
  * Return: 0 in success, -1 in failure
  */
-int change_dir(char *olddir, char *newdir)
+int change_dir(char *olddir, char *newdir, shell_data_t *sh_data)
 {
 	char *old = NULL, *new = NULL;
 
