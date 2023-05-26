@@ -5,6 +5,7 @@
  * @sh_data: shell data
  * @err_msg: error msg
  * @cmd_arg_idx: if the error in arg in builtin cmd -> index, 0 otherwise
+ * @file_err: 1 if error from file opening, 0 otherwise
  *
  * Return: 0 success, -1 failure
  */
@@ -18,7 +19,7 @@ int create_error(shell_data_t *sh_data, char *err_msg, int cmd_arg_idx, int file
 	{
 		/* ./hsh: 0: Can't open /tmp/hbtn_checker_tmp_27147 */
 		cmd_arg = sh_data->argv[1];
-		cmd_arg_len = _strlen(cmd_arg);	
+		cmd_arg_len = _strlen(cmd_arg);
 		colons_and_spaces = 5;
 	}
 	else
@@ -39,13 +40,13 @@ int create_error(shell_data_t *sh_data, char *err_msg, int cmd_arg_idx, int file
 	/* not found path error */
 	/* ./hsh: 1: ls: not found */
 
-	if(cmd_arg_idx > 0)
+	if (cmd_arg_idx > 0)
 	{
 		/* built-in cmd error */
 		/* ./hsh: 1: exit: Illegal number: -98 */
 		/* ./hsh: 1: cd: can't cd to /hbtn */
 		cmd_arg = sh_data->tokens[cmd_arg_idx];
-		cmd_arg_len = _strlen(cmd_arg);	
+		cmd_arg_len = _strlen(cmd_arg);
 	}
 
 	full_err_len = argv_len + cmd_idx_len + cmd_len + err_msg_len + colons_and_spaces + cmd_arg_len;
@@ -53,6 +54,28 @@ int create_error(shell_data_t *sh_data, char *err_msg, int cmd_arg_idx, int file
 	if (full_err == NULL)
 		return (-1);
 
+	combine_str_error(full_err, argv, cmd_idx_str, cmd, err_msg, cmd_arg);
+
+	write(2, full_err, full_err_len);
+
+	free(full_err);
+	return (0);
+}
+
+
+/**
+ * combine_str_error - combine_str_error
+ * @full_err: full_err
+ * @argv: argv
+ * @cmd_idx_str: cmd_idx_str
+ * @cmd: cmd
+ * @err_msg: error msg
+ * @cmd_arg: cmd arg
+ *
+ * Return: pointer ot full error
+ */
+char *combine_str_error(char *full_err, char *argv, char *cmd_idx_str, char *cmd, char *err_msg, char *cmd_arg)
+{
 	_strcpy(full_err, argv);
 	_strcat(full_err, ": ");
 	_strcat(full_err, cmd_idx_str);
@@ -63,12 +86,9 @@ int create_error(shell_data_t *sh_data, char *err_msg, int cmd_arg_idx, int file
 		_strcat(full_err, cmd);
 		_strcat(full_err, ": ");
 	}
-
-	_strcat(full_err, err_msg);	
+	_strcat(full_err, err_msg);
 	_strcat(full_err, cmd_arg);
 	_strcat(full_err, "\n");
-	write(2, full_err, full_err_len);
 
-	free(full_err);
-	return (0);
+	return (full_err);
 }
