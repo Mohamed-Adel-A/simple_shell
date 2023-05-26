@@ -4,6 +4,7 @@
 void prompt(void);
 int check_cmd(shell_data_t *sh_data);
 void excuting_cmd(shell_data_t *sh_data, char **argv);
+void colse_file(shell_data_t *sh_data);
 /*************************************************************/
 
 /**
@@ -136,20 +137,49 @@ int main(int argc, char **argv)
 {
 	shell_data_t sh_data;
 	int loop_ret;
+	FILE *fd;
 
 	(void)argc;
-
 	signal(SIGINT, handle_signal);
 	environ = create_env();
 	sh_data.wstatus = 0;
 	sh_data.cmd_idx = 0;
 	sh_data.argv = argv;
+	if (argc != 1)
+	{
+		fd = open(argv[1], O_RDONLY);
+		if (fd == -1)
+		{
+			/* ./hsh: 0: Can't open /tmp/hbtn_checker_tmp_27147 * 127 */
+			create_error(sh_data, "Can't open ", 0, 1);
+			exit(127);
+		}
+
+		sh_data.fd = fd;
+	}
+	else
+		sh_data.fd = stdin;
+
 	while (1)
 	{
 		loop_ret = loop(&sh_data, argv);
 		if (loop_ret == 1)
 			continue;
 	}
+
+	colse_file(sh_data);
 	free_env();
 	return (errno);
+}
+
+/**
+ * colse_file - close file if open
+ * @sh_data: shell data
+ *
+ * Return: void
+ */
+void colse_file(shell_data_t *sh_data)
+{
+	if (sh_data->fd != stdin)
+		close(sh_data->fd);	
 }
