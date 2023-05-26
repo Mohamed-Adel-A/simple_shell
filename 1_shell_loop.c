@@ -100,7 +100,7 @@ int loop(shell_data_t *sh_data, char **argv)
  */
 void copy_tokens(shell_data_t *sh_data)
 {
-	int size;
+	int i;
 	char **tokens = NULL, **alltokens = sh_data->alltokens;
 
 	if (alltokens == NULL)
@@ -114,7 +114,7 @@ void copy_tokens(shell_data_t *sh_data)
 	}
 	
 	tokens = malloc(sizeof(char *) * (i + 1));
-	if (tokesn == NULL)
+	if (tokens == NULL)
 	{
 		sh_data->tokens = NULL;
 		return;
