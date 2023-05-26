@@ -47,8 +47,8 @@ int builtin_unsetenv(shell_data_t *sh_data)
 
 	if (args[2] != NULL)
 	{
-		errno = EINVAL;
-		return (-1);
+		/*errno = EINVAL;*/
+		return (0);
 	}
 
 	unsetenv_ret = _unsetenv(args[1]);
