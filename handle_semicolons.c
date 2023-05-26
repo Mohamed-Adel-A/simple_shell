@@ -18,6 +18,9 @@ int simicolons_in_str(shell_data_t *sh_data)
 	{
 		if (line[i] == ';')
 		{
+			if (i != 0 && line[i - 1] == ' ' && line[i + 1] == ' ')
+				continue;
+
 			new_line = malloc(sizeof(char) * (line_len + 3));
 			if (new_line == NULL)
 				return (-1);
