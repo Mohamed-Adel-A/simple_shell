@@ -29,6 +29,7 @@ extern char **environ;
  * @cmd_idx: cmd index
  * @argv: argv
  * @fd: file descriptor
+ * @logical_op: logical op
  */
 typedef struct shell_data
 {
@@ -44,6 +45,7 @@ typedef struct shell_data
 	unsigned int cmd_idx;
 	char **argv;
 	int fd;
+	char logical_op;
 } shell_data_t;
 
 /**
