@@ -62,6 +62,7 @@ int loop(shell_data_t *sh_data, char **argv)
 	if( and != -1 && sh_data->line[and + 1] != '&')
 		and = -1;
 
+	print (";= %i ; |= %i ; &= &i\n", colon, or, and);
 	while (ret == 0)
 	{
 		if (colon != -1)
