@@ -70,6 +70,8 @@ int builtin_cd(shell_data_t *sh_data)
 	/* cd (without any arguments) */
 	if (args[1] == NULL)
 	{
+		if (_getenv("HOME") == NULL)
+			return (0);
 		return (change_dir(_getenv("PWD"), _getenv("HOME")));
 	}
 
@@ -82,6 +84,8 @@ int builtin_cd(shell_data_t *sh_data)
 	/* cd - */
 	if (_strncmp(args[1], "-", 2) == 0)
 	{
+		if (_getenv("OLDPWD") == NULL)
+			return (0);
 		return (change_dir(_getenv("PWD"), _getenv("OLDPWD")));
 	}
 
