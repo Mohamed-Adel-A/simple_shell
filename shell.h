@@ -30,6 +30,9 @@ extern char **environ;
  * @argv: argv
  * @fd: file descriptor
  * @logical_op: logical op
+ * @colon: colon exist if not -1
+ * @or: or oprator exitst if not -1
+ * @and: and oprator exitst if not -1
  */
 typedef struct shell_data
 {
@@ -46,6 +49,9 @@ typedef struct shell_data
 	char **argv;
 	int fd;
 	char logical_op;
+	int colon;
+	int or;
+	int and;
 } shell_data_t;
 
 /**
