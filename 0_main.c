@@ -154,34 +154,9 @@ int main(int argc, char **argv)
 	sh_data.wstatus = 0;
 	while (1)
 	{
-		loop_ret =loop(&sh_data, argv);
+		loop_ret = loop(&sh_data, argv);
 		if (loop_ret == 1)
 			continue;
-		/*
-		prompt();
-		init_data(&sh_data);
-		if (getting_line(&sh_data) == -1)
-		{
-			sh_data.wstatus = errno;
-			continue;
-		}
-		if (handle_variables(&sh_data) == -1)
-		{
-			free_loop(&sh_data);
-			perror("variable error");
-			sh_data.wstatus = errno;
-			continue;
-		}
-
-		if (check_cmd(&sh_data, argv) == -1)
-		{
-			sh_data.wstatus = errno;
-			continue;
-		}
-
-		excuting_cmd(&sh_data, argv);
-		free_loop(&sh_data);
-		*/
 	}
 	free_env();
 	return (errno);
