@@ -172,6 +172,7 @@ int handle_logical_operators(shell_data_t *sh_data)
 			sh_data->logical_op = '&';
 			break;
 		}
+		sh_data->logical_op = 0;
 	}
 	colon_pos = i;
 	diff_pos = i - (sh_data->next_tokens_index);
