@@ -109,7 +109,7 @@ char *_itoa(int int_value, char *str);
 
 /* _getline.c file */
 int _getc(int fd);
-ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
+ssize_t _getline(char **lineptr, size_t *n, int fd);
 int getting_line(shell_data_t *sh_data);
 
 /* _puts.c file */
