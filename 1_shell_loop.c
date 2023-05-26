@@ -51,7 +51,6 @@ int loop(shell_data_t *sh_data, char **argv)
 		/*sh_data->wstatus = errno;*/
 		return (1);
 	}
-	
 
 	colon = sh_data->colon;
 	or = sh_data->or;
@@ -92,7 +91,7 @@ int loop(shell_data_t *sh_data, char **argv)
 
 /**
  * copy_tokens - copy tokens from alltokens to tokens
- * sh_data: shell data
+ * @sh_data: shell data
  *
  * Return: void
  */
@@ -110,7 +109,7 @@ void copy_tokens(shell_data_t *sh_data)
 	for (i = 0 ; alltokens[i] != NULL ; i++)
 	{
 	}
-	
+
 	tokens = malloc(sizeof(char *) * (i + 1));
 	if (tokens == NULL)
 	{
