@@ -81,7 +81,7 @@ int handle_semicolons(shell_data_t *sh_data)
 	for (i = 0; i < tokens_size; i++)
 		current_tokens[i] = tokens[index + i];
 
-		current_tokens[i] = NULL;
+	current_tokens[i] = NULL;
 
 	if (sh_data->tokens != NULL)
 		free(sh_data->tokens);
