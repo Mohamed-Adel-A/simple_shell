@@ -52,7 +52,7 @@ int check_cmd(shell_data_t *sh_data)
 		{
 			if (builtin_func(sh_data) == -1)
 			{
-				perror(sh_data->tokens[0]);
+				/*perror(sh_data->tokens[0]);*/
 				sh_data->wstatus = 2;
 			}
 			free(sh_data->cmd_path);
