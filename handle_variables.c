@@ -124,10 +124,12 @@ int check_variable(int token_idx, shell_data_t *sh_data)
 				var_name = _strncpy(var_name, str + var_pos + 1, var_name_len);
 				var_str = _getenv(var_name);
 				free(var_name);
-				/*if (var_str == NULL)
-				{
-					continue;
-				}*/
+				/*
+				*if (var_str == NULL)
+				*{
+				*	continue;
+				*}
+				*/
 			}
 			else
 			{
