@@ -15,6 +15,13 @@
 
 extern char **environ;
 
+typedef struct alias_str
+{
+	char *name;
+	char *value;
+} aliases_t;
+
+
 /**
  * struct shell_data - struct shell data
  * @line: entered line
@@ -33,6 +40,7 @@ extern char **environ;
  * @colon: colon exist if not -1
  * @or: or oprator exitst if not -1
  * @and: and oprator exitst if not -1
+ * @aliases: aliases
  */
 typedef struct shell_data
 {
@@ -52,6 +60,7 @@ typedef struct shell_data
 	int colon;
 	int or;
 	int and;
+	aliases_t *aliases;
 } shell_data_t;
 
 /**
