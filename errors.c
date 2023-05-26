@@ -10,12 +10,12 @@
  */
 int create_error(shell_data_t *sh_data, char *err_msg, int cmd_arg_idx)
 {
-	int i, cmd_idx_len, argv_len, cmd_len, err_msg_len, cmd_arg_len = 0;
+	int cmd_idx_len, argv_len, cmd_len, err_msg_len, cmd_arg_len = 0;
 	int colons_number, full_err_len;
 	char *argv, cmd_idx_str[20], *cmd, *cmd_arg = NULL, *full_err;
 
 	argv = sh_data->argv[0];
-	cmd_idx_str = _itoa(sh_data->cmd_idx, cmd_idx_str);
+	_itoa(sh_data->cmd_idx, cmd_idx_str);
 	cmd = sh_data->tokens[0];
 
 	argv_len = _strlen(argv);
