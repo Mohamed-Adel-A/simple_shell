@@ -34,6 +34,8 @@ void init_data(shell_data_t *sh_data)
  */
 int loop(shell_data_t *sh_data, char **argv)
 {
+	int colon = -1, or = -1, and = -1, ret = 0;
+
 	prompt();
 	init_data(sh_data);
 	if (getting_line(sh_data) == -1)
@@ -48,9 +50,28 @@ int loop(shell_data_t *sh_data, char **argv)
 		/*sh_data->wstatus = errno;*/
 		return (1);
 	}
+	
+	colon = _strchar(sh_data->line, ';');
 
-	while (handle_semicolons(sh_data) == 0)
+	or = _strchar(sh_data->line, '|');
+	if( or != -1 && s[or + 1] != '|')
+		or = -1;
+
+	and = _strchar(sh_data->line, '&');
+	if( and != -1 && s[and + 1] != '&')
+		and = -1;
+
+	while (ret == 0)
 	{
+		if (colon != -1)
+			ret = handle_semicolons(sh_data);
+		else if (or != -1)
+			ret = handle_logical_operators(sh_data, "||");
+		else if (and != -1)
+			ret =handle_logical_operators(sh_data, "&&");
+		else
+			ret = 1;
+
 		if (check_cmd(sh_data) == -1)
 		{
 			/*sh_data->wstatus = -1;*/
