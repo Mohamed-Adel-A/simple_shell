@@ -73,6 +73,7 @@ int create_error(shell_data_t *sh_data, char *err_msg,
 /* semicolon */
 int simicolons_in_str(shell_data_t *sh_data);
 int logical_operators_in_str(shell_data_t *sh_data,char operator);
+int handle_logical_operators(shell_data_t *sh_data, char *op);
 
 /* free */
 void free_loop(shell_data_t *sh_data);
