@@ -21,6 +21,7 @@ int handle_semicolons(shell_data_t *sh_data)
 	diff_pos = i - (sh_data->next_tokens_index);
 	if ((diff_pos == 0 || diff_pos == 1)  && tokens[i] != NULL)
 	{
+		printf("i= %i, index= %i, diff= %i", i, sh_data->next_tokens_index, diff_pos);
 		sh_data->next_tokens_index++;
 		return (0);
 	}
