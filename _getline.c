@@ -2,7 +2,7 @@
 
 /**
  * _getc - get char from stream
- * @stream: IO stream
+ * @fd: file descriptor
  *
  * Return: char casting as int, or EOF otherwise
  */
@@ -55,7 +55,7 @@ int reallocate_line(char *line, size_t *n, size_t i)
  * _getline - get line from stream
  * @lineptr: pointer to string
  * @n: line size
- * @stream: IO stream
+ * @fd: file descriptor
  *
  * Return: size of the line or -1 in case of error
  */
