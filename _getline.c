@@ -166,6 +166,7 @@ int getting_line(shell_data_t *sh_data)
 		or = -1;
 	printf("|= %i ; &= %i\n", or, and);
 	and = _strchar(sh_data->line, '&');
+	printf(";= %i ; |= %i ; &= %i\n", colon, or, and);
 	if( and != -1 && sh_data->line[and + 1] != '&')
 		and = -1;
 	sh_data->colon = colon;
