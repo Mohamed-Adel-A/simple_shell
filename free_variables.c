@@ -73,5 +73,5 @@ void free_all(shell_data_t *sh_data)
 void colse_file(shell_data_t *sh_data)
 {
 	if (sh_data->fd != STDIN_FILENO)
-		close(sh_data->fd);	
+		close(sh_data->fd);
 }
