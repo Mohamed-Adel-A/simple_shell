@@ -146,8 +146,6 @@ int getting_line(shell_data_t *sh_data)
 	if (getline_ret == -1)
 	{
 		free_all(sh_data);
-		/* _puts("\n");*/
-		/*printf("exiting : %i\n", sh_data->wstatus);*/
 		exit(sh_data->wstatus);
 	}
 
@@ -160,21 +158,21 @@ int getting_line(shell_data_t *sh_data)
 	}
 
 	sh_data->line = line;
-	colon = _strchar(sh_data->line, ';');
 
+	colon = _strchar(sh_data->line, ';');
 	or = _strchar(sh_data->line, '|');
 	if( or != -1 && sh_data->line[or + 1] != '|')
 		or = -1;
-
 	and = _strchar(sh_data->line, '&');
 	if( and != -1 && sh_data->line[and + 1] != '&')
 		and = -1;
-
 	sh_data->colon = colon;
 	sh_data->or = or;
 	sh_data->and = and;
-	if (simicolons_in_str(sh_data) == -1 || logical_operators_in_str(sh_data, '|') == -1
-	   || logical_operators_in_str(sh_data, '&') == -1)
+
+	if ((colon != -1 && simicolons_in_str(sh_data) == -1)
+	    || (or != -1 && logical_operators_in_str(sh_data, '|') == -1)
+	    || (and != -1 && logical_operators_in_str(sh_data, '&') == -1))
 	{
 		printf("free\n");
 		free(sh_data->line);
