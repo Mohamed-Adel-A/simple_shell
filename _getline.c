@@ -163,6 +163,7 @@ int getting_line(shell_data_t *sh_data)
 	if (simicolons_in_str(sh_data) == -1 || logical_operators_in_str(sh_data, '|') == -1
 	   || logical_operators_in_str(sh_data, '&') == -1)
 	{
+		printf("free\n");
 		free(sh_data->line);
 		return (-1);
 	}
