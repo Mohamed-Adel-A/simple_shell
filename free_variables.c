@@ -22,7 +22,7 @@ void free_loop(shell_data_t *sh_data)
 	if (sh_data->tokens != sh_data->alltokens)
 		free(sh_data->tokens);
 
-	free_tokens(sh_data);	
+	free_tokens(sh_data);
 	free(sh_data->cmd_path);
 	free_variables(sh_data);
 }
