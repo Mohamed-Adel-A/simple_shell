@@ -99,6 +99,7 @@ int handle_semicolons(shell_data_t *sh_data)
 /**
  * simicolons_in_str - handle semicolons in middle of string
  * @sh_data: shell data
+ * @operator: logical operators
  *
  * Return: 0 success, -1 failure
  */
