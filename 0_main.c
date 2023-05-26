@@ -142,6 +142,7 @@ int main(int argc, char **argv)
 	sh_data.wstatus = 0;
 	sh_data.cmd_idx = 0;
 	sh_data.argv = argv;
+	sh_data.logical_op = 0;
 	if (argc != 1)
 	{
 		fd = open(argv[1], O_RDONLY);
