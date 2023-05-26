@@ -22,7 +22,7 @@ int create_error(shell_data_t *sh_data, char *err_msg, int cmd_arg_idx)
 	cmd_idx_len = _strlen(cmd_idx_str);
 	cmd_len = _strlen(cmd);
 	err_msg_len = _strlen(err_msg);
-	colons_and_spaces = 6;
+	colons_and_spaces = 7;
 
 	/* not found path error */
 	/* ./hsh: 1: ls: not found */
@@ -49,8 +49,9 @@ int create_error(shell_data_t *sh_data, char *err_msg, int cmd_arg_idx)
 	_strcat(full_err, ": ");
 	_strcat(full_err, err_msg);	
 	_strcat(full_err, cmd_arg);
-	printf("%s\n", full_err);
-	
+	_strcat(full_err, "\n");
+	write(2, full_err, full_err_len);
+
 	free(full_err);
 	return (0);
 }
