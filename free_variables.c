@@ -18,8 +18,11 @@ void colse_file(shell_data_t *sh_data);
 void free_loop(shell_data_t *sh_data)
 {
 	free(sh_data->line);
-	free_tokens(sh_data);
-	free(sh_data->tokens);
+
+	if (sh_data->tokens != sh_data->alltokens)
+		free(sh_data->tokens);
+
+	free_tokens(sh_data);	
 	free(sh_data->cmd_path);
 	free_variables(sh_data);
 }
