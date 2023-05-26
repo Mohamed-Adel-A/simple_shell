@@ -6,12 +6,12 @@
  *
  * Return: char casting as int, or EOF otherwise
  */
-int _getc(FILE *stream)
+int _getc(int fd)
 {
 	char c;
 	int rr;
 
-	rr = read(stream->_fileno, &c, 1);
+	rr = read(fd, &c, 1);
 
 	if (rr > 0)
 	{
@@ -59,7 +59,7 @@ int reallocate_line(char *line, size_t *n, size_t i)
  *
  * Return: size of the line or -1 in case of error
  */
-ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
+ssize_t _getline(char **lineptr, size_t *n, int fd)
 {
 	size_t i = 0;
 	char *lline = *lineptr, *new_line, c;
@@ -71,7 +71,7 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 		if (lline == NULL)
 			return (-1);
 	}
-	while ((c = _getc(stream)) != EOF)
+	while ((c = _getc(fd)) != EOF)
 	{
 		if (i >= *n - 1)
 		{
