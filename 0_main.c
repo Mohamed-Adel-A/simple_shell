@@ -33,7 +33,6 @@ void prompt(void)
 /**
  * check_cmd - check cmd for builtin and path
  * @sh_data: shell data
- * @argv: argv
  *
  * Return: 0 in success, -1 in failure
  */
@@ -150,7 +149,7 @@ int main(int argc, char **argv)
 		{
 			/* ./hsh: 0: Can't open /tmp/hbtn_checker_tmp_27147 * 127 */
 			create_error(&sh_data, "Can't open ", 0, 1);
-			return(127);
+			return (127);
 		}
 
 		sh_data.fd = fd;
