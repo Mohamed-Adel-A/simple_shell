@@ -142,7 +142,6 @@ int getting_line(shell_data_t *sh_data)
 	int colon = -1, or = -1, and = -1;
 
 	getline_ret = _getline(&line, &line_len, sh_data->fd);
-
 	if (getline_ret == -1)
 	{
 		free_all(sh_data);
@@ -150,7 +149,6 @@ int getting_line(shell_data_t *sh_data)
 	}
 
 	handle_comments(line);
-
 	if (check_empty_line(line))
 	{
 		free(line);
@@ -158,13 +156,12 @@ int getting_line(shell_data_t *sh_data)
 	}
 
 	sh_data->line = line;
-
 	colon = _strchar(sh_data->line, ';');
 	or = _strchar(sh_data->line, '|');
-	if( or != -1 && sh_data->line[or + 1] != '|')
+	if (or != -1 && sh_data->line[or + 1] != '|')
 		or = -1;
 	and = _strchar(sh_data->line, '&');
-	if( and != -1 && sh_data->line[and + 1] != '&')
+	if (and != -1 && sh_data->line[and + 1] != '&')
 		and = -1;
 	sh_data->colon = colon;
 	sh_data->or = or;
@@ -178,7 +175,6 @@ int getting_line(shell_data_t *sh_data)
 		free(sh_data->line);
 		return (-1);
 	}
-
 	sh_data->alltokens = tokenizing(sh_data->line, " \n");
 	return (0);
 }
