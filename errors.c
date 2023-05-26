@@ -11,7 +11,7 @@
 int create_error(shell_data_t *sh_data, char *err_msg, int cmd_arg_idx)
 {
 	int cmd_idx_len, argv_len, cmd_len, err_msg_len, cmd_arg_len = 0;
-	int colons_number, full_err_len;
+	int colons_and_spaces, full_err_len;
 	char *argv, cmd_idx_str[20], *cmd, *cmd_arg = NULL, *full_err;
 
 	argv = sh_data->argv[0];
@@ -22,7 +22,7 @@ int create_error(shell_data_t *sh_data, char *err_msg, int cmd_arg_idx)
 	cmd_idx_len = _strlen(cmd_idx_str);
 	cmd_len = _strlen(cmd);
 	err_msg_len = _strlen(err_msg);
-	colons_number = 3;
+	colons_and_spaces = 6;
 
 	/* not found path error */
 	/* ./hsh: 1: ls: not found */
@@ -36,7 +36,7 @@ int create_error(shell_data_t *sh_data, char *err_msg, int cmd_arg_idx)
 		cmd_arg_len = _strlen(cmd_arg);	
 	}
 
-	full_err_len = argv_len + cmd_idx_len + cmd_len + err_msg_len + colons_number + cmd_arg_len;
+	full_err_len = argv_len + cmd_idx_len + cmd_len + err_msg_len + colons_and_spaces + cmd_arg_len;
 	full_err = malloc(sizeof(char) * (full_err_len + 1));
 	if (full_err == NULL)
 		return (-1);
