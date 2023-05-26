@@ -121,8 +121,7 @@ char *_itoa(int int_value, char *str)
 		str_idx++;
 	}
 
-	do
-	{
+	do {
 		reversed[rev_idx] = int_value % 10 + '0';
 		int_value = int_value / 10;
 		rev_idx++;
