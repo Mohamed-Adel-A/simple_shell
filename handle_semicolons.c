@@ -43,6 +43,13 @@ int simicolons_in_str(shell_data_t *sh_data)
 }
 
 
+/**
+ * handle_semicolons - break tokens series on ;
+ * @sh_data: shell data
+ *
+ * Return: 1 there is no other tokens, 0 still there
+ *         -1 failure
+ */
 int handle_semicolons(shell_data_t *sh_data)
 {
 	char **tokens = sh_data->alltokens, **current_tokens;
@@ -93,6 +100,13 @@ int handle_semicolons(shell_data_t *sh_data)
 	return (0);
 }
 
+/**
+ * loop - the contents of the shell loop
+ * @sh_data: shell data
+ * @argv: argv
+ *
+ * Return: 1 loop, 0 same as 1
+ */
 int loop(shell_data_t *sh_data, char **argv)
 {
 	prompt();
