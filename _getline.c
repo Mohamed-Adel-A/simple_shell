@@ -166,7 +166,6 @@ int getting_line(shell_data_t *sh_data)
 	sh_data->colon = colon;
 	sh_data->or = or;
 	sh_data->and = and;
-
 	if ((colon != -1 && simicolons_in_str(sh_data) == -1)
 	    || (or != -1 && logical_operators_in_str(sh_data, '|') == -1)
 	    || (and != -1 && logical_operators_in_str(sh_data, '&') == -1))
