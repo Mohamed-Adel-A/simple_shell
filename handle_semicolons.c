@@ -63,10 +63,8 @@ int handle_semicolons(shell_data_t *sh_data)
 	}
 	for (i = index; tokens[i] != NULL; i++)
 	{
-		if(_strncmp(tokens[i], ";", 2) == 0)
-		{
+		if (_strncmp(tokens[i], ";", 2) == 0)
 			break;
-		}
 	}
 	colon_pos = i;
 	diff_pos = i - (sh_data->next_tokens_index);
@@ -75,26 +73,22 @@ int handle_semicolons(shell_data_t *sh_data)
 		sh_data->next_tokens_index++;
 		return (0);
 	}
-	
 	tokens_size = i - sh_data->next_tokens_index;
 	current_tokens = malloc(sizeof(char *) * (tokens_size + 1));
 	if (current_tokens == NULL)
 		return (-1);
 
 	for (i = 0; i < tokens_size; i++)
-	{
 		current_tokens[i] = tokens[index + i];
-	}
+
 		current_tokens[i] = NULL;
 
 	if (sh_data->tokens != NULL)
 		free(sh_data->tokens);
 	sh_data->tokens = current_tokens;
 
-	if (tokens[colon_pos] == NULL || tokens[colon_pos + 1] == NULL)	
-	{
+	if (tokens[colon_pos] == NULL || tokens[colon_pos + 1] == NULL)
 		sh_data->next_tokens_index = -1;
-	}
 	else
 		sh_data->next_tokens_index = colon_pos + 1;
 	return (0);
@@ -124,7 +118,7 @@ int loop(shell_data_t *sh_data, char **argv)
 		return (1);
 	}
 
-	while(handle_semicolons(sh_data) == 0)
+	while (handle_semicolons(sh_data) == 0)
 	{
 		if (check_cmd(sh_data, argv) == -1)
 		{
