@@ -139,7 +139,7 @@ int getting_line(shell_data_t *sh_data)
 	ssize_t getline_ret;
 	size_t line_len = 0;
 	char *line = NULL;
-	int colon, or, and;
+	int colon = -1, or = -1, and = -1;
 
 	getline_ret = _getline(&line, &line_len, sh_data->fd);
 
