@@ -83,6 +83,8 @@ int loop(shell_data_t *sh_data, char **argv)
 		excuting_cmd(sh_data, argv);
 		free(sh_data->cmd_path);
 		sh_data->cmd_path = NULL;
+		if ((or != -1 && sh_data->wstatus == 0) || (and != -1 && sh_data->wstatus != 0))
+			break;
 	}
 
 	free_loop(sh_data);
