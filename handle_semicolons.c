@@ -1,5 +1,35 @@
 #include "shell.h"
 
+int simicolons_in_str(shell_data_t *sh_data)
+{
+	int i, j, line_len;
+	char *line = sh_data->line, *new_line;
+
+	if (line = NULL)
+		return (-1);
+
+	line_len = _strlen(line);
+	for (i = 0 ; line[i] != '\0' ; i++)
+	{
+		if (line[i] == ';')
+		{
+			new_line = malloc(sizeof(char) * (line_len + 3));
+			if (new_line == NULL)
+				return (-1);
+			for (j = 0; j < i ; j++)
+				new_line[j] = line[j];
+			new_line[j++] = ' ';
+			new_line[j++] = ';';
+			new_line[j++] = ' ';
+			for (; line[j] != '\0'; j++)
+				new_line[j] = line[j - 2];
+			free(line);
+			line = new_line;
+		}
+	}
+}
+
+
 int handle_semicolons(shell_data_t *sh_data)
 {
 	char **tokens = sh_data->alltokens, **current_tokens;
