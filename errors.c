@@ -19,7 +19,7 @@ int create_error(shell_data_t *sh_data, char *err_msg, int cmd_arg_idx, int file
 		/* ./hsh: 0: Can't open /tmp/hbtn_checker_tmp_27147 */
 		cmd_arg = sh_data->argv[1];
 		cmd_arg_len = _strlen(cmd_arg);	
-		colons_and_spaces = 5;
+		colons_and_spaces = 6;
 	}
 	else
 	{
