@@ -20,7 +20,7 @@ void init_data(shell_data_t *sh_data)
 	sh_data->cmd_path = NULL;
 	sh_data->cmd_entered = NULL;
 	sh_data->next_tokens_index = 0;
-  sh_data->cmd_idx++;
+	sh_data->cmd_idx++;
 	errno = 0;
 }
 
