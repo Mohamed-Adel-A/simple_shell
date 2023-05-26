@@ -70,7 +70,10 @@ int loop(shell_data_t *sh_data, char **argv)
 		else if (and != -1)
 			ret =handle_logical_operators(sh_data, "&&");
 		else
+		{
 			ret = 1;
+			sh_data->tokens = sh_data->alltokens;
+		}
 
 		if (check_cmd(sh_data) == -1)
 		{
