@@ -141,12 +141,12 @@ int getting_line(shell_data_t *sh_data)
 	char *line = NULL;
 
 	getline_ret = _getline(&line, &line_len, stdin);
-	/*printf("%s\n", line);*/
+
 	if (getline_ret == -1)
 	{
 		free_all(sh_data);
 		/* _puts("\n");*/
-		printf("exiting : %i\n", sh_data->wstatus);
+		/*printf("exiting : %i\n", sh_data->wstatus);*/
 		exit(sh_data->wstatus);
 	}
 
