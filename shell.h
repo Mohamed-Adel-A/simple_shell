@@ -61,6 +61,7 @@ void prompt(void);
 int check_cmd(shell_data_t *sh_data);
 void excuting_cmd(shell_data_t *sh_data, char **argv);
 void init_data(shell_data_t *sh_data);
+void colse_file(shell_data_t *sh_data)
 
 /* errors.c */
 int create_error(shell_data_t *sh_data, char *err_msg, int cmd_arg_idx, int file_err);
