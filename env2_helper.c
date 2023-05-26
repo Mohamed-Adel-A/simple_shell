@@ -19,6 +19,9 @@ int builtin_setenv(shell_data_t *sh_data)
 	char **args = sh_data->tokens;
 	int setenv_ret;
 
+	if (args[1] == NULL || args[2] == NULL)
+		return (0);
+
 	if (args[3] != NULL)
 	{
 		errno = EINVAL;
@@ -45,10 +48,13 @@ int builtin_unsetenv(shell_data_t *sh_data)
 	char **args = sh_data->tokens;
 	int unsetenv_ret;
 
+	if (args[1] == NULL)
+		return (0);
+
 	if (args[2] != NULL)
 	{
-		/*errno = EINVAL;*/
-		return (0);
+		errno = EINVAL;
+		return (-1);
 	}
 
 	unsetenv_ret = _unsetenv(args[1]);
