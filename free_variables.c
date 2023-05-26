@@ -4,6 +4,7 @@
 void free_loop(shell_data_t *sh_data);
 void free_tokens(shell_data_t *sh_data);
 void free_all(shell_data_t *sh_data);
+void colse_file(shell_data_t *sh_data);
 /*******************************************************/
 
 
@@ -59,4 +60,18 @@ void free_all(shell_data_t *sh_data)
 {
 	free_loop(sh_data);
 	free_env();
+	colse_file(sh_data);
+}
+
+
+/**
+ * colse_file - close file if open
+ * @sh_data: shell data
+ *
+ * Return: void
+ */
+void colse_file(shell_data_t *sh_data)
+{
+	if (sh_data->fd != stdin)
+		close(sh_data->fd);	
 }
