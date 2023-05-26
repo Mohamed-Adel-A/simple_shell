@@ -53,15 +53,9 @@ int loop(shell_data_t *sh_data, char **argv)
 	}
 	
 	printf("s= %s\n", sh_data->line);
-	colon = _strchar(sh_data->line, ';');
-
-	or = _strchar(sh_data->line, '|');
-	if( or != -1 && sh_data->line[or + 1] != '|')
-		or = -1;
-
-	and = _strchar(sh_data->line, '&');
-	if( and != -1 && sh_data->line[and + 1] != '&')
-		and = -1;
+	colon = sh_data->colon;
+	or = sh_data->or;
+	and = sh_data->and;
 
 	printf(";= %i ; |= %i ; &= %i\n", colon, or, and);
 	while (ret == 0)
