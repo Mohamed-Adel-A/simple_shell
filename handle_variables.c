@@ -107,7 +107,6 @@ int check_variable(int token_idx, shell_data_t *sh_data)
 		else if (str[i] == '?')
 		{
 			var_str = _itoa(sh_data->wstatus, number);
-			printf("wstat= %i : %s\n", sh_data->wstatus, number);
 			i++;
 		}
 		else
