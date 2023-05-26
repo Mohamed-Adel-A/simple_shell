@@ -4,7 +4,6 @@
 void prompt(void);
 int check_cmd(shell_data_t *sh_data, char **argv);
 void excuting_cmd(shell_data_t *sh_data, char **argv);
-void init_data(shell_data_t *sh_data);
 /*************************************************************/
 
 /**
@@ -123,23 +122,6 @@ void excuting_cmd(shell_data_t *sh_data, char **argv)
 }
 
 
-/**
- * init_data - intializing shell data
- * @sh_data: shell data
- *
- * Return: void
- */
-void init_data(shell_data_t *sh_data)
-{
-	sh_data->line = NULL;
-	sh_data->tokens = NULL;
-	sh_data->alltokens = NULL;
-	sh_data->variables = NULL;
-	sh_data->cmd_path = NULL;
-	sh_data->cmd_entered = NULL;
-	sh_data->next_tokens_index = 0;
-	errno = 0;
-}
 
 
 /**
