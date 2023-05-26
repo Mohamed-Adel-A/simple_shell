@@ -152,7 +152,7 @@ int logical_operators_in_str(shell_data_t *sh_data, char operator)
 int handle_logical_operators(shell_data_t *sh_data)
 {
 	char **tokens = sh_data->alltokens, **current_tokens;
-	int i, j, colon_pos = -1, tokens_size, index = sh_data->next_tokens_index, diff_pos;
+	int i, j, colon_pos = -1, tokens_size, index, diff_pos;
 
 	index = sh_data->next_tokens_index;
 	if (index == -1 || tokens[index] == NULL)
@@ -174,7 +174,6 @@ int handle_logical_operators(shell_data_t *sh_data)
 		}
 		sh_data->logical_op = 0;
 	}
-	colon_pos = i;
 	if (((i - index) == 0)  && tokens[i] != NULL)
 	{
 		sh_data->next_tokens_index++;
@@ -182,17 +181,15 @@ int handle_logical_operators(shell_data_t *sh_data)
 	}
 	tokens_size = i - sh_data->next_tokens_index;
 	current_tokens = malloc(sizeof(char *) * (tokens_size + 1));
-	if (current_tokens == NULL)
-		return (-1);
 	for (j = 0; j < tokens_size; j++)
 		current_tokens[j] = tokens[index + j];
 	current_tokens[j] = NULL;
 	if (sh_data->tokens != NULL)
 		free(sh_data->tokens);
 	sh_data->tokens = current_tokens;
-	if (tokens[colon_pos] == NULL || tokens[colon_pos + 1] == NULL)
+	if (tokens[i] == NULL || tokens[i + 1] == NULL)
 		sh_data->next_tokens_index = -1;
 	else
-		sh_data->next_tokens_index = colon_pos + 1;
+		sh_data->next_tokens_index = i + 1;
 	return (0);
 }
