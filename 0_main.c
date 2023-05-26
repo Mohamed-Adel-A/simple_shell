@@ -1,5 +1,12 @@
 #include "shell.h"
 
+/*************************************************************/
+void prompt(void);
+int check_cmd(shell_data_t *sh_data, char **argv);
+void excuting_cmd(shell_data_t *sh_data, char **argv);
+void init_data(shell_data_t *sh_data);
+/*************************************************************/
+
 /**
  * prompt - print shell prompt
  *
