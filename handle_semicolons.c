@@ -54,14 +54,14 @@ int loop(shell_data_t *sh_data, char **argv)
 	init_data(sh_data);
 	if (getting_line(sh_data) == -1)
 	{
-		sh_data->wstatus = errno;
+		/*sh_data->wstatus = errno;*/
 		return (1);
 	}
 	if (handle_variables(sh_data) == -1)
 	{
 		free_loop(sh_data);
 		perror("variable error");
-		sh_data->wstatus = errno;
+		/*sh_data->wstatus = errno;*/
 		return (1);
 	}
 
