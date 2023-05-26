@@ -51,7 +51,7 @@ int loop(shell_data_t *sh_data, char **argv)
 
 	while (handle_semicolons(sh_data) == 0)
 	{
-		if (check_cmd(sh_data, argv) == -1)
+		if (check_cmd(sh_data) == -1)
 		{
 			/*sh_data->wstatus = -1;*/
 			continue;
