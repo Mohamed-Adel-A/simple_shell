@@ -42,7 +42,7 @@ typedef struct shell_data
 	int exit_st;
 	unsigned int cmd_idx;
 	char **argv;
-	int *fd;
+	int fd;
 } shell_data_t;
 
 /**
