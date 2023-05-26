@@ -37,7 +37,7 @@ typedef struct shell_data
 	char **variables;
 	int next_tokens_index;
 	int exit_st;
-	unsigned in cmd_idx;
+	unsigned int cmd_idx;
 	char **argv;
 } shell_data_t;
 
