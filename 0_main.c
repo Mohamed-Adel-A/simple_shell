@@ -140,7 +140,6 @@ int main(int argc, char **argv)
 
 	(void)argc;
 	signal(SIGINT, handle_signal);
-	environ = create_env();
 	sh_data.wstatus = 0;
 	sh_data.cmd_idx = 0;
 	sh_data.argv = argv;
@@ -150,8 +149,7 @@ int main(int argc, char **argv)
 		if (fd == -1)
 		{
 			/* ./hsh: 0: Can't open /tmp/hbtn_checker_tmp_27147 * 127 */
-			/*create_error(&sh_data, "Can't open ", 0, 1);*/
-			/*close(fd);*/
+			/create_error(&sh_data, "Can't open ", 0, 1);
 			return(127);
 		}
 
@@ -159,6 +157,8 @@ int main(int argc, char **argv)
 	}
 	else
 		sh_data.fd = STDIN_FILENO;
+
+	environ = create_env();
 
 	while (1)
 	{
