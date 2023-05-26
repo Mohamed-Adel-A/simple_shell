@@ -3,7 +3,7 @@
 /******************************************************/
 int builtin_exit(shell_data_t *sh_data);
 int builtin_cd(shell_data_t *sh_data);
-int change_dir(char *olddir, char *newdir);
+int change_dir(char *olddir, char *newdir, shell_data_t *sh_data);
 /******************************************************/
 
 
