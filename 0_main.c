@@ -157,7 +157,7 @@ int main(int argc, char **argv)
 		sh_data.fd = fd;
 	}
 	else
-		sh_data.fd = stdin;
+		sh_data.fd = STDIN_FILENO;
 
 	while (1)
 	{
