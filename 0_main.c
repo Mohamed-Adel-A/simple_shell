@@ -166,7 +166,7 @@ int main(int argc, char **argv)
 			continue;
 	}
 
-	colse_file(sh_data);
+	colse_file(&sh_data);
 	free_env();
 	return (errno);
 }
