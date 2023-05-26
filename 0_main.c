@@ -47,6 +47,7 @@ int check_cmd(shell_data_t *sh_data, char **argv)
 			if (builtin_func(sh_data) == -1)
 			{
 				perror(sh_data->tokens[0]);
+				sh_data->wstatus = -1;
 			}
 			free(sh_data->cmd_path);
 			sh_data->cmd_path = NULL;
@@ -61,6 +62,7 @@ int check_cmd(shell_data_t *sh_data, char **argv)
 			}
 			else
 			{
+				sh_data->wstatus = -1;
 				perror(argv[0]);
 				return (-1);
 			}
