@@ -102,7 +102,7 @@ void excuting_cmd(shell_data_t *sh_data, char **argv)
 			waitpid(cpid, &(sh_data->wstatus), WUNTRACED);
 			if (WIFEXITED(sh_data->wstatus))
 				sh_data->wstatus = WEXITSTATUS(sh_data->wstatus);
-			printf("ws= %i\n", sh_data->wstatus);
+			/*printf("ws= %i\n", sh_data->wstatus);*/
 		}
 	}
 	else
