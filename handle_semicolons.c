@@ -145,12 +145,11 @@ int logical_operators_in_str(shell_data_t *sh_data,char operator)
 /**
  * handle_logical_operators - break tokens series on || or &&
  * @sh_data: shell data
- * @op: logical operator
  *
  * Return: 1 there is no other tokens, 0 still there
  *         -1 failure
  */
-int handle_logical_operators(shell_data_t *sh_data, char *op)
+int handle_logical_operators(shell_data_t *sh_data)
 {
 	char **tokens = sh_data->alltokens, **current_tokens;
 	int i, colon_pos = -1, tokens_size, index, diff_pos;
@@ -163,9 +162,14 @@ int handle_logical_operators(shell_data_t *sh_data, char *op)
 	}
 	for (i = index; tokens[i] != NULL; i++)
 	{
-		if (_strncmp(tokens[i], op, 3) == 0)
+		if (_strncmp(tokens[i], "||", 3) == 0)
 		{
-			sh_data->logical_op = op[0];
+			sh_data->logical_op = '|';
+			break;
+		}
+		if (_strncmp(tokens[i], "&&", 3) == 0)
+		{
+			sh_data->logical_op = '&';
 			break;
 		}
 	}
