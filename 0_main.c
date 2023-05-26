@@ -152,7 +152,7 @@ int main(int argc, char **argv)
 			/* ./hsh: 0: Can't open /tmp/hbtn_checker_tmp_27147 * 127 */
 			create_error(&sh_data, "Can't open ", 0, 1);
 			/*close(fd);*/
-			exit(-1);
+			return(-1);
 		}
 
 		sh_data.fd = fd;
