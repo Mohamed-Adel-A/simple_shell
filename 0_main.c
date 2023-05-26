@@ -171,15 +171,3 @@ int main(int argc, char **argv)
 	free_env();
 	return (errno);
 }
-
-/**
- * colse_file - close file if open
- * @sh_data: shell data
- *
- * Return: void
- */
-void colse_file(shell_data_t *sh_data)
-{
-	if (sh_data->fd != stdin)
-		close(sh_data->fd);	
-}
