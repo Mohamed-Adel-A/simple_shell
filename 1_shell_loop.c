@@ -61,10 +61,8 @@ int loop(shell_data_t *sh_data, char **argv)
 	{
 		if (colon != -1)
 			ret = handle_semicolons(sh_data);
-		else if (or != -1)
-			ret = handle_logical_operators(sh_data, "||");
-		else if (and != -1)
-			ret =handle_logical_operators(sh_data, "&&");
+		else if (or != -1 || and != -1)
+			ret = handle_logical_operators(sh_data);
 		else
 		{
 			ret = 2;
@@ -81,7 +79,9 @@ int loop(shell_data_t *sh_data, char **argv)
 		excuting_cmd(sh_data, argv);
 		free(sh_data->cmd_path);
 		sh_data->cmd_path = NULL;
-		if ((or != -1 && sh_data->wstatus == 0) || (and != -1 && sh_data->wstatus != 0))
+
+		if(sh_data->logical_op == '|' && sh_data->wstatus == 0)
+			|| (sh_data->logical_op == '&' && sh_data->wstatus != 0))
 			break;
 	}
 
