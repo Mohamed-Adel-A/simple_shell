@@ -29,6 +29,9 @@ int create_error(shell_data_t *sh_data, char *err_msg, int cmd_arg_idx)
 	
 	if(cmd_arg_idx > 0)
 	{
+		/* built-in cmd error */
+		/* ./hsh: 1: exit: Illegal number: -98 */
+		/* ./hsh: 1: cd: can't cd to /hbtn */
 		cmd_arg = sh_data->tokens[cmd_arg_idx];
 		cmd_arg_len = _strlen(cmd_arg);	
 	}
