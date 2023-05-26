@@ -149,7 +149,7 @@ int main(int argc, char **argv)
 		if (fd == -1)
 		{
 			/* ./hsh: 0: Can't open /tmp/hbtn_checker_tmp_27147 * 127 */
-			/create_error(&sh_data, "Can't open ", 0, 1);
+			create_error(&sh_data, "Can't open ", 0, 1);
 			return(127);
 		}
 
