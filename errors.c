@@ -9,15 +9,15 @@
  *
  * Return: 0 success, -1 failure
  */
-int create_error(shell_data_t *sh_data, char *err_msg, int cmd_arg_idx, int file_err)
+int create_error(shell_data_t *sh_data, char *err_msg,
+		 int cmd_arg_idx, int file_err)
 {
-	int cmd_idx_len = 0, argv_len = 0, cmd_len = 0, err_msg_len = 0, cmd_arg_len = 0;
-	int colons_and_spaces, full_err_len;
+	int cmd_idx_len = 0, argv_len = 0, cmd_len = 0, err_msg_len = 0;
+	int colons_and_spaces, full_err_len, cmd_arg_len = 0;
 	char *argv, cmd_idx_str[20], *cmd = NULL, *cmd_arg = NULL, *full_err;
 
 	if (file_err == 1)
 	{
-		/* ./hsh: 0: Can't open /tmp/hbtn_checker_tmp_27147 */
 		cmd_arg = sh_data->argv[1];
 		cmd_arg_len = _strlen(cmd_arg);
 		colons_and_spaces = 5;
@@ -37,19 +37,15 @@ int create_error(shell_data_t *sh_data, char *err_msg, int cmd_arg_idx, int file
 
 	err_msg_len = _strlen(err_msg);
 
-	/* not found path error */
-	/* ./hsh: 1: ls: not found */
 
 	if (cmd_arg_idx > 0)
 	{
-		/* built-in cmd error */
-		/* ./hsh: 1: exit: Illegal number: -98 */
-		/* ./hsh: 1: cd: can't cd to /hbtn */
 		cmd_arg = sh_data->tokens[cmd_arg_idx];
 		cmd_arg_len = _strlen(cmd_arg);
 	}
 
-	full_err_len = argv_len + cmd_idx_len + cmd_len + err_msg_len + colons_and_spaces + cmd_arg_len;
+	full_err_len = argv_len + cmd_idx_len + cmd_len
+		+ err_msg_len + colons_and_spaces + cmd_arg_len;
 	full_err = malloc(sizeof(char) * (full_err_len + 1));
 	if (full_err == NULL)
 		return (-1);
