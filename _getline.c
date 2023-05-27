@@ -170,7 +170,6 @@ int getting_line(shell_data_t *sh_data)
 	    || (or != -1 && logical_operators_in_str(sh_data, '|') == -1)
 	    || (and != -1 && logical_operators_in_str(sh_data, '&') == -1))
 	{
-		printf("free\n");
 		free(sh_data->line);
 		return (-1);
 	}
