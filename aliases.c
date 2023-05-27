@@ -1,10 +1,20 @@
 #include "shell.h"
 
 
-builtin_alias(shell_data_t *sh_data)
+/**********************************************/
+int builtin_alias(shell_data_t *sh_data);
+void print_aliases(shell_data_t *sh_data);
+int add_alias(shell_data *sh_data, char *token, int name_len);
+aliases_t *get_alias(shell_data_t *sh_data,char *name);
+void print_aliases(shell_data_t *sh_data);
+/**********************************************/
+
+
+
+int builtin_alias(shell_data_t *sh_data)
 {
 	int i, eq_i = -1;
-	char *tokens = sh_data->tokens;
+	char **tokens = sh_data->tokens;
 
 	if (tokens[1] == NULL)
 	{
@@ -23,7 +33,7 @@ builtin_alias(shell_data_t *sh_data)
 }
 
 
-int add_alias(shell_data *sh_data, char *token, int name_len)
+int add_alias(shell_data_t *sh_data, char *token, int name_len)
 {
 	int value_len;
 	char *name, *value, ret_value;
