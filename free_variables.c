@@ -83,6 +83,7 @@ void free_all(shell_data_t *sh_data)
 {
 	free_loop(sh_data);
 	free_env();
+	free_aliases(sh_data);
 	colse_file(sh_data);
 }
 
