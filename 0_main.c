@@ -140,6 +140,7 @@ int main(int argc, char **argv)
 	(void)argc;
 	signal(SIGINT, handle_signal);
 	sh_data.wstatus = 0;
+	sh_data.aliases = 0;
 	sh_data.cmd_idx = 0;
 	sh_data.argv = argv;
 	sh_data.logical_op = 0;
