@@ -7,7 +7,26 @@ void free_all(shell_data_t *sh_data);
 void colse_file(shell_data_t *sh_data);
 /*******************************************************/
 
+/**
+ * free_aliases - free aliases
+ * @sh_data: shell data
+ *
+ * Return: void
+ */
+void free_aliases(shell_data_t *sh_data)
+{
+	int i;
 
+	if (sh_data->aliases == NULL)
+		return;
+	for (i = 0 ; sh_data->aliases[i] != NULL ; i++)
+	{
+		free(sh_data->aliases[i]->name);
+		free(sh_data->aliases[i]->value);
+		free(sh_data->aliases[i]);
+	}
+	free(sh_data->aliases);
+}
 
 /**
  * free_loop - free all variables
