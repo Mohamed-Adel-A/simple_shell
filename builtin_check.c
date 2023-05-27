@@ -19,6 +19,7 @@ int (*check_builtin(char *cmd))(shell_data_t *sh_data)
 				     {"setenv", builtin_setenv},
 				     {"unsetenv", builtin_unsetenv},
 				     {"cd", builtin_cd},
+				     {"alias", builtin_alias},
 				     {NULL, NULL}
 				    };
 
