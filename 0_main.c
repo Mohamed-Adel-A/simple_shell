@@ -72,7 +72,6 @@ int check_cmd(shell_data_t *sh_data)
 			{
 				sh_data->wstatus = 127;
 				create_error(sh_data, "not found", 0, 0);
-				/*perror(argv[0]);*/
 				return (-1);
 			}
 		}
