@@ -4,7 +4,7 @@
 /**********************************************/
 int builtin_alias(shell_data_t *sh_data);
 void print_aliases(shell_data_t *sh_data);
-int add_alias(shell_data *sh_data, char *token, int name_len);
+int add_alias(shell_data_t *sh_data, char *token, int name_len);
 aliases_t *get_alias(shell_data_t *sh_data,char *name);
 void print_aliases(shell_data_t *sh_data);
 /**********************************************/
