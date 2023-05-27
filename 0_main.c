@@ -42,9 +42,10 @@ int check_cmd(shell_data_t *sh_data)
 	aliases_t *alias;
 
 	alias = get_alias(sh_data, sh_data->tokens[0]);
-	if (alias != NULL)
+	while (alias != NULL)
 	{
 		sh_data->tokens[0] = alias->value;
+		alias = get_alias(sh_data, sh_data->tokens[0]);
 	}
 	if (_strncmp(sh_data->tokens[0], "/", 1) != 0 &&
 	    _strncmp(sh_data->tokens[0], "./", 2) != 0 &&
