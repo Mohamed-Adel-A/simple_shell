@@ -5,6 +5,7 @@ void free_loop(shell_data_t *sh_data);
 void free_tokens(shell_data_t *sh_data);
 void free_all(shell_data_t *sh_data);
 void colse_file(shell_data_t *sh_data);
+void free_aliases(shell_data_t *sh_data);
 /*******************************************************/
 
 /**
