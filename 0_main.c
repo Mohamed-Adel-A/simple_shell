@@ -115,7 +115,6 @@ void excuting_cmd(shell_data_t *sh_data, char **argv)
 				sh_data->wstatus = WEXITSTATUS(sh_data->wstatus);
 			else
 				sh_data->wstatus = 0;
-			/*printf("ws= %i\n", sh_data->wstatus);*/
 		}
 	}
 	else
