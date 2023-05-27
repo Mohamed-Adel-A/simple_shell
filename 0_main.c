@@ -13,7 +13,7 @@ void excuting_cmd(shell_data_t *sh_data, char **argv);
  */
 void prompt(void)
 {
-	char *prompt = "($) ";
+	char *prompt = "($> ";
 	ssize_t write_c;
 
 	if (isatty(STDIN_FILENO))
