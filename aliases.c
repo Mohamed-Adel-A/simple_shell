@@ -30,7 +30,7 @@ int builtin_alias(shell_data_t *sh_data)
 
 	for (i = 0; tokens[i] != NULL ; i++)
 	{
-		 eq_i = _strchar(tokens[i], '=');
+		eq_i = _strchar(tokens[i], '=');
 		if (eq_i != -1)
 		{
 			add_alias(sh_data, tokens[i], eq_i);
