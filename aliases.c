@@ -83,7 +83,7 @@ int add_alias(shell_data_t *sh_data, char *token, int name_len)
 
 	new_alias = malloc(sizeof(aliases_t));
 	new_alias->name = name;
-	new_alias->value = name;
+	new_alias->value = value;
 	printf("2- %s : %s\n", new_alias->name, new_alias->value);
 	if (aliases == NULL)
 	{
