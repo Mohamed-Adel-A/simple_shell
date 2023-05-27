@@ -44,7 +44,7 @@ int check_cmd(shell_data_t *sh_data)
 	alias = get_alias(sh_data, sh_data->tokens[0]);
 	if (alias != NULL)
 	{
-		tokens[0] = alias->value;
+		sh_data->tokens[0] = alias->value;
 	}
 	if (_strncmp(sh_data->tokens[0], "/", 1) != 0 &&
 	    _strncmp(sh_data->tokens[0], "./", 2) != 0 &&
@@ -55,7 +55,6 @@ int check_cmd(shell_data_t *sh_data)
 		{
 			if (builtin_func(sh_data) == -1)
 			{
-				/*perror(sh_data->tokens[0]);*/
 				sh_data->wstatus = 2;
 			}
 			/*free(sh_data->cmd_path);*/
