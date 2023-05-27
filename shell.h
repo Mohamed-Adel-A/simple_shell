@@ -125,6 +125,7 @@ int handle_comments(char *line);
 int (*check_builtin(char *cmd))(shell_data_t *sh_data);
 /* builtin_alias.c */
 int builtin_alias(shell_data_t *sh_data);
+aliases_t *get_alias(shell_data_t *sh_data, char *name);
 
 /* builtin_exit */
 int builtin_exit(shell_data_t *sh_data);
