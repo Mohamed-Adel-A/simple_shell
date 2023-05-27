@@ -60,7 +60,7 @@ typedef struct shell_data
 	int colon;
 	int or;
 	int and;
-	aliases_t *aliases;
+	aliases_t **aliases;
 } shell_data_t;
 
 /**
