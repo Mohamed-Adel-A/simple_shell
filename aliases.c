@@ -26,8 +26,8 @@ builtin_alias(shell_data_t *sh_data)
 int add_alias(shell_data *sh_data, char *token, int name_len)
 {
 	int value_len;
-	char *name, *value;
-	aliases_t *aliases = sh_data->aliases, exist_alias;
+	char *name, *value, ret_value;
+	aliases_t *aliases = sh_data->aliases, *exist_alias, *new_aliases;
 
 	name = malloc(sizeof(char) * (name_len + 1));
 	_strncpy(name, token, name_len);
@@ -35,6 +35,15 @@ int add_alias(shell_data *sh_data, char *token, int name_len)
 	value_len = _strlen(token) - (name_len + 1);
 	value = malloc(sizeof(char) * (value_len + 1));
 	_strncpy(value, token + name_len + 1, value_len);
+
+	exist_alias = get_alias(sh_data, name);
+	if (exist_alias != NULL)
+	{
+		free(name);
+		free(exist_alias->value);
+		exist_alias->value = value;
+		return (0);
+	}
 
 	if(aliases == NULL)
 	{
@@ -45,19 +54,34 @@ int add_alias(shell_data *sh_data, char *token, int name_len)
 			free(value);
 			return (-1);
 		}
-		aliases[0][name] = name;
-		aliases[0][value] = value;
+		aliases[0]->name = name;
+		aliases[0]->value = value;
 		aliases[1] = NULL;
 		return (0);
 	}
 	else
 	{
-		if (exist_alias = get_alias(sh_data, name))
+		aliases
 	}
 }
 
 
+aliases_t *get_alias(shell_data_t *sh_data,char *name)
+{
+	aliases_t *aliases = sh_data->aliases;
+	
+	if (aliases == NULL)
+		return (NULL);
+	for (i = 0 ; aliases[i] != NULL ; i++)
+	{
+		if(_strncmp(name, aliases[i]->name, _strlen(name) + 1) == 0)
+		{
+			return (aliases[i]);
+		}
+	}
 
+	return (NULL);
+}
 
 
 void print_aliases(shell_data_t *sh_data)
@@ -69,10 +93,10 @@ void print_aliases(shell_data_t *sh_data)
 		return;
 	for (i = 0 ; aliases[i] != NULL ; i++)
 	{
-		_puts(aliases[i][name]);
+		_puts(aliases[i]->name);
 		_puts("=");
 		_puts("\'");
-		_puts(aliases[i][value]);
+		_puts(aliases[i]->value);
 		_puts("\'");
 		_puts("\n");
 	}
