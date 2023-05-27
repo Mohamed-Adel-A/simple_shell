@@ -31,7 +31,7 @@ int builtin_alias(shell_data_t *sh_data)
 			add_alias(sh_data, tokens[i], eq_i);
 			continue;
 		}
-		alias = get_alias(sh_data; tokens[i]);
+		alias = get_alias(sh_data, tokens[i]);
 		if (alias != NULL)
 		{
 			_puts(alias->name);
@@ -48,7 +48,7 @@ int builtin_alias(shell_data_t *sh_data)
 
 int add_alias(shell_data_t *sh_data, char *token, int name_len)
 {
-	int value_len;
+	int i, value_len;
 	char *name, *value;
 	aliases_t **aliases = sh_data->aliases, *exist_alias, *new_alias;
 
