@@ -28,7 +28,7 @@ int builtin_alias(shell_data_t *sh_data)
 		return (0);
 	}
 
-	for (i = 0; tokens[i] != NULL; i++)
+	for (i = 0; tokens[i] != NULL ; i++)
 	{
 		 eq_i = _strchar(tokens[i], '=');
 		if (eq_i != -1)
