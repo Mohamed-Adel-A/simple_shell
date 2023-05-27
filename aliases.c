@@ -88,6 +88,7 @@ int add_alias(shell_data_t *sh_data, char *token, int name_len)
 		aliases = malloc(sizeof(aliases_t *) * 2);
 		aliases[0] = new_alias;
 		aliases[1] = NULL;
+		sh_data->aliases = aliases;
 		return (0);
 	}
 	else
@@ -98,6 +99,7 @@ int add_alias(shell_data_t *sh_data, char *token, int name_len)
 		aliases = _realloc(aliases, i + 2, i);
 		aliases[i] = new_alias;
 		aliases[i + 1] = NULL;
+		sh_data->aliases = aliases;
 	}
 	return (0);
 }
