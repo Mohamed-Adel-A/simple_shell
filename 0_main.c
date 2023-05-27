@@ -170,5 +170,6 @@ int main(int argc, char **argv)
 
 	colse_file(&sh_data);
 	free_env();
+	free_aliases(sh_data);
 	return (errno);
 }
