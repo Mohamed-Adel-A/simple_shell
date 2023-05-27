@@ -30,7 +30,7 @@ int builtin_alias(shell_data_t *sh_data)
 			add_alias(sh_data, tokens[i], eq_i);
 		}
 	}
-	return (0)
+	return (0);
 }
 
 
@@ -38,7 +38,7 @@ int add_alias(shell_data_t *sh_data, char *token, int name_len)
 {
 	int value_len;
 	char *name, *value;
-	aliases_t **aliases = sh_data->aliases, *exist_alias, *new_aliases;
+	aliases_t **aliases = sh_data->aliases, *exist_alias;
 
 	name = malloc(sizeof(char) * (name_len + 1));
 	_strncpy(name, token, name_len);
@@ -74,7 +74,7 @@ int add_alias(shell_data_t *sh_data, char *token, int name_len)
 	}
 	else
 	{
-		new_aliases = NULL;
+		;
 	}
 	return (0);
 }
