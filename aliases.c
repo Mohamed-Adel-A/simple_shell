@@ -99,7 +99,7 @@ int add_alias(shell_data_t *sh_data, char *token, int name_len)
 		for (i = 0 ; aliases[i] != NULL ; i++)
 		{
 		}
-		aliases = _realloc(aliases, i + 2, i);
+		aliases = _realloc(aliases, sizeof(aliases_t *) * (i + 2) , sizeof(aliases_t *) * i);
 		aliases[i] = new_alias;
 		aliases[i + 1] = NULL;
 		sh_data->aliases = aliases;
