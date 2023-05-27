@@ -10,7 +10,12 @@ void print_aliases(shell_data_t *sh_data);
 /**********************************************/
 
 
-
+/**
+ * builtin_alias - builtin_alias
+ * @sh_data: shell data
+ *
+ * Return: 0 success, -1 fail
+ */
 int builtin_alias(shell_data_t *sh_data)
 {
 	int i, eq_i = -1;
@@ -45,7 +50,14 @@ int builtin_alias(shell_data_t *sh_data)
 	return (0);
 }
 
-
+/**
+ * add_alias - get_alias
+ * @sh_data: shell data
+ * @token: token
+ * @name_len: name_len
+ *
+ * Return: void
+ */
 int add_alias(shell_data_t *sh_data, char *token, int name_len)
 {
 	int i, value_len;
@@ -90,7 +102,13 @@ int add_alias(shell_data_t *sh_data, char *token, int name_len)
 	return (0);
 }
 
-
+/**
+ * get_alias - get_alias
+ * @sh_data: shell data
+ * @name: name
+ *
+ * Return: void
+ */
 aliases_t *get_alias(shell_data_t *sh_data,char *name)
 {
 	int i;
@@ -109,7 +127,12 @@ aliases_t *get_alias(shell_data_t *sh_data,char *name)
 	return (NULL);
 }
 
-
+/**
+ * print_aliases - print_aliases
+ * @sh_data: shell data
+ *
+ * Return: void
+ */
 void print_aliases(shell_data_t *sh_data)
 {
 	int i;
