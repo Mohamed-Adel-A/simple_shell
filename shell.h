@@ -15,6 +15,12 @@
 
 extern char **environ;
 
+
+/**
+ * struct alias_str - aliases struct
+ * @name: name
+ * @value: value
+ */
 typedef struct alias_str
 {
 	char *name;
