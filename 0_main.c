@@ -41,7 +41,7 @@ int check_cmd(shell_data_t *sh_data)
 	int (*builtin_func)(shell_data_t *);
 	aliases_t *alias;
 
-	alias = get_alias(sh_data, tokens[0]);
+	alias = get_alias(sh_data, sh_data->tokens[0]);
 	if (alias != NULL)
 	{
 		tokens[0] = alias->value;
