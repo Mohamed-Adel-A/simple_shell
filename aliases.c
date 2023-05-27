@@ -70,7 +70,6 @@ int add_alias(shell_data_t *sh_data, char *token, int name_len)
 	value_len = _strlen(token) - (name_len + 1);
 	value = malloc(sizeof(char) * (value_len + 1));
 	_strncpy(value, token + name_len + 1, value_len);
-	printf("1- %s : %s\n", name, value);
 
 	exist_alias = get_alias(sh_data, name);
 	if (exist_alias != NULL)
@@ -84,14 +83,13 @@ int add_alias(shell_data_t *sh_data, char *token, int name_len)
 	new_alias = malloc(sizeof(aliases_t));
 	new_alias->name = name;
 	new_alias->value = value;
-	printf("2- %s : %s\n", new_alias->name, new_alias->value);
+
 	if (aliases == NULL)
 	{
 		aliases = malloc(sizeof(aliases_t *) * 2);
 		aliases[0] = new_alias;
 		aliases[1] = NULL;
 		sh_data->aliases = aliases;
-		printf("2- %s : %s\n", aliases[0]->name, aliases[0]->value);
 		return (0);
 	}
 	else
