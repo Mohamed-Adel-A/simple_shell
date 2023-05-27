@@ -54,15 +54,16 @@ int add_alias(shell_data *sh_data, char *token, int name_len)
 			free(value);
 			return (-1);
 		}
-		aliases[0]->name = name;
-		aliases[0]->value = value;
+		aliases[0].name = name;
+		aliases[0].value = value;
 		aliases[1] = NULL;
 		return (0);
 	}
 	else
 	{
-		aliases
+		;
 	}
+	return (0);
 }
 
 
@@ -74,9 +75,9 @@ aliases_t *get_alias(shell_data_t *sh_data,char *name)
 		return (NULL);
 	for (i = 0 ; aliases[i] != NULL ; i++)
 	{
-		if(_strncmp(name, aliases[i]->name, _strlen(name) + 1) == 0)
+		if(_strncmp(name, aliases[i].name, _strlen(name) + 1) == 0)
 		{
-			return (aliases[i]);
+			return (&aliases[i]);
 		}
 	}
 
@@ -93,10 +94,10 @@ void print_aliases(shell_data_t *sh_data)
 		return;
 	for (i = 0 ; aliases[i] != NULL ; i++)
 	{
-		_puts(aliases[i]->name);
+		_puts(aliases[i].name);
 		_puts("=");
 		_puts("\'");
-		_puts(aliases[i]->value);
+		_puts(aliases[i].value);
 		_puts("\'");
 		_puts("\n");
 	}
