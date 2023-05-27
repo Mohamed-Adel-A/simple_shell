@@ -116,6 +116,8 @@ int handle_comments(char *line);
 
 /* builtin_cheak.c */
 int (*check_builtin(char *cmd))(shell_data_t *sh_data);
+/* builtin_alias.c */
+int builtin_alias(shell_data_t *sh_data);
 
 /* builtin_exit */
 int builtin_exit(shell_data_t *sh_data);
