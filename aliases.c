@@ -64,8 +64,10 @@ int add_alias(shell_data_t *sh_data, char *token, int name_len)
 			free(value);
 			return (-1);
 		}
+		aliases[0] = malloc(sizeof(aliases_t));
 		aliases[0]->name = name;
 		aliases[0]->value = value;
+		aliases[0] = malloc(sizeof(aliases_t));
 		aliases[1] = NULL;
 		return (0);
 	}
